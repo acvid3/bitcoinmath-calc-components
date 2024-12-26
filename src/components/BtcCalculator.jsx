@@ -7,10 +7,14 @@ import ResultDashboardComponent from "./ResultDashboardComponent";
 
 const BtcCalculator = ({ calculateHandler, inputData }) => {
   const [results, setResults] = useState(null);
-  console.log(results);
 
   const chartData = results
-    ? [{ Tradfi: results.end_term_value, BTC: results.ending_btc_value }]
+    ? [
+        {
+          Tradfi: results.btc.end_term_value,
+          BTC: results.tradfi.end_term_value,
+        },
+      ]
     : [];
 
   return (
@@ -31,7 +35,7 @@ const BtcCalculator = ({ calculateHandler, inputData }) => {
               <Typography variant="h6" gutterBottom>
                 Results
               </Typography>
-              <ResultDashboardComponent results={results} />
+              <ResultDashboardComponent dataResults={results} />
             </Paper>
           )}
         </Grid>
