@@ -67,7 +67,7 @@ export const ChartComponent = ({ chartData, type = "bar" }) => {
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
           <defs>
-            <linearGradient id="colorTradfi" x1="0" y1="0" x2="0" y2="1">
+            <linearGradient id="colorTradefi" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#b0bcb2" stopOpacity={0.8} />
               <stop offset="95%" stopColor="#b0bcb2" stopOpacity={0} />
             </linearGradient>
@@ -81,8 +81,8 @@ export const ChartComponent = ({ chartData, type = "bar" }) => {
           <YAxis />
           <Legend />
           <Bar
-            dataKey="Tradfi"
-            fill="url(#colorTradfi)"
+            dataKey="Tradefi"
+            fill="url(#colorTradefi)"
             stroke="#b0bcb2"
             radius={[10, 10, 0, 0]}
             barSize={50}
@@ -111,7 +111,7 @@ export const ChartComponent = ({ chartData, type = "bar" }) => {
           }}
         >
           <defs>
-            <linearGradient id="colorTradfi" x1="0" y1="0" x2="0" y2="1">
+            <linearGradient id="colorTradefi" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#b0bcb2" stopOpacity={0.8} />
               <stop offset="95%" stopColor="#b0bcb2" stopOpacity={0} />
             </linearGradient>
@@ -127,7 +127,7 @@ export const ChartComponent = ({ chartData, type = "bar" }) => {
           <Area
             type="monotone"
             dataKey="uv"
-            fill="url(#colorTradfi)"
+            fill="url(#colorTradefi)"
             stroke="#b0bcb2"
           />
           <Area

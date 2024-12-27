@@ -14,8 +14,6 @@ import {
 import React from "react";
 
 const ResultDashboardComponent = ({ dataResults, difference }) => {
-  console.log(difference);
-
   return (
     <TableContainer>
       <Table>
@@ -26,7 +24,7 @@ const ResultDashboardComponent = ({ dataResults, difference }) => {
               align="right"
               sx={{ fontWeight: "bold", color: "#3c6e47" }}
             >
-              Tradfi
+              Tradefi
             </TableCell>
             <TableCell
               align="right"
@@ -35,10 +33,10 @@ const ResultDashboardComponent = ({ dataResults, difference }) => {
               Bitcoin
             </TableCell>
           </TableRow>
-          {dataResults.map(({ label, tradfi, btc }) => (
+          {dataResults.map(({ label, tradefi, btc }) => (
             <TableRow key={label}>
               <TableCell>{label}</TableCell>
-              <TableCell align="right">{tradfi}</TableCell>
+              <TableCell align="right">{tradefi}</TableCell>
               <TableCell align="right">{btc}</TableCell>
             </TableRow>
           ))}
