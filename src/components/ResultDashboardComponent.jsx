@@ -1,47 +1,67 @@
-import { Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import {
+  Typography,
+  Box,
+  TextField,
+  Button,
+  Grid,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+} from "@mui/material";
+import React from "react";
 
-const ResultDashboardComponent = ({ dataResults }) => {
-  console.log("data", dataResults);
-
-  const rows = [];
-  const keys = new Set([
-    ...Object.keys(dataResults.tradfi),
-    ...Object.keys(dataResults.btc),
-  ]);
-
-  keys.forEach((key) => {
-    rows.push({
-      label: key
-        .replace(/_/g, " ")
-        .replace(/(^|\s)\S/g, (letter) => letter.toUpperCase()),
-      tradfi:
-        dataResults.tradfi[key] !== undefined ? dataResults.tradfi[key] : "",
-      btc: dataResults.btc[key] !== undefined ? dataResults.btc[key] : "",
-    });
-  });
-  console.log("res", rows);
+const ResultDashboardComponent = ({ dataResults, difference }) => {
+  console.log(difference);
 
   return (
-    <>
-      {rows.length > 0 &&
-        rows.map(({ label, tradfi, btc }) => (
-          <Typography key={label}>
-            {label}: {typeof tradfi === "number" ? `$${tradfi}` : tradfi},{" "}
-            {typeof btc === "number" ? `$${btc}` : btc}{" "}
-          </Typography>
-        ))}
-      {dataResults.difference && (
-        <>
-          <Typography>
-            Difference$ ${dataResults.difference.difference_dollar}
-          </Typography>
-          <Typography>
-            Difference % {dataResults.difference.difference_percent}
-          </Typography>
-        </>
-      )}
-    </>
+    <TableContainer>
+      <Table>
+        <TableBody>
+          <TableRow>
+            <TableCell />
+            <TableCell
+              align="right"
+              sx={{ fontWeight: "bold", color: "#3c6e47" }}
+            >
+              Tradfi
+            </TableCell>
+            <TableCell
+              align="right"
+              sx={{ fontWeight: "bold", color: "#f4a261" }}
+            >
+              Bitcoin
+            </TableCell>
+          </TableRow>
+          {dataResults.map(({ label, tradfi, btc }) => (
+            <TableRow key={label}>
+              <TableCell>{label}</TableCell>
+              <TableCell align="right">{tradfi}</TableCell>
+              <TableCell align="right">{btc}</TableCell>
+            </TableRow>
+          ))}
+          {difference && (
+            <>
+              <TableRow>
+                <TableCell>Difference ($)</TableCell>
+                <TableCell colSpan={2} align="right">
+                  {difference.difference_dollar}
+                </TableCell>
+              </TableRow>
+
+              <TableRow>
+                <TableCell>Difference (%)</TableCell>
+                <TableCell colSpan={2} align="right">
+                  {difference.difference_percent}
+                </TableCell>
+              </TableRow>
+            </>
+          )}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 

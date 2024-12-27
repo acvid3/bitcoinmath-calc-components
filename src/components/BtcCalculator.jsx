@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Typography, Grid, Paper } from "@mui/material";
 
 import { FormComponent } from "./FormComponent";
@@ -7,12 +7,36 @@ import ResultDashboardComponent from "./ResultDashboardComponent";
 
 const BtcCalculator = ({ calculateHandler, inputData }) => {
   const [results, setResults] = useState(null);
+  const [tableData, setTableData] = useState([]);
+
+  useEffect(() => {
+    if (!results) return;
+    setTableData([]);
+    const keys = new Set([
+      ...Object.keys(results.tradfi),
+      ...Object.keys(results.btc),
+    ]);
+
+    keys.forEach((key) => {
+      setTableData((prevData) => [
+        ...prevData,
+        {
+          label: key
+            .replace(/_/g, " ")
+            .replace(/(^|\s)\S/g, (letter) => letter.toUpperCase()),
+          tradfi: results.tradfi[key] !== undefined ? results.tradfi[key] : "",
+          btc: results.btc[key] !== undefined ? results.btc[key] : "",
+        },
+      ]);
+    });
+  }, [results]);
+  console.log(results);
 
   const chartData = results
     ? [
         {
-          Tradfi: results.btc.end_term_value,
-          BTC: results.tradfi.end_term_value,
+          Tradfi: results.tradfi.end_term_value,
+          BTC: results.btc.end_term_value,
         },
       ]
     : [];
@@ -35,7 +59,10 @@ const BtcCalculator = ({ calculateHandler, inputData }) => {
               <Typography variant="h6" gutterBottom>
                 Results
               </Typography>
-              <ResultDashboardComponent dataResults={results} />
+              <ResultDashboardComponent
+                dataResults={tableData}
+                difference={results.difference}
+              />
             </Paper>
           )}
         </Grid>
