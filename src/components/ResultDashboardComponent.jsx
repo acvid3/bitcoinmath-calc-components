@@ -1,60 +1,89 @@
 import {
-  Typography,
-  Box,
-  TextField,
-  Button,
-  Grid,
-  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableRow,
 } from "@mui/material";
+import { styled } from "@mui/system";
 import React from "react";
+import { formatNumber } from "../helpers/index.js/js";
+
+const StyledRow = styled(TableRow)({
+  "&:not(:last-child) td": {
+    borderBottom: "10px solid transparent",
+  },
+});
+
+const StyledCell = styled(TableCell)(
+  ({ fontWeight, fontSize, lineHeight, ...otherProps }) => ({
+    padding: "4px",
+    border: "none",
+    fontWeight: fontWeight || 600,
+    fontSize: fontSize || "14px",
+    lineHeight: lineHeight || "normal",
+    color: "#2E4E35",
+    ...otherProps,
+  })
+);
 
 const ResultDashboardComponent = ({ dataResults, difference }) => {
   return (
     <TableContainer>
       <Table>
         <TableBody>
-          <TableRow>
-            <TableCell />
-            <TableCell
-              align="right"
-              sx={{ fontWeight: "bold", color: "#3c6e47" }}
-            >
+          <StyledRow>
+            <StyledCell />
+            <StyledCell opacity="60%" align="center">
               Tradefi
-            </TableCell>
-            <TableCell
-              align="right"
-              sx={{ fontWeight: "bold", color: "#f4a261" }}
-            >
+            </StyledCell>
+            <StyledCell opacity="60%" align="center">
               Bitcoin
-            </TableCell>
-          </TableRow>
+            </StyledCell>
+          </StyledRow>
+
           {dataResults.map(({ label, tradefi, btc }) => (
-            <TableRow key={label}>
-              <TableCell>{label}</TableCell>
-              <TableCell align="right">{tradefi}</TableCell>
-              <TableCell align="right">{btc}</TableCell>
-            </TableRow>
+            <StyledRow key={label}>
+              <StyledCell>{label}</StyledCell>
+              <StyledCell align="center">{tradefi}</StyledCell>
+              <StyledCell align="center">{btc}</StyledCell>
+            </StyledRow>
           ))}
+
           {difference && (
             <>
-              <TableRow>
-                <TableCell>Difference ($)</TableCell>
-                <TableCell colSpan={2} align="right">
-                  {difference.difference_dollar}
-                </TableCell>
-              </TableRow>
+              <StyledRow>
+                <StyledCell height="10px"></StyledCell>
+              </StyledRow>
+              <StyledRow>
+                <StyledCell fontWeight={700} fontSize="16px">
+                  Difference $
+                </StyledCell>
+                <StyledCell></StyledCell>
+                <StyledCell
+                  colSpan={2}
+                  align="center"
+                  fontWeight={700}
+                  fontSize="16px"
+                >
+                  ${formatNumber(difference.difference_dollar)}
+                </StyledCell>
+              </StyledRow>
 
-              <TableRow>
-                <TableCell>Difference (%)</TableCell>
-                <TableCell colSpan={2} align="right">
+              <StyledRow>
+                <StyledCell fontWeight={700} fontSize="16px">
+                  Difference %
+                </StyledCell>
+                <StyledCell></StyledCell>
+                <StyledCell
+                  colSpan={2}
+                  align="center"
+                  fontWeight={700}
+                  fontSize="16px"
+                >
                   {difference.difference_percent}
-                </TableCell>
-              </TableRow>
+                </StyledCell>
+              </StyledRow>
             </>
           )}
         </TableBody>

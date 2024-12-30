@@ -1,7 +1,15 @@
-import React, { useState } from "react";
-import { TextField, InputAdornment, Typography, Box } from "@mui/material";
+import React from "react";
+import { TextField, Typography, Box } from "@mui/material";
 
-const CarPriceInput = ({ label, name, value, onChange, text }) => {
+const CarPriceInput = ({
+  label,
+  name,
+  value,
+  onChange,
+  text,
+  unit,
+  loading,
+}) => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "4px" }}>
       <Typography
@@ -18,12 +26,11 @@ const CarPriceInput = ({ label, name, value, onChange, text }) => {
       <TextField
         name={name}
         variant="outlined"
-        value={value}
+        value={`${unit === "$" ? `${unit}${value}` : `${value}${unit}`}`}
+        placeholder={unit === "$" ? `${unit}${value}` : `${value}${unit}`}
+        disabled={loading}
         onChange={onChange}
         fullWidth
-        InputProps={{
-          startAdornment: <InputAdornment position="start">$</InputAdornment>,
-        }}
         sx={{
           "& .MuiOutlinedInput-root": {
             padding: "11px 10px",
@@ -43,7 +50,7 @@ const CarPriceInput = ({ label, name, value, onChange, text }) => {
           },
           "& .MuiInputBase-input": {
             fontWeight: "bold",
-            color: "#2E7D32",
+            padding: "0px",
           },
         }}
       />
