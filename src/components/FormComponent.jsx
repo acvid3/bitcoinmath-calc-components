@@ -1,9 +1,17 @@
 import React, { useState } from "react";
-import { TextField, Button, Typography, Grid, Paper, Box } from "@mui/material";
+import { TextField, Button, Typography, Box, Paper } from "@mui/material";
 
 export const FormComponent = ({ children }) => {
   return (
-    <Grid item sx={{ height: "750px" }}>
+    <Box
+      ite
+      sx={{
+        flex: 1,
+        width: "100%",
+
+        maxWidth: { xs: "100%", md: "325px" },
+      }}
+    >
       <Paper
         elevation={3}
         sx={{
@@ -20,6 +28,6 @@ export const FormComponent = ({ children }) => {
       >
         {children}
       </Paper>
-    </Grid>
+    </Box>
   );
 };

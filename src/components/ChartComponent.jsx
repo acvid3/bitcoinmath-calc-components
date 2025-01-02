@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BarChart,
   AreaChart,
@@ -82,6 +82,11 @@ export const ChartComponent = ({
     },
   ];
   const formatYAxis = (value) => `$${value}`;
+
+  console.log(chartSize);
+
+  if (chartSize.h < 300) chartSize.h = 400;
+
   return (
     <>
       {type === "bar" ? (

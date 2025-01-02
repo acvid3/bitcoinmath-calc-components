@@ -151,6 +151,17 @@ const App = () => {
       console.error("Error calculating BTC data:", error);
     }
   };
+  const handleCalculate2 = async (formData) => {
+    // console.log("Form data before API call:", formData);
+    try {
+      const apiUrl =
+        "http://13.61.153.104/wp-json/btc-calculator/v1/calculate-home-purchase";
+      const response = await axios.post(apiUrl, formData);
+      return response.data;
+    } catch (error) {
+      console.error("Error calculating BTC data:", error);
+    }
+  };
 
   return (
     <div className="App">
@@ -159,11 +170,11 @@ const App = () => {
         inputFieldsData={autoPurchasesData}
         initResponse={initResultAutoPurchases}
       />
-
-      {/* <HomePurchaseCalc
-        calculateHandler={handleCalculate}
+      {/* 
+      <HomePurchaseCalc
+        calculateHandler={handleCalculate2}
         inputFieldsData={homePurchaseData}
-        initResponse={initResultAutoPurchases}
+         initResponse={initResultAutoPurchases}
       /> */}
     </div>
   );
