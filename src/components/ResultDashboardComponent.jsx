@@ -42,10 +42,10 @@ const ResultDashboardComponent = ({ dataResults, difference }) => {
             </StyledCell>
           </StyledRow>
 
-          {dataResults.map(({ label, tradefi, btc }) => (
+          {dataResults.map(({ label, tradfi, btc }) => (
             <StyledRow key={label}>
               <StyledCell>{label}</StyledCell>
-              <StyledCell align="center">{tradefi}</StyledCell>
+              <StyledCell align="center">{tradfi}</StyledCell>
               <StyledCell align="center">{btc}</StyledCell>
             </StyledRow>
           ))}

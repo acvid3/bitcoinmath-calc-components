@@ -44,7 +44,7 @@ const BtcCalculator = ({ calculateHandler, inputFieldsData, initResponse }) => {
       label: key
         .replace(/_/g, " ")
         .replace(/(^|\s)\S/g, (letter) => letter.toUpperCase()),
-      tradefi: formatNumber(results.tradefi[key]) ?? "",
+      tradfi: formatNumber(results.tradefi[key]) ?? "",
       btc: formatNumber(results.btc[key]) ?? "",
     }));
     setTableData(newTableData);

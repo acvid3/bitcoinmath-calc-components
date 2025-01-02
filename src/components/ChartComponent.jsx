@@ -82,8 +82,7 @@ export const ChartComponent = ({
     },
   ];
   const formatYAxis = (value) => `$${value}`;
-
-  console.log(chartSize);
+  console.log(chartData);
 
   if (chartSize.h < 300) chartSize.h = 400;
 

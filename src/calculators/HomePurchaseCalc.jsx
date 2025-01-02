@@ -5,13 +5,7 @@ import { FormComponent } from "../components/FormComponent";
 import { ChartComponent } from "../components/ChartComponent";
 import ResultDashboardComponent from "../components/ResultDashboardComponent";
 import CarPriceInput from "../components/InputComponent";
-
-const formatNumberWithCommas = (value) => {
-  if (!value) return "";
-  const numericValue = value.replace(/,/g, "");
-  if (isNaN(numericValue)) return value;
-  return numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-};
+import { formatNumber } from "../helpers/index.js/js";
 
 const BtcCalculator = ({ calculateHandler, inputFieldsData, initResponse }) => {
   const [results, setResults] = useState(initResponse);
@@ -42,7 +36,7 @@ const BtcCalculator = ({ calculateHandler, inputFieldsData, initResponse }) => {
     console.log("res", results);
 
     const keys = new Set([
-      ...Object.keys(results.tradefi),
+      ...Object.keys(results.tradfi),
       ...Object.keys(results.btc),
     ]);
 
@@ -50,18 +44,19 @@ const BtcCalculator = ({ calculateHandler, inputFieldsData, initResponse }) => {
       label: key
         .replace(/_/g, " ")
         .replace(/(^|\s)\S/g, (letter) => letter.toUpperCase()),
-      tradefi: results.tradefi[key] ?? "",
-      btc: results.btc[key] ?? "",
+      tradfi: formatNumber(results.tradfi[key]) ?? "",
+      btc: formatNumber(results.btc[key]) ?? "",
     }));
+
     setTableData(newTableData);
   }, [results]);
 
   const chartData = results
     ? [
         {
-          name: "End term value",
-          Tradefi: results.tradefi.end_term_value || 0,
-          BTC: results.btc.end_term_value || 0,
+          name: "Net value",
+          Tradefi: results.tradfi.net_value || 0,
+          BTC: results.btc.net_value || 0,
         },
       ]
     : [];
@@ -85,99 +80,129 @@ const BtcCalculator = ({ calculateHandler, inputFieldsData, initResponse }) => {
     setLoading(false);
   };
   return (
-    <Box sx={{ padding: 4 }}>
-      <Grid container spacing={4} sx={{ height: "750px" }}>
-        <FormComponent
-          handleChange={handleChange}
-          formData={formData}
-          handleCalculate={handleCalculate}
-        >
-          {inputFieldsData && (
-            <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-              {inputFieldsData.map(({ key, label, text, unit }) => (
-                <CarPriceInput
-                  key={key}
-                  label={label}
-                  name={key}
-                  value={formData[key]}
-                  text={text}
-                  onChange={handleChange}
-                  unit={unit}
-                />
-              ))}
-            </Box>
-          )}
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: { xs: "column", md: "row" },
+        gap: "20px",
+        width: "100%",
+        height: { xs: "100%", md: "900px" },
+      }}
+    >
+      <FormComponent
+        handleChange={handleChange}
+        formData={formData}
+        handleCalculate={handleCalculate}
+      >
+        {inputFieldsData && (
+          <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            {inputFieldsData.map(({ key, label, text, unit }) => (
+              <CarPriceInput
+                key={key}
+                label={label}
+                name={key}
+                value={formData[key]}
+                text={text}
+                onChange={handleChange}
+                unit={unit}
+              />
+            ))}
+            <Typography
+              variant="subtitle1"
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                color: "#2E4E35",
+                fontWeight: 600,
+                fontSize: "14px",
+                lineHeight: "22px",
+              }}
+            >
+              Loan term <span>60</span>
+            </Typography>
+          </Box>
+        )}
 
-          <Button
-            variant="contained"
-            color="primary"
-            fullWidth
-            onClick={handleCalculate}
-            disabled={loading}
+        <Button
+          variant="contained"
+          color="primary"
+          fullWidth
+          onClick={handleCalculate}
+          disabled={loading}
+          sx={{
+            marginTop: 2,
+            backgroundColor: "#3c6e47",
+            borderRadius: "30px",
+          }}
+        >
+          Calculate
+        </Button>
+      </FormComponent>
+
+      <Box
+        item
+        xs={12}
+        md={4}
+        id="results-block"
+        sx={{
+          flex: 1,
+          width: "100%",
+          maxWidth: { xs: "100%", md: "50%" },
+          height: "100%",
+        }}
+      >
+        {results && (
+          <Paper
+            elevation={3}
             sx={{
-              marginTop: 2,
-              backgroundColor: "#3c6e47",
+              padding: "40px",
               borderRadius: "30px",
+              height: "100%",
+              boxShadow: "none",
+              border: "1px solid #E9EBE4",
+              boxShadow: "none",
             }}
           >
-            Calculate
-          </Button>
-        </FormComponent>
-
-        <Grid item xs={12} md={4} sx={{ height: "750px" }} id="results-block">
-          {results && (
-            <Paper
-              elevation={3}
+            <Typography
+              variant="h6"
               sx={{
-                padding: "40px",
-                borderRadius: "30px",
-                height: "100%",
-                boxShadow: "none",
-                border: "1px solid #E9EBE4",
-                boxShadow: "none",
+                fontSize: "20px",
+                fontWeight: 700,
+                lineHeight: "23.48px",
+                marginBottom: "40px",
               }}
             >
-              <Typography
-                variant="h6"
-                sx={{
-                  fontSize: "20px",
-                  fontWeight: 700,
-                  lineHeight: "23.48px",
-                  marginBottom: "40px",
-                }}
-              >
-                Results
-              </Typography>
-              <ResultDashboardComponent
-                dataResults={tableData}
-                difference={results.difference}
-              />
-            </Paper>
-          )}
-        </Grid>
+              Results
+            </Typography>
+            <ResultDashboardComponent
+              dataResults={tableData}
+              difference={results.comparison}
+            />
+          </Paper>
+        )}
+      </Box>
 
-        <Grid item xs={12} md={4} sx={{ height: "750px" }}>
-          {results && (
-            <Paper
-              elevation={3}
-              sx={{
-                padding: "40px",
-                borderRadius: "30px",
-                height: "100%",
-                boxShadow: "none",
-                border: "1px solid #E9EBE4",
-                boxShadow: "none",
-              }}
-            >
-              <ChartComponent
-                chartData={chartData}
-                chartSize={chartSize}
-                title="End term value"
-              />
-            </Paper>
-          )}
-        </Grid>
-      </Grid>
+      <Box sx={{ flex: 1, width: "100%", maxWidth: { xs: "100%", md: "50%" } }}>
+        {results && (
+          <Paper
+            elevation={3}
+            sx={{
+              padding: "40px",
+              borderRadius: "30px",
+              height: "100%",
+              boxShadow: "none",
+              border: "1px solid #E9EBE4",
+              boxShadow: "none",
+            }}
+          >
+            <ChartComponent
+              chartData={chartData}
+              chartSize={chartSize}
+              title="Net value"
+            />
+          </Paper>
+        )}
+      </Box>
     </Box>
   );
 };

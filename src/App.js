@@ -138,6 +138,54 @@ const homePurchaseData = [
     text: "What year within the term do you want to see?",
   },
 ];
+const initHomePurchaseData = {
+  tradfi: {
+    home_price: 750000,
+    amount_down: 150000,
+    total_financed: 600000,
+    apr: "6.5%",
+    loan_term: 360,
+    monthly_principal: 542.41,
+    monthly_interest: 3250,
+    total_monthly_payment: 3792.41,
+    monthly_savings: 0,
+    total_savings: 0,
+    btc_investment: null,
+    btc_acquired: null,
+    btc_appreciation: null,
+    gross_home_equity: 3132936.13,
+    net_home_equity_value: 3132936.13,
+    total_asset_value: 3132936.13,
+    principal_paid: 195266.93,
+    plus_savings: 3132936.13,
+    net_value: 3132936.13,
+  },
+  btc: {
+    home_price: 750000,
+    amount_down: 37500,
+    total_financed: 712500,
+    apr: "6.5%",
+    loan_term: 360,
+    monthly_principal: 644.11,
+    monthly_interest: 3859.38,
+    total_monthly_payment: 4503.48,
+    monthly_savings: null,
+    total_savings: null,
+    btc_investment: 112500,
+    btc_acquired: 1.1586705,
+    btc_appreciation: 5128592.31,
+    gross_home_equity: 640955.87,
+    net_home_equity_value: 640955.87,
+    total_asset_value: 5769548.18,
+    principal_paid: 115939.74,
+    plus_savings: 5128592.31,
+    net_value: 5769548.18,
+  },
+  comparison: {
+    difference_dollar: 2636612.06,
+    difference_percent: "84.16%",
+  },
+};
 
 const App = () => {
   const handleCalculate = async (formData) => {
@@ -170,11 +218,11 @@ const App = () => {
         inputFieldsData={autoPurchasesData}
         initResponse={initResultAutoPurchases}
       />
-      {/* 
-      <HomePurchaseCalc
+
+      {/* <HomePurchaseCalc
         calculateHandler={handleCalculate2}
         inputFieldsData={homePurchaseData}
-         initResponse={initResultAutoPurchases}
+        initResponse={initHomePurchaseData}
       /> */}
     </div>
   );
