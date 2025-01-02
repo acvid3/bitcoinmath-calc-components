@@ -31,12 +31,7 @@ const RenderLegend = ({ value, color }) => {
   );
 };
 
-export const ChartComponent = ({
-  chartData,
-  type = "bar",
-  chartSize,
-  title,
-}) => {
+export const ChartComponent = ({ chartData, type = "bar", chartSize }) => {
   const data = [
     {
       name: "Page A",
@@ -82,9 +77,9 @@ export const ChartComponent = ({
     },
   ];
   const formatYAxis = (value) => `$${value}`;
-  console.log(chartData);
+  console.log(chartSize);
 
-  if (chartSize.h < 300) chartSize.h = 400;
+  if (chartSize.h < 300) chartSize.h = 833;
 
   return (
     <>
@@ -155,20 +150,6 @@ export const ChartComponent = ({
               }}
             />
           </BarChart>
-          <Typography
-            variant="h6"
-            sx={{
-              fontSize: "12px",
-              fontWeight: 400,
-              lineHeight: "18px",
-              margin: "0px",
-              textAlign: "center",
-              color: "#2E4E35",
-              marginTop: "20px",
-            }}
-          >
-            {title}
-          </Typography>
         </>
       ) : (
         <AreaChart

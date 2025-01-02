@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Box, Typography, Grid, Paper, Button } from "@mui/material";
+import { Box, Typography, Paper, Button } from "@mui/material";
 
 import { FormComponent } from "../components/FormComponent";
 import { ChartComponent } from "../components/ChartComponent";
 import ResultDashboardComponent from "../components/ResultDashboardComponent";
 import CarPriceInput from "../components/InputComponent";
-import { formatNumber } from "../helpers/index.js/js";
+import { formatNumber } from "../helpers/index.js";
 
 const BtcCalculator = ({ calculateHandler, inputFieldsData, initResponse }) => {
   const [results, setResults] = useState(initResponse);
@@ -47,6 +47,7 @@ const BtcCalculator = ({ calculateHandler, inputFieldsData, initResponse }) => {
       tradfi: formatNumber(results.tradefi[key]) ?? "",
       btc: formatNumber(results.btc[key]) ?? "",
     }));
+
     setTableData(newTableData);
   }, [results]);
 
@@ -194,11 +195,21 @@ const BtcCalculator = ({ calculateHandler, inputFieldsData, initResponse }) => {
               boxShadow: "none",
             }}
           >
-            <ChartComponent
-              chartData={chartData}
-              chartSize={chartSize}
-              title="End term value"
-            />
+            <ChartComponent chartData={chartData} chartSize={chartSize} />
+            <Typography
+              variant="h6"
+              sx={{
+                fontSize: "12px",
+                fontWeight: 400,
+                lineHeight: "18px",
+                margin: "0px",
+                textAlign: "center",
+                color: "#2E4E35",
+                marginTop: "20px",
+              }}
+            >
+              End term value
+            </Typography>
           </Paper>
         )}
       </Box>

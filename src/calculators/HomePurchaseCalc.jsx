@@ -5,7 +5,7 @@ import { FormComponent } from "../components/FormComponent";
 import { ChartComponent } from "../components/ChartComponent";
 import ResultDashboardComponent from "../components/ResultDashboardComponent";
 import CarPriceInput from "../components/InputComponent";
-import { formatNumber } from "../helpers/index.js/js";
+import { formatNumber } from "../helpers/index.js";
 
 const BtcCalculator = ({ calculateHandler, inputFieldsData, initResponse }) => {
   const [results, setResults] = useState(initResponse);
@@ -83,10 +83,11 @@ const BtcCalculator = ({ calculateHandler, inputFieldsData, initResponse }) => {
     <Box
       sx={{
         display: "flex",
+        alignItems: "center",
         flexDirection: { xs: "column", md: "row" },
         gap: "20px",
         width: "100%",
-        height: { xs: "100%", md: "900px" },
+        height: { xs: "100%" },
       }}
     >
       <FormComponent
@@ -189,7 +190,7 @@ const BtcCalculator = ({ calculateHandler, inputFieldsData, initResponse }) => {
             sx={{
               padding: "40px",
               borderRadius: "30px",
-              height: "100%",
+              // height: "100%",
               boxShadow: "none",
               border: "1px solid #E9EBE4",
               boxShadow: "none",
@@ -200,6 +201,20 @@ const BtcCalculator = ({ calculateHandler, inputFieldsData, initResponse }) => {
               chartSize={chartSize}
               title="Net value"
             />
+            <Typography
+              variant="h6"
+              sx={{
+                fontSize: "12px",
+                fontWeight: 400,
+                lineHeight: "18px",
+                margin: "0px",
+                textAlign: "center",
+                color: "#2E4E35",
+                marginTop: "20px",
+              }}
+            >
+              Net value
+            </Typography>
           </Paper>
         )}
       </Box>

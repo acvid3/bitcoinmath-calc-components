@@ -218,8 +218,8 @@ const App = () => {
         inputFieldsData={autoPurchasesData}
         initResponse={initResultAutoPurchases}
       />
-
-      {/* <HomePurchaseCalc
+      {/* 
+      <HomePurchaseCalc
         calculateHandler={handleCalculate2}
         inputFieldsData={homePurchaseData}
         initResponse={initHomePurchaseData}

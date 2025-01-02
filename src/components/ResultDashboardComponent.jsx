@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 import React from "react";
-import { formatNumber } from "../helpers/index.js/js";
+import { formatNumber } from "../helpers/index.js";
 
 const StyledRow = styled(TableRow)({
   "&:not(:last-child) td": {
@@ -66,7 +66,7 @@ const ResultDashboardComponent = ({ dataResults, difference }) => {
                   fontWeight={700}
                   fontSize="16px"
                 >
-                  ${formatNumber(difference.difference_dollar)}
+                  {formatNumber(difference.difference_dollar)}
                 </StyledCell>
               </StyledRow>
 
