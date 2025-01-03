@@ -1,0 +1,6 @@
+{
+    "watch": ["."],
+    "ext": "js,json,css,html,jsx,ts,tsx",
+    "ignore": ["node_modules", "dist"],
+    "exec": "node watch.js"
+}

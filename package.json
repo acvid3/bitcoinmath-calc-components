@@ -16,7 +16,8 @@
     },
     "scripts": {
         "start": "webpack serve --mode development --open",
-        "build": "webpack --mode production",
+        "build": "webpack --watch --mode production",
+        "watch": "nodemon",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },

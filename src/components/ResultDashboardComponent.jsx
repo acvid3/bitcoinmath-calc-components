@@ -1,95 +1,79 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
-} from "@mui/material";
-import { styled } from "@mui/system";
-import React from "react";
-import { formatNumber } from "../helpers/index.js/js";
+import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
+import { styled } from '@mui/system';
+import React from 'react';
 
 const StyledRow = styled(TableRow)({
-  "&:not(:last-child) td": {
-    borderBottom: "10px solid transparent",
-  },
+    '&:not(:last-child) td': {
+        borderBottom: '10px solid transparent',
+    },
 });
 
-const StyledCell = styled(TableCell)(
-  ({ fontWeight, fontSize, lineHeight, ...otherProps }) => ({
-    padding: "4px",
-    border: "none",
-    fontWeight: fontWeight || 600,
-    fontSize: fontSize || "14px",
-    lineHeight: lineHeight || "normal",
-    color: "#2E4E35",
-    ...otherProps,
-  })
-);
+const StyledCell = styled(TableCell)({
+    padding: '4px',
+    border: 'none',
+    fontWeight: 600,
+    fontSize: '14px',
+    color: '#2E4E35',
+});
 
 const ResultDashboardComponent = ({ dataResults, difference }) => {
-  return (
-    <TableContainer>
-      <Table>
-        <TableBody>
-          <StyledRow>
-            <StyledCell />
-            <StyledCell opacity="60%" align="center">
-              Tradefi
-            </StyledCell>
-            <StyledCell opacity="60%" align="center">
-              Bitcoin
-            </StyledCell>
-          </StyledRow>
+    const formatNumber = (value) => (typeof value === 'number' ? value.toLocaleString('en-US') : value || '-');
 
-          {dataResults.map(({ label, tradfi, btc }) => (
-            <StyledRow key={label}>
-              <StyledCell>{label}</StyledCell>
-              <StyledCell align="center">{tradfi}</StyledCell>
-              <StyledCell align="center">{btc}</StyledCell>
-            </StyledRow>
-          ))}
+    const formattedData =
+        dataResults && Object.keys(dataResults.tradfi).length > 0
+            ? Object.keys(dataResults.tradfi).map((key) => ({
+                  label: key.replace(/_/g, ' ').replace(/(^|\s)\S/g, (letter) => letter.toUpperCase()),
+                  tradfi: formatNumber(dataResults.tradfi[key]),
+                  btc: formatNumber(dataResults.btc[key]),
+              }))
+            : [];
 
-          {difference && (
-            <>
-              <StyledRow>
-                <StyledCell height="10px"></StyledCell>
-              </StyledRow>
-              <StyledRow>
-                <StyledCell fontWeight={700} fontSize="16px">
-                  Difference $
-                </StyledCell>
-                <StyledCell></StyledCell>
-                <StyledCell
-                  colSpan={2}
-                  align="center"
-                  fontWeight={700}
-                  fontSize="16px"
-                >
-                  ${formatNumber(difference.difference_dollar)}
-                </StyledCell>
-              </StyledRow>
+    return (
+        <TableContainer>
+            <Table>
+                <TableBody>
+                    <StyledRow>
+                        <StyledCell />
+                        <StyledCell align="center">Tradfi</StyledCell>
+                        <StyledCell align="center">Bitcoin</StyledCell>
+                    </StyledRow>
 
-              <StyledRow>
-                <StyledCell fontWeight={700} fontSize="16px">
-                  Difference %
-                </StyledCell>
-                <StyledCell></StyledCell>
-                <StyledCell
-                  colSpan={2}
-                  align="center"
-                  fontWeight={700}
-                  fontSize="16px"
-                >
-                  {difference.difference_percent}
-                </StyledCell>
-              </StyledRow>
-            </>
-          )}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
+                    {formattedData.length > 0 ? (
+                        formattedData.map(({ label, tradfi, btc }) => (
+                            <StyledRow key={label}>
+                                <StyledCell>{label}</StyledCell>
+                                <StyledCell align="center">{tradfi}</StyledCell>
+                                <StyledCell align="center">{btc}</StyledCell>
+                            </StyledRow>
+                        ))
+                    ) : (
+                        <StyledRow>
+                            <StyledCell colSpan={3} align="center">
+                                No data available
+                            </StyledCell>
+                        </StyledRow>
+                    )}
+
+                    {difference && (
+                        <>
+                            <StyledRow>
+                                <StyledCell>Difference $</StyledCell>
+                                <StyledCell colSpan={2} align="center">
+                                    {formatNumber(difference.difference_dollar)}
+                                </StyledCell>
+                            </StyledRow>
+                            <StyledRow>
+                                <StyledCell>Difference %</StyledCell>
+                                <StyledCell colSpan={2} align="center">
+                                    {difference.difference_percent}
+                                </StyledCell>
+                            </StyledRow>
+                        </>
+                    )}
+                </TableBody>
+            </Table>
+        </TableContainer>
+    );
 };
 
 export default ResultDashboardComponent;

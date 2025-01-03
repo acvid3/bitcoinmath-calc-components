@@ -1,210 +1,140 @@
-import React, { useEffect, useState } from "react";
-import { Box, Typography, Grid, Paper, Button } from "@mui/material";
+import React, { useState, useEffect, useRef } from 'react';
+import { Box, Typography, Paper, Button } from '@mui/material';
+import { FormComponent } from '../components/FormComponent';
+import { ChartComponent } from '../components/ChartComponent';
+import ResultDashboardComponent from '../components/ResultDashboardComponent';
+import CarPriceInput from '../components/InputComponent';
 
-import { FormComponent } from "../components/FormComponent";
-import { ChartComponent } from "../components/ChartComponent";
-import ResultDashboardComponent from "../components/ResultDashboardComponent";
-import CarPriceInput from "../components/InputComponent";
-import { formatNumber } from "../helpers/index.js/js";
+const HomePurchaseCalc = ({ calculateHandler }) => {
+    const [results, setResults] = useState(null);
+    const [formData, setFormData] = useState({});
+    const [chartSize, setChartSize] = useState({ w: 600, h: 400 });
+    const parentRef = useRef(null);
 
-const BtcCalculator = ({ calculateHandler, inputFieldsData, initResponse }) => {
-  const [results, setResults] = useState(initResponse);
-  const [chartSize, setChartSize] = useState({ h: 200, w: 200 });
-  const [tableData, setTableData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState(
-    inputFieldsData.reduce(
-      (acc, item) => {
-        acc[item.key] = item.value;
-        return acc;
-      },
-      { loan_term: 60 }
-    )
-  );
+    useEffect(() => {
+        const handleResize = () => {
+            if (parentRef.current) {
+                const { offsetWidth, offsetHeight } = parentRef.current;
 
-  useEffect(() => {
-    if (!results) return;
-    const resultsElement = document.getElementById("results-block");
+                const calculatedWidth = Math.max(offsetWidth / 3, 300);
+                const calculatedHeight = Math.max(offsetHeight / 2, 300);
 
-    if (resultsElement) {
-      setChartSize({
-        h: resultsElement.offsetHeight,
-        w: resultsElement.offsetWidth,
-      });
-    }
-    setTableData([]);
-    console.log("res", results);
+                setChartSize({ w: calculatedWidth, h: calculatedHeight });
+            }
+        };
 
-    const keys = new Set([
-      ...Object.keys(results.tradfi),
-      ...Object.keys(results.btc),
-    ]);
+        handleResize();
 
-    const newTableData = Array.from(keys).map((key) => ({
-      label: key
-        .replace(/_/g, " ")
-        .replace(/(^|\s)\S/g, (letter) => letter.toUpperCase()),
-      tradfi: formatNumber(results.tradfi[key]) ?? "",
-      btc: formatNumber(results.btc[key]) ?? "",
-    }));
+        const resizeObserver = new ResizeObserver(handleResize);
+        if (parentRef.current) {
+            resizeObserver.observe(parentRef.current);
+        }
 
-    setTableData(newTableData);
-  }, [results]);
+        return () => {
+            if (parentRef.current) {
+                resizeObserver.unobserve(parentRef.current);
+            }
+        };
+    }, []);
 
-  const chartData = results
-    ? [
-        {
-          name: "Net value",
-          Tradefi: results.tradfi.net_value || 0,
-          BTC: results.btc.net_value || 0,
-        },
-      ]
-    : [];
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: parseFloat(value) || '',
+        }));
+    };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    const clearValue = value.replace(/[$%]/g, "");
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: parseFloat(clearValue) || "",
-    }));
-    console.log(value);
-    console.log(formData);
-  };
+    const handleCalculate = async () => {
+        const result = await calculateHandler(formData);
+        setResults(result);
+    };
 
-  const handleCalculate = async () => {
-    setLoading(true);
-    const result = await calculateHandler(formData);
+    const inputFields = [
+        { name: 'home_price', label: 'Home Price', unit: '$', placeholder: 'Enter home price' },
+        { name: 'cash_down', label: 'Cash Down', unit: '$', placeholder: 'Enter cash down' },
+        { name: 'apr', label: 'APR%', unit: '%', placeholder: 'Enter APR' },
+        { name: 'btc_price', label: 'BTC Price', unit: '$', placeholder: 'Enter BTC price' },
+        { name: 'cagr', label: 'CAGR', unit: '%', placeholder: 'Enter CAGR' },
+        { name: 'term', label: 'Term', unit: '', placeholder: 'Enter term in months' },
+        { name: 're_aar', label: 'RE AAR', unit: '%', placeholder: 'Enter RE AAR' },
+        { name: 'checkpoint_year', label: 'Checkpoint Year', unit: '', placeholder: 'Enter checkpoint year' },
+    ];
 
-    setResults(result);
-    setLoading(false);
-  };
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: { xs: "column", md: "row" },
-        gap: "20px",
-        width: "100%",
-        height: { xs: "100%", md: "900px" },
-      }}
-    >
-      <FormComponent
-        handleChange={handleChange}
-        formData={formData}
-        handleCalculate={handleCalculate}
-      >
-        {inputFieldsData && (
-          <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-            {inputFieldsData.map(({ key, label, text, unit }) => (
-              <CarPriceInput
-                key={key}
-                label={label}
-                name={key}
-                value={formData[key]}
-                text={text}
-                onChange={handleChange}
-                unit={unit}
-              />
-            ))}
-            <Typography
-              variant="subtitle1"
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                color: "#2E4E35",
-                fontWeight: 600,
-                fontSize: "14px",
-                lineHeight: "22px",
-              }}
-            >
-              Loan term <span>60</span>
-            </Typography>
-          </Box>
-        )}
-
-        <Button
-          variant="contained"
-          color="primary"
-          fullWidth
-          onClick={handleCalculate}
-          disabled={loading}
-          sx={{
-            marginTop: 2,
-            backgroundColor: "#3c6e47",
-            borderRadius: "30px",
-          }}
+    return (
+        <Box
+            ref={parentRef}
+            sx={{
+                display: 'flex',
+                flexDirection: { xs: 'column', md: 'row' },
+                gap: '20px',
+                width: '100%',
+                height: '100%',
+            }}
         >
-          Calculate
-        </Button>
-      </FormComponent>
-
-      <Box
-        item
-        xs={12}
-        md={4}
-        id="results-block"
-        sx={{
-          flex: 1,
-          width: "100%",
-          maxWidth: { xs: "100%", md: "50%" },
-          height: "100%",
-        }}
-      >
-        {results && (
-          <Paper
-            elevation={3}
-            sx={{
-              padding: "40px",
-              borderRadius: "30px",
-              height: "100%",
-              boxShadow: "none",
-              border: "1px solid #E9EBE4",
-              boxShadow: "none",
-            }}
-          >
-            <Typography
-              variant="h6"
-              sx={{
-                fontSize: "20px",
-                fontWeight: 700,
-                lineHeight: "23.48px",
-                marginBottom: "40px",
-              }}
-            >
-              Results
-            </Typography>
-            <ResultDashboardComponent
-              dataResults={tableData}
-              difference={results.comparison}
-            />
-          </Paper>
-        )}
-      </Box>
-
-      <Box sx={{ flex: 1, width: "100%", maxWidth: { xs: "100%", md: "50%" } }}>
-        {results && (
-          <Paper
-            elevation={3}
-            sx={{
-              padding: "40px",
-              borderRadius: "30px",
-              height: "100%",
-              boxShadow: "none",
-              border: "1px solid #E9EBE4",
-              boxShadow: "none",
-            }}
-          >
-            <ChartComponent
-              chartData={chartData}
-              chartSize={chartSize}
-              title="Net value"
-            />
-          </Paper>
-        )}
-      </Box>
-    </Box>
-  );
+            <FormComponent>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    {inputFields.map(({ name, label, unit, placeholder }) => (
+                        <CarPriceInput key={name} name={name} label={label} unit={unit} placeholder={placeholder} value={formData[name] || ''} onChange={handleChange} />
+                    ))}
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                        onClick={handleCalculate}
+                        sx={{
+                            marginTop: 2,
+                            backgroundColor: '#3c6e47',
+                            borderRadius: '30px',
+                        }}
+                    >
+                        Calculate
+                    </Button>
+                </Box>
+            </FormComponent>
+            {results && (
+                <>
+                    <Paper
+                        elevation={3}
+                        sx={{
+                            padding: '40px',
+                            borderRadius: '30px',
+                            boxShadow: 'none',
+                            border: '1px solid #E9EBE4',
+                            width: '100%',
+                            flex: 1,
+                        }}
+                    >
+                        <Typography
+                            variant="h6"
+                            sx={{
+                                fontSize: '20px',
+                                fontWeight: 700,
+                                lineHeight: '23.48px',
+                                marginBottom: '40px',
+                            }}
+                        >
+                            Results
+                        </Typography>
+                        <ResultDashboardComponent dataResults={{ tradfi: results.tradfi, btc: results.btc }} difference={results.comparison} />
+                    </Paper>
+                    <Paper
+                        elevation={3}
+                        sx={{
+                            padding: '40px',
+                            borderRadius: '30px',
+                            boxShadow: 'none',
+                            border: '1px solid #E9EBE4',
+                            width: '100%',
+                            flex: 1,
+                        }}
+                    >
+                        <ChartComponent chartData={[{ name: 'Net Value', Tradfi: results.tradfi.net_value, BTC: results.btc.net_value }]} chartSize={chartSize} title="Financial Comparison" />
+                    </Paper>
+                </>
+            )}
+        </Box>
+    );
 };
 
-export default BtcCalculator;
+export default HomePurchaseCalc;
