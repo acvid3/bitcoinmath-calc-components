@@ -97,7 +97,7 @@ const HomePurchaseCalc = ({ calculateHandler }) => {
                     <Paper
                         elevation={3}
                         sx={{
-                            padding: '40px',
+                            padding: '20px',
                             borderRadius: '30px',
                             boxShadow: 'none',
                             border: '1px solid #E9EBE4',
@@ -121,15 +121,18 @@ const HomePurchaseCalc = ({ calculateHandler }) => {
                     <Paper
                         elevation={3}
                         sx={{
-                            padding: '40px',
+                            padding: '20px',
                             borderRadius: '30px',
                             boxShadow: 'none',
                             border: '1px solid #E9EBE4',
                             width: '100%',
                             flex: 1,
+                            '@media (max-width: 678px)': {
+                                maxHeight: '500px',
+                            },
                         }}
                     >
-                        <ChartComponent chartData={[{ name: 'Net Value', Tradfi: results.tradfi.net_value, BTC: results.btc.net_value }]} chartSize={chartSize} title="Financial Comparison" />
+                        <ChartComponent chartData={[{ name: 'Net Value', Tradfi: results.tradfi.net_value, BTC: results.btc.net_value }]} chartSize={{}} title="Financial Comparison" />
                     </Paper>
                 </>
             )}

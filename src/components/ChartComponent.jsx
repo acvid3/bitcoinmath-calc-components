@@ -33,6 +33,10 @@ export const ChartComponent = ({ chartData, type = 'bar', chartSize, title }) =>
                             display: 'flex',
                             justifyContent: 'center',
                             marginBottom: '10px',
+                            height: '500px',
+                            '@media (max-width: 678px)': {
+                                maxHeight: '500px',
+                            },
                         }}
                     >
                         <RenderLegend value="Tradfi" color="#2E4E35" />
