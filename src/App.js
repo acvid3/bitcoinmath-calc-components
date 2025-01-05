@@ -1,22 +1,36 @@
-import React from 'react';
-import axios from 'axios';
-import HomePurchaseCalc from './calculators/HomePurchaseCalc';
+import React, { useRef, useState, useEffect } from 'react';
+import { Box, Paper } from '@mui/material';
+import { ResultProvider } from './context/ResultContext';
+import FinancialCalculatorForm from './components/FinancialCalculatorForm';
+import ResultsTable from './components/ResultsTable';
+import FinancialChart from './components/FinancialChart';
+import { adjustChartSize } from './utils/resizeObserver';
 
 const App = () => {
-    const handleCalculate = async (formData) => {
-        try {
-            const apiUrl = 'http://13.61.153.104/wp-json/btc-calculator/v1/calculate-home-purchase';
-            const response = await axios.post(apiUrl, formData);
-            return response.data;
-        } catch (error) {
-            console.error('Error calculating BTC data:', error);
+    const containerRef = useRef(null);
+    const [chartSize, setChartSize] = useState({ width: 600, height: 400 });
+
+    useEffect(() => {
+        if (containerRef.current) {
+            const resizeObserver = new ResizeObserver(() => adjustChartSize(containerRef, setChartSize));
+            resizeObserver.observe(containerRef.current);
+
+            return () => resizeObserver.disconnect();
         }
-    };
+    }, [containerRef]);
 
     return (
-        <div className="App">
-            <HomePurchaseCalc calculateHandler={handleCalculate} />
-        </div>
+        <ResultProvider>
+            <Box sx={{ display: 'flex', flexDirection: 'row', gap: '20px' }}>
+                <FinancialCalculatorForm />
+                <Paper>
+                    <ResultsTable />
+                </Paper>
+                <Paper ref={containerRef} sx={{ width: '497px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                    <FinancialChart chartSize={chartSize} />
+                </Paper>
+            </Box>
+        </ResultProvider>
     );
 };
 
