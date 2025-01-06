@@ -10,11 +10,11 @@ const toCapitalCase = (word) => {
 };
 
 const formatResults = (results) => {
-    if (!results || !results.tradfi) return [];
+    if (!results || !results.tradefi) return [];
 
-    return Object.keys(results.tradfi).map((key) => ({
+    return Object.keys(results.tradefi).map((key) => ({
         label: toCapitalCase(key.replace(/_/g, ' ')),
-        tradfi: results.tradfi[key],
+        tradefi: results.tradefi[key],
         btc: results.btc[key],
     }));
 };
@@ -32,10 +32,10 @@ const ResultsTable = () => {
         <TableContainer>
             <Table>
                 <TableBody>
-                    {formattedData.map(({ label, tradfi, btc }) => (
+                    {formattedData.map(({ label, tradefi, btc }) => (
                         <TableRow key={label}>
                             <TableCell>{label}</TableCell>
-                            <TableCell align="right">${tradfi}</TableCell>
+                            <TableCell align="right">${tradefi}</TableCell>
                             <TableCell align="right">${btc}</TableCell>
                         </TableRow>
                     ))}
