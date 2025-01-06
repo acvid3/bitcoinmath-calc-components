@@ -1,14 +1,33 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Box, Paper, Button } from '@mui/material';
 import { useResult } from '../../context/ResultContext';
 import { calculatePurchaseData } from '../../api';
 import { inputFields } from './constants';
 import { styles } from './styles';
 import Input from '../Input';
+import { useCagr } from '../../context/CagrContext';
 
 const FinancialCalculatorForm = () => {
     const [formData, setFormData] = useState({});
     const { setResults } = useResult();
+
+    const { cagrValue } = useCagr();
+
+    useEffect(() => {
+        const fetchResults = async () => {
+            try {
+                if (cagrValue) {
+                    const updatedFormData = { ...formData, cagrValue };
+                    const results = await calculatePurchaseData(updatedFormData);
+                    setResults(results);
+                }
+            } catch (error) {
+                console.error('Error fetching results with CAGR:', error);
+            }
+        };
+
+        fetchResults();
+    }, [cagrValue, formData]);
 
     const handleCalculate = async () => {
         try {

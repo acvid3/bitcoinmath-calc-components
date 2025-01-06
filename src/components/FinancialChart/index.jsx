@@ -23,7 +23,7 @@ const FinancialChart = ({ chartSize }) => {
 
     return (
         <>
-            <ChartLabels items={chartItems} />
+            <ChartLabels items={chartItems}/>
             <BarChart width={chartSize.width} height={chartSize.height} data={chartData}>
                 <defs>
                     <linearGradient id="colorTradfi" x1="0" y1="0" x2="0" y2="1">
@@ -38,7 +38,7 @@ const FinancialChart = ({ chartSize }) => {
                 </defs>
                 <CartesianGrid horizontal={true} vertical={false} />
                 <XAxis dataKey="name" tickLine={false} axisLine={false} />
-                <YAxis tickLine={false} axisLine={false} tickFormatter={formatYAxis} />
+                <YAxis tickLine={false} axisLine={false} tickFormatter={formatYAxis} width={80} />
                 <Tooltip />
                 <Bar
                     dataKey="Tradfi"
