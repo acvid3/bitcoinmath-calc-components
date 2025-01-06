@@ -2,7 +2,7 @@ import React from 'react';
 import { Slider, Box, Typography } from '@mui/material';
 import { useCagr } from '../../context/CagrContext';
 import { marks } from './constants';
-import { styles } from "./styles";
+import { styles } from './styles';
 
 const CagrInputRange = () => {
     const { cagrValue, setCagrValue } = useCagr();
@@ -13,19 +13,8 @@ const CagrInputRange = () => {
 
     return (
         <Box sx={styles.container}>
-            <Typography sx={styles.typography}>
-                CAGR
-            </Typography>
-            <Slider
-                value={cagrValue}
-                onChange={handleChange}
-                aria-labelledby="cagr-slider"
-                min={0}
-                max={100}
-                step={1}
-                marks={marks}
-                sx={styles.slider}
-            />
+            <Typography sx={styles.typography}>CAGR</Typography>
+            <Slider value={cagrValue} onChange={handleChange} aria-labelledby="cagr-slider" min={0} max={100} step={1} marks={marks} sx={styles.slider} />
         </Box>
     );
 };

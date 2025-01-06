@@ -14,7 +14,7 @@ const FinancialChart = ({ chartSize }) => {
     const chartData = [
         {
             name: 'Net Value',
-            Tradfi: results?.tradfi?.net_value || 0,
+            Tradfi: results?.tradefi?.net_value || 0,
             BTC: results?.btc?.net_value || 0,
         },
     ];
@@ -23,7 +23,7 @@ const FinancialChart = ({ chartSize }) => {
 
     return (
         <>
-            <ChartLabels items={chartItems}/>
+            <ChartLabels items={chartItems} />
             <BarChart width={chartSize.width} height={chartSize.height} data={chartData}>
                 <defs>
                     <linearGradient id="colorTradfi" x1="0" y1="0" x2="0" y2="1">
