@@ -38,6 +38,10 @@ const inputData = {
     standard_rate: 13,
     btc_rate: 29,
     years_to_retirement: 20,
+    current_retirement_savings: 10000,
+    current_age: 35,
+    retirement_age: 55,
+    monthly_budget_in_retirement: 2000,
 };
 
 (async () => {
