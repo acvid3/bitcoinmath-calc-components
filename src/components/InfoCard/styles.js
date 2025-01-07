@@ -1,7 +1,7 @@
 export const styles = {
     card: {
         backgroundColor: '#E9EBE4',
-        borderRadius: '12px',
+        borderRadius: '30px',
         padding: '20px',
         fontSize: '16px',
         color: '#2E4E35',

@@ -15,7 +15,8 @@ const ToolbarWithResults = (props) => {
                 borderRadius: '30px',
                 border: '1px solid #E9EBE4',
                 padding: '20px',
-                width: '700px',
+                width: '100%',
+                boxSizing: 'border-box',
             }}
         >
             <Box>
