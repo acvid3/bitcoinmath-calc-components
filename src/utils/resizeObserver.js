@@ -3,7 +3,7 @@ export const adjustChartSize = (containerRef, setSize) => {
         const { offsetWidth, offsetHeight } = containerRef.current;
         console.log('Parent container size:', { offsetWidth, offsetHeight });
 
-        const width = Math.max(offsetWidth - 40, 430);
+        const width = Math.max(offsetWidth - 40, 350);
         const height = Math.max(offsetHeight - 40, 300);
         setSize({ width, height });
     }

@@ -12,7 +12,7 @@ export const styles = {
         backgroundColor: '#E9EBE4',
         borderRadius: '30px',
         border: '1px solid #E9EBE4',
-        height: '100%',
+        // height: '100%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
