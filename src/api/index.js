@@ -9,6 +9,7 @@ export const calculatePurchaseData = async (data) => {
 export const calculateAutoPurchaseData = async (data) => {
     const apiUrl = 'http://13.61.153.104/wp-json/btc-calculator/v1/calculate-auto-purchase';
     const response = await axios.post(apiUrl, data);
+    console.log("calculateAutoPurchaseData: ", {response});
     return response.data;
 };
 

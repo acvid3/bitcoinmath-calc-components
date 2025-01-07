@@ -39,7 +39,7 @@ const FinancialCalculatorForm = () => {
     };
 
     const handleInputChange = (key, value) => {
-        setFormData((prev) => ({ ...prev, [key]: value }));
+        setFormData((prev) => ({ ...prev, [key]: Number(value) }));
     };
 
     return (
