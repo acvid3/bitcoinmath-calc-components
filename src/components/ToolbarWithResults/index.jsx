@@ -17,6 +17,10 @@ const ToolbarWithResults = (props) => {
                 padding: '20px',
                 width: '100%',
                 boxSizing: 'border-box',
+                '@media (max-width: 678px)': {
+                    flexDirection: 'column',
+                    gap: '30px'
+                },
             }}
         >
             <Box>
