@@ -5,7 +5,6 @@ import { useResult } from '../../context/ResultContext';
 
 const ToolbarWithResults = (props) => {
     const { results } = useResult();
-    console.log(results);
 
     return (
         <Box
@@ -19,7 +18,7 @@ const ToolbarWithResults = (props) => {
                 boxSizing: 'border-box',
                 '@media (max-width: 678px)': {
                     flexDirection: 'column',
-                    gap: '30px'
+                    gap: '30px',
                 },
             }}
         >

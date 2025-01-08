@@ -30,12 +30,8 @@ const FinancialCalculatorForm = () => {
     }, [cagrValue, formData]);
 
     const handleCalculate = async () => {
-        try {
-            const results = await calculateAutoPurchaseData(formData);
-            setResults(results);
-        } catch (error) {
-            console.error('Error fetching results:', error);
-        }
+        const results = await calculateAutoPurchaseData(formData);
+        setResults(results);
     };
 
     const handleInputChange = (key, value) => {
