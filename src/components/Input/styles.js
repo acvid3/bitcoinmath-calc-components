@@ -25,5 +25,17 @@ export const inputStyles = {
         '&.Mui-focused fieldset': {
             borderColor: '#3C6E47',
         },
+        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'transparent',
+        },
+        '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'transparent',
+        },
+    },
+    '& input': {
+        '&:-webkit-autofill': {
+            WebkitBoxShadow: '0 0 0 100px #F9F9F9 inset',
+            padding: '0px 14px',
+        },
     },
 };

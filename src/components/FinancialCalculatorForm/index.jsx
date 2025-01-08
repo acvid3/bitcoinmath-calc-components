@@ -30,7 +30,10 @@ const FinancialCalculatorForm = () => {
     }, [cagrValue, formData]);
 
     const handleCalculate = async () => {
-        const results = await calculateAutoPurchaseData(formData);
+        const updatedFormData = cagrValue
+            ? { ...formData, cagr: cagrValue }
+            : { ...formData };
+        const results = await calculateAutoPurchaseData(updatedFormData);
         setResults(results);
     };
 
