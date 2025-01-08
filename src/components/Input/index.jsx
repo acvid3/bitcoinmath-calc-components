@@ -1,9 +1,9 @@
 import React from 'react';
 import { TextField, Box, Typography } from '@mui/material';
-import { containerStyles, inputStyles, labelStyles } from './styles';
+import {containerStyles, inputStyles, labelStyles, messageStyles} from './styles';
 import { useResult } from '../../context/ResultContext';
 
-const Input = ({ id, label, value, onChange, placeholder }) => {
+const Input = ({ id, label, value, onChange, placeholder, message }) => {
     const { results } = useResult();
 
     const isInputError = results?.code?.includes(id);
@@ -23,6 +23,7 @@ const Input = ({ id, label, value, onChange, placeholder }) => {
                 error={results?.data?.status === 400 && isInputError}
                 helperText={isInputError ? results?.message : ''}
             />
+            {message && <Typography sx={messageStyles}>{message}</Typography>}
         </Box>
     );
 };

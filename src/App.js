@@ -73,15 +73,6 @@ const App = () => {
                                 >
                                     <FinancialChart chartSize={chartSize}/>
                                 </Paper>
-                                <Paper sx={{
-                                    width: '497px',
-                                    borderRadius: '30px',
-                                    '@media (max-width: 678px)': {
-                                        width: '100%',
-                                    },
-                                }}>
-                                    <InfoCard/>
-                                </Paper>
                             </Box>
                         </Box>
                     </Box>
