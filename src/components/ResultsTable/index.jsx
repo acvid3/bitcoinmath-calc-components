@@ -26,6 +26,10 @@ const ResultsTable = () => {
         return <div style={{ textAlign: 'center', padding: '20px' }}>No results available.</div>;
     }
 
+    if (!results?.data?.status === 400) {
+        return <div style={{ textAlign: 'center', padding: '20px' }}>Bad Request.</div>;
+    }
+
     const formattedData = formatResults(results);
 
     return (
