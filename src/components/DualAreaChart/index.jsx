@@ -22,11 +22,12 @@ const DualAreaChart = ({ data }) => {
         <Box
             sx={{
                 border: '1px solid #E0E0E0',
-                borderRadius: '8px',
+                borderRadius: '30px',
                 padding: '16px',
                 background: '#FFFFFF',
                 width: '100%',
                 height: '400px',
+                boxSizing: 'border-box',
             }}
         >
             <ResponsiveContainer width="100%" height="100%">
