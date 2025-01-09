@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Button, ButtonBase, Link, Paper, Typography} from '@mui/material';
+import {Box, Link, Typography} from '@mui/material';
 import {styles} from './styles';
 import {useResult} from '../../context/ResultContext';
 
