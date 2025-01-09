@@ -14,23 +14,28 @@ const ToolbarWithResults = ({toggleResultsChart, setToggleResultsChart}) => {
         setToggleResultsChart(false);
     }
 
+    const index = results?.yearly_values_stocks.length - 1;
+
+    const whatYoullHave = results?.yearly_values_stocks[index].investment || '0';
+    const whatYoullNeed = results?.yearly_values_bitcoin[index].investment || '0';
+
     return (
         <Box sx={styles.container}>
-            <Typography sx={styles.title}>Retirement savings at age 67</Typography>
+            <Typography sx={styles.title}>Retirement savings</Typography>
             <Box sx={styles.childContainer}>
                 <Box>
                     <Typography sx={styles.label}>
                         <Box sx={styles.marker('#2E4E35')}></Box>
                         What you'll have:
                     </Typography>
-                    <Typography sx={styles.primaryText}>${results?.difference?.dollar || 0}</Typography>
+                    <Typography sx={styles.primaryText}>${whatYoullHave}</Typography>
                 </Box>
                 <Box>
                     <Typography sx={styles.label}>
                         <Box sx={styles.marker('#F1B314')}></Box>
                         What you'll need:
                     </Typography>
-                    <Typography sx={styles.primaryText}>{results?.difference?.percent || '0%'}</Typography>
+                    <Typography sx={styles.primaryText}>${whatYoullNeed}</Typography>
                 </Box>
                 <Box sx={styles.tabsContainer}>
                     <Box sx={styles.tabs}>

@@ -10,12 +10,12 @@ const toCapitalCase = (word) => {
 };
 
 const formatResults = (results) => {
-    if (!results || !results.tradefi) return [];
+    if (!results || !results.comparison || !results.comparison.standard) return [];
 
-    return Object.keys(results.tradefi).map((key) => ({
+    return Object.keys(results.comparison.standard).map((key) => ({
         label: toCapitalCase(key.replace(/_/g, ' ')),
-        tradefi: results.tradefi[key],
-        btc: results.btc[key],
+        tradefi: results.comparison.standard[key],
+        btc: results.comparison.bitcoin[key],
     }));
 };
 
@@ -27,10 +27,11 @@ const ResultsTable = () => {
     }
 
     const formattedData = formatResults(results);
+    console.log("difference: ", results);
 
     return (
         <TableContainer>
-            <Table>
+            <Table sx={{fontWeight: 600}}>
                 <TableBody>
                     {formattedData.map(({ label, tradefi, btc }) => (
                         <TableRow key={label}>
@@ -39,6 +40,16 @@ const ResultsTable = () => {
                             <TableCell align="right">${btc}</TableCell>
                         </TableRow>
                     ))}
+                    <TableRow sx={{fontWeight: 700}}>
+                        <TableCell>Difference $</TableCell>
+                        <TableCell align="right">{" "}</TableCell>
+                        <TableCell align="right">${results?.comparison?.difference?.value}</TableCell>
+                    </TableRow>
+                    <TableRow sx={{fontWeight: 700}}>
+                        <TableCell>Difference %</TableCell>
+                        <TableCell align="right">{" "}</TableCell>
+                        <TableCell align="right">${results?.comparison?.difference?.percentage}</TableCell>
+                    </TableRow>
                 </TableBody>
             </Table>
         </TableContainer>

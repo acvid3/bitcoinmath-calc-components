@@ -1,7 +1,6 @@
 export const inputFields = [
-    { id: 'carPrice', label: 'Car Price ($)', placeholder: 'Enter home price' },
-    { id: 'cashDown', label: 'Cash Down ($)', placeholder: 'Enter cash down' },
-    { id: 'apr', label: 'APR (%)', placeholder: 'Enter APR' },
-    { id: 'btcPrice', label: 'BTC Price ($)', placeholder: 'Enter BTC price' },
-    { id: 'term', label: 'Term (months)', placeholder: 'Enter term' },
+    { id: 'monthly_contribution', label: 'Monthly Contribution', placeholder: 'Enter Monthly Contribution' },
+    { id: 'snp500_index_cagr', label: 'S&P 500 Index CAGR', placeholder: 'Enter S&P 500 Index CAGR' },
+    { id: 'years_to_retirement', label: 'Years To Retirement', placeholder: 'Enter Years To Retirement' },
+    { id: 'cagr', label: 'CAGR', placeholder: 'Enter CAGR' },
 ];

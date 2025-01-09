@@ -1,18 +1,31 @@
 import React, { useMemo } from 'react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import { Box } from '@mui/material';
+import {useResult} from "../../context/ResultContext";
+// import results from '../../api/testResult.json';
 
 const DualAreaChart = ({ data }) => {
+    const { results } = useResult();
+
+    const resultData = {
+        standard_values: results?.yearly_values_stocks,
+        btc_values: results?.yearly_values_bitcoin,
+    }
+
+    console.log("results: ", resultData);
+
     const chartData = useMemo(() => {
-        if (!data || !data.years || !data.standard_values || !data.btc_values) {
+
+        if (!resultData || !resultData.standard_values || !resultData.btc_values) {
             return [];
         }
-        return data.years.map((year, index) => ({
-            year,
-            standard: data.standard_values[index] || 0,
-            btc: data.btc_values[index] || 0,
+
+        return resultData.standard_values.map((value, index) => ({
+            year: value.year || 0,
+            standard: resultData.standard_values[index]?.investment || 0,
+            btc: resultData.btc_values[index]?.investment || 0,
         }));
-    }, [data]);
+    }, [results]);
 
     if (chartData.length === 0) {
         return <div>No data available</div>;
