@@ -32,6 +32,12 @@ const ResultsTable = () => {
 
     const formattedData = formatResults(results);
 
+    const getDollarSign = (label) => {
+        if (label === "Apr" || label === "Loan term") {
+            return "";
+        } else return "$";
+    }
+
     return (
         <TableContainer>
             <Table>
@@ -39,8 +45,8 @@ const ResultsTable = () => {
                     {formattedData.map(({ label, tradefi, btc }) => (
                         <TableRow key={label}>
                             <TableCell>{label}</TableCell>
-                            <TableCell align="right">${tradefi}</TableCell>
-                            <TableCell align="right">${btc}</TableCell>
+                            <TableCell align="right">{getDollarSign(label)}{tradefi}</TableCell>
+                            <TableCell align="right">{getDollarSign(label)}{btc}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
