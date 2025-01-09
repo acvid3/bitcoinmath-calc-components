@@ -14,10 +14,8 @@ const ToolbarWithResults = ({toggleResultsChart, setToggleResultsChart}) => {
         setToggleResultsChart(false);
     }
 
-    const index = results?.yearly_values_stocks.length - 1;
-
-    const whatYoullHave = results?.yearly_values_stocks[index].investment || '0';
-    const whatYoullNeed = results?.yearly_values_bitcoin[index].investment || '0';
+    const whatYoullHave = results?.comparison?.standard?.value_at_retirement || '0';
+    const whatYoullNeed = results?.comparison?.bitcoin?.value_at_retirement || '0';
 
     return (
         <Box sx={styles.container}>

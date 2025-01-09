@@ -14,8 +14,8 @@ const formatResults = (results) => {
 
     return Object.keys(results.comparison.standard).map((key) => ({
         label: toCapitalCase(key.replace(/_/g, ' ')),
-        tradefi: results.comparison.standard[key],
-        btc: results.comparison.bitcoin[key],
+        tradefi: results.comparison.standard[key].toLocaleString('en-US'),
+        btc: results.comparison.bitcoin[key].toLocaleString('en-US'),
     }));
 };
 
@@ -48,7 +48,7 @@ const ResultsTable = () => {
                     <TableRow sx={{fontWeight: 700}}>
                         <TableCell>Difference %</TableCell>
                         <TableCell align="right">{" "}</TableCell>
-                        <TableCell align="right">${results?.comparison?.difference?.percentage}</TableCell>
+                        <TableCell align="right">{results?.comparison?.difference?.percentage}%</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
