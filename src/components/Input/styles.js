@@ -45,7 +45,7 @@ export const inputStyles = {
     '& input': {
         '&:-webkit-autofill': {
             WebkitBoxShadow: '0 0 0 100px #F9F9F9 inset',
-            padding: '0px',
+            padding: '0px 15px',
         },
     },
 };
