@@ -8,7 +8,7 @@ import {adjustChartSize} from './utils/resizeObserver';
 import ToolbarWithResults from './components/ToolbarWithResults';
 import {CagrProvider} from './context/CagrContext';
 import CagrInputRange from './components/CagrInputRange';
-import InfoCard from './components/InfoCard';
+import { sx } from "./appStyle";
 
 const App = () => {
     const containerRef = useRef(null);
@@ -26,51 +26,22 @@ const App = () => {
     return (
         <ResultProvider>
             <CagrProvider>
-                <Box sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    gap: '20px',
-                    '@media (max-width: 678px)': {
-                        flexDirection: 'column',
-                        width: '100%',
-                    },
-                }}>
+                <Box sx={sx.parentContainer}>
                     <FinancialCalculatorForm/>
 
-                    <Box sx={{display: 'flex', flexDirection: 'column', gap: '20px'}}>
+                    <Box sx={sx.infoContainer}>
                         <Box>
-                            <Paper sx={{display: 'flex', flexDirection: 'column', gap: '20px', boxShadow: 'none'}}>
+                            <Paper sx={sx.toolbarPaper}>
                                 <CagrInputRange/>
                                 <ToolbarWithResults/>
                             </Paper>
                         </Box>
-                        <Box sx={{
-                            display: 'flex',
-                            gap: '20px',
-                            '@media (max-width: 678px)': {
-                                flexDirection: 'column',
-                                width: '100%',
-                            },
-                        }}>
-                            <Paper sx={{borderRadius: '30px'}}>
+                        <Box sx={sx.resultsBox}>
+                            <Paper sx={sx.resultsPaper}>
                                 <ResultsTable/>
                             </Paper>
-                            <Box sx={{display: 'flex', flexDirection: 'column', gap: '20px'}}>
-                                <Paper
-                                    ref={containerRef}
-                                    sx={{
-                                        height: '600px',
-                                        width: '497px',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        borderRadius: '30px',
-                                        '@media (max-width: 678px)': {
-                                            width: '100%',
-                                        },
-                                    }}
-                                >
+                            <Box sx={sx.chartBox}>
+                                <Paper ref={containerRef} sx={sx.chartPaper}>
                                     <FinancialChart chartSize={chartSize}/>
                                 </Paper>
                             </Box>

@@ -30,7 +30,7 @@ const ResultsTable = () => {
         return <div style={{ textAlign: 'center', padding: '20px' }}>Bad Request.</div>;
     }
 
-    const formattedData = formatResults(results);
+    const formattedData = formatResults({tradefi: results.tradefi, btc: results.btc});
 
     const getDollarSign = (label) => {
         if (label === "Apr" || label === "Loan term") {

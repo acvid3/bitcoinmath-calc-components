@@ -21,7 +21,7 @@ const Input = ({ id, label, value, onChange, placeholder, message }) => {
                 sx={inputStyles}
                 type="number"
                 error={results?.data?.status === 400 && isInputError}
-                helperText={isInputError ? results?.message : ''}
+                helperText={isInputError ? results?.message?.replace(/_/g, ' ') : ''}
             />
             {message && <Typography sx={messageStyles}>{message}</Typography>}
         </Box>

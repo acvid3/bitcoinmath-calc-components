@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Paper, Button } from '@mui/material';
 import { useResult } from '../../context/ResultContext';
-import {calculateAutoPurchaseData, calculateHomePurchaseData} from '../../api';
+import {calculateCashData} from '../../api';
 import { inputFields } from './constants';
-import { styles } from './styles';
+import { sx } from './styles';
 import Input from '../Input';
 import { useCagr } from '../../context/CagrContext';
 
@@ -18,7 +18,7 @@ const FinancialCalculatorForm = () => {
             try {
                 if (cagrValue) {
                     const updatedFormData = { ...formData, cagr: cagrValue };
-                    const results = await calculateHomePurchaseData(updatedFormData);
+                    const results = await calculateCashData(updatedFormData);
                     setResults(results);
                 }
             } catch (error) {
@@ -32,8 +32,8 @@ const FinancialCalculatorForm = () => {
     const handleCalculate = async () => {
         const updatedFormData = cagrValue
             ? { ...formData, cagr: cagrValue }
-            : { ...formData };
-        const results = await calculateHomePurchaseData(updatedFormData);
+            : { ...formData, cagr: 0 };
+        const results = await calculateCashData(updatedFormData);
         setResults(results);
     };
 
@@ -42,8 +42,8 @@ const FinancialCalculatorForm = () => {
     };
 
     return (
-        <Box sx={styles.container}>
-            <Paper elevation={3} sx={styles.paper}>
+        <Box sx={sx.container}>
+            <Paper elevation={3} sx={sx.paper}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     {inputFields.map(({ id, label, placeholder, message }) => (
                         <Input
@@ -56,7 +56,13 @@ const FinancialCalculatorForm = () => {
                             message={message}
                         />
                     ))}
-                    <Button variant="contained" color="primary" fullWidth onClick={handleCalculate} sx={{ marginTop: 2, backgroundColor: '#3c6e47', borderRadius: '30px' }}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                        onClick={handleCalculate}
+                        sx={sx.button}
+                    >
                         Calculate
                     </Button>
                 </Box>

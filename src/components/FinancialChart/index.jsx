@@ -13,9 +13,9 @@ const FinancialChart = ({chartSize}) => {
 
     const chartData = [
         {
-            name: 'Net Value',
-            Tradfi: results?.tradefi?.net_value || 0,
-            BTC: results?.btc?.net_value || 0,
+            name: 'End of term value',
+            Tradfi: results?.tradefi?.end_of_term_value || 0,
+            BTC: results?.btc?.end_of_term_value || 0,
         },
     ];
 
