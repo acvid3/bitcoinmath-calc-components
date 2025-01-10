@@ -10,12 +10,12 @@ const toCapitalCase = (word) => {
 };
 
 const formatResults = (results) => {
-    if (!results || !results.tradefi) return [];
+    if (!results || !results.btc) return [];
 
-    return Object.keys(results.tradefi).map((key) => ({
+    return Object.keys(results.btc).map((key) => ({
         label: toCapitalCase(key.replace(/_/g, ' ')),
-        tradefi: results.tradefi[key],
-        btc: results.btc[key],
+        status_quo: results.status_quo[key] ? "$" + results.status_quo[key] : "-",
+        btc: results.btc[key] ? "$" + results.btc[key] : "-",
     }));
 };
 
@@ -30,7 +30,7 @@ const ResultsTable = () => {
         return <div style={{ textAlign: 'center', padding: '20px' }}>Bad Request.</div>;
     }
 
-    const formattedData = formatResults({tradefi: results.tradefi, btc: results.btc});
+    const formattedData = formatResults({status_quo: results.status_quo, btc: results.btc});
 
     const getDollarSign = (label) => {
         if (label === "Apr" || label === "Loan term") {
@@ -42,11 +42,11 @@ const ResultsTable = () => {
         <TableContainer>
             <Table>
                 <TableBody>
-                    {formattedData.map(({ label, tradefi, btc }) => (
+                    {formattedData.map(({ label, status_quo, btc }) => (
                         <TableRow key={label}>
                             <TableCell>{label}</TableCell>
-                            <TableCell align="right">{getDollarSign(label)}{tradefi}</TableCell>
-                            <TableCell align="right">{getDollarSign(label)}{btc}</TableCell>
+                            <TableCell align="right">{status_quo}</TableCell>
+                            <TableCell align="right">{btc}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

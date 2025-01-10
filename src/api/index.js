@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const calculateCashData = async (data) => {
+export const calculateHomeEquityData = async (data) => {
     try {
-        const apiUrl = 'http://13.61.153.104/wp-json/btc-calculator/v1/calculate-cash';
+        const apiUrl = 'http://13.61.153.104/wp-json/btc-calculator/v1/calculate-home-equity';
 
         const response = await axios.post(apiUrl, data);
 

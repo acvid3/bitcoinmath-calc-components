@@ -1,5 +1,6 @@
 export const sx = {
     parentContainer: {
+        padding: '30px',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
@@ -45,7 +46,7 @@ export const sx = {
     },
 
     chartPaper: {
-        height: '600px',
+        // height: '600px',
         width: '497px',
         display: 'flex',
         flexDirection: 'column',

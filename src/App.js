@@ -3,12 +3,12 @@ import {Box, Paper} from '@mui/material';
 import {ResultProvider} from './context/ResultContext';
 import FinancialCalculatorForm from './components/FinancialCalculatorForm';
 import ResultsTable from './components/ResultsTable';
-import FinancialChart from './components/FinancialChart';
 import {adjustChartSize} from './utils/resizeObserver';
 import ToolbarWithResults from './components/ToolbarWithResults';
 import {CagrProvider} from './context/CagrContext';
 import CagrInputRange from './components/CagrInputRange';
 import { sx } from "./appStyle";
+import DualAreaChart from "./components/DualAreaChart";
 
 const App = () => {
     const containerRef = useRef(null);
@@ -42,7 +42,7 @@ const App = () => {
                             </Paper>
                             <Box sx={sx.chartBox}>
                                 <Paper ref={containerRef} sx={sx.chartPaper}>
-                                    <FinancialChart chartSize={chartSize}/>
+                                    <DualAreaChart/>
                                 </Paper>
                             </Box>
                         </Box>
