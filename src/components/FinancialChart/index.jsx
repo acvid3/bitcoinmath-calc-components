@@ -7,17 +7,18 @@ const FinancialChart = ({chartSize}) => {
     const {results} = useResult();
 
     const chartItems = [
-        {label: 'Tradfi', color: '#2E4E35'},
-        {label: 'BTC', color: '#F1B314'},
+        {label: 'Selling', color: '#2E4E35'},
+        {label: 'Borrowing', color: '#F1B314'},
     ];
 
     const chartData = [
         {
-            name: 'Net Value',
-            Tradfi: results?.tradefi?.net_value || 0,
-            BTC: results?.btc?.net_value || 0,
+            name: 'End of term value',
+            selling: results?.selling?.end_of_term_value || 0,
+            borrowing: results?.borrowing?.end_of_term_value || 0,
         },
     ];
+    console.log("chart data: ", chartData);
 
     const formatYAxis = (value) => `$${value.toLocaleString()}`;
 
@@ -41,7 +42,7 @@ const FinancialChart = ({chartSize}) => {
                 <YAxis tickLine={false} axisLine={false} tickFormatter={formatYAxis} width={80}/>
                 <Tooltip/>
                 <Bar
-                    dataKey="Tradfi"
+                    dataKey="selling"
                     fill="url(#colorTradfi)"
                     radius={[10, 10, 0, 0]}
                     label={{
@@ -56,7 +57,7 @@ const FinancialChart = ({chartSize}) => {
                     }}
                 />
                 <Bar
-                    dataKey="BTC"
+                    dataKey="borrowing"
                     fill="url(#colorBTC)"
                     radius={[10, 10, 0, 0]}
                     label={{

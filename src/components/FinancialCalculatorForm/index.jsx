@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Paper, Button } from '@mui/material';
 import { useResult } from '../../context/ResultContext';
-import {calculateAutoPurchaseData, calculateHomePurchaseData} from '../../api';
+import { calculateSellingCompareBorrowingData } from '../../api';
 import { inputFields } from './constants';
 import { styles } from './styles';
 import Input from '../Input';
@@ -17,8 +17,8 @@ const FinancialCalculatorForm = () => {
         const fetchResults = async () => {
             try {
                 if (cagrValue) {
-                    const updatedFormData = { ...formData, cagr: cagrValue };
-                    const results = await calculateHomePurchaseData(updatedFormData);
+                    const updatedFormData = { ...formData, btc_cagr: cagrValue };
+                    const results = await calculateSellingCompareBorrowingData(updatedFormData);
                     setResults(results);
                 }
             } catch (error) {
@@ -31,9 +31,9 @@ const FinancialCalculatorForm = () => {
 
     const handleCalculate = async () => {
         const updatedFormData = cagrValue
-            ? { ...formData, cagr: cagrValue }
+            ? { ...formData, btc_cagr: cagrValue }
             : { ...formData };
-        const results = await calculateHomePurchaseData(updatedFormData);
+        const results = await calculateSellingCompareBorrowingData(updatedFormData);
         setResults(results);
     };
 

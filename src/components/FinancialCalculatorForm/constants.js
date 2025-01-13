@@ -1,9 +1,8 @@
 export const inputFields = [
-    { id: 'home_price', label: 'Home Price ($)', placeholder: 'Enter home price', message: 'Purchase price of the home' },
-    { id: 'cash_down', label: 'Cash Down ($)', placeholder: 'Enter cash down', message: 'How much cash would you put down?' },
-    { id: 'apr', label: 'APR (%)', placeholder: 'Enter APR', message: 'Annual percentage rate' },
-    { id: 'btc_price', label: 'BTC Current Price ($)', placeholder: 'Enter BTC price' },
-    { id: 'term', label: 'Term (months)', placeholder: 'Enter term', message: 'How many months in the loan term?' },
-    { id: 're_aar', label: 'RE AAP', placeholder: 'Enter RE AAR', message: 'Estimated Annual Average Rate of Return for the home' },
-    { id: 'checkpoint_year', label: 'Checkpoint year', placeholder: 'Enter checkpoint year', message: 'What year within the term do you want to see?' },
+    { id: 'total_bitcoin_sold', label: 'Total Bitcoin Sold', placeholder: 'Enter total bitcoin sold'},
+    { id: 'cap_gain_tax', label: 'Cap Cain Tax', placeholder: 'Enter cap gain tax'},
+    { id: 'loan_apr', label: 'Loan APR (%)', placeholder: 'Enter loan APR'},
+    { id: 'loan_term_years', label: 'Loan Term Years', placeholder: 'Enter loan term years' },
+    { id: 'btc_current_price', label: 'BTC Current Price ($)', placeholder: 'Enter BTC price'},
+    // { id: 'btc_cagr', label: 'BTC CAGR', placeholder: 'Enter BTC CAGR'},
 ];
