@@ -1,7 +1,7 @@
 export const styles = {
     container: {
         width: '100%',
-        padding: '20px',
+        padding: '15px 20px 20px',
         boxSizing: 'border-box',
         borderRadius: '30px',
         backgroundColor: '#E9EBE4',

@@ -27,29 +27,13 @@ export const calculateRetirementData = async (data) => {
     } catch (error) {
         if (error.response) {
             console.error('API Error:', error.response.data);
-            throw new Error(`API Error: ${error.response.data.errors || error.response.data}`);
+            // throw new Error(`API Error: ${error.response.data.errors || error.response.data}`);
         } else if (error.request) {
             console.error('Network Error:', error.request);
-            throw new Error('Network Error: Could not connect to API.');
+            // throw new Error('Network Error: Could not connect to API.');
         } else {
             console.error('Error:', error.message);
-            throw new Error('Unexpected Error: ' + error.message);
+            // throw new Error('Unexpected Error: ' + error.message);
         }
     }
 };
-
-const inputData = {
-    monthly_contribution: 500,
-    standard_rate: 13,
-    btc_rate: 29,
-    years_to_retirement: 20,
-};
-
-(async () => {
-    try {
-        const result = await calculateRetirementData(inputData);
-        console.log('API Response:', result);
-    } catch (error) {
-        console.error('Error occurred:', error.message);
-    }
-})();
