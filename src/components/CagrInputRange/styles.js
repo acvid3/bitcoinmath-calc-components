@@ -38,5 +38,15 @@ export const styles = {
         "& .MuiSlider-mark": {
             opacity: 0,
         },
+        '& .MuiSlider-valueLabel': {
+            backgroundColor: '#E9EBE4',
+            color: '#F1B314',
+            borderRadius: '10px',
+            fontWeight: '700',
+            // fontSize: '0.875rem',
+            padding: '2px 6px',
+            // top: '-10px',
+            // transform: 'none',
+        },
     }
 }
