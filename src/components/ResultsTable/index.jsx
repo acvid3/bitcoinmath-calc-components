@@ -12,12 +12,12 @@ const toCapitalCase = (word) => {
 };
 
 const formatResults = (results) => {
-    if (!results || !results.tradefi) return [];
+    if (!results || !results.btc || !results.tradefi) return [];
 
-    return Object.keys(results.tradefi).map((key) => ({
+    return [...new Set([...Object.keys(results.btc), ...Object.keys(results.tradefi)])].map((key) => ({
         label: toCapitalCase(key.replace(/_/g, ' ')),
-        tradefi: results.tradefi[key],
-        btc: results.btc[key],
+        tradefi: results.tradefi[key] || '—',
+        btc: results.btc[key] || '—',
     }));
 };
 
@@ -34,10 +34,16 @@ const ResultsTable = () => {
 
     const formattedData = formatResults(results);
 
-    const getDollarSign = (label) => {
-        if (label === "Apr" || label === "Loan term") {
+    const getDollarSign = (label, value) => {
+        if (label === "Apr" || label === "Annual depreciation" || value === '—') {
             return "";
         } else return "$";
+    }
+
+    const getPercentSign = (label, value) => {
+        if (label === "Annual depreciation" && value !== '—') {
+            return "%";
+        } else return "";
     }
 
     return (
@@ -53,8 +59,12 @@ const ResultsTable = () => {
                             <TableCell sx={sx.tableCell}>
                                 {label}
                             </TableCell>
-                            <TableCell sx={sx.tableCell} align="right">{getDollarSign(label)}{tradefi}</TableCell>
-                            <TableCell sx={sx.tableCell} align="right">{getDollarSign(label)}{btc}</TableCell>
+                            <TableCell sx={sx.tableCell} align="right">
+                                {getDollarSign(label, tradefi)}{tradefi}{getPercentSign(label, tradefi)}
+                            </TableCell>
+                            <TableCell sx={sx.tableCell} align="right">
+                                {getDollarSign(label, btc)}{btc}{getPercentSign(label, btc)}
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
