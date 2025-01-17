@@ -14,7 +14,7 @@ const toCapitalCase = (word) => {
 const formatResults = (results) => {
     if (!results || !results.btc || !results.tradefi) return [];
 
-    const allKeys = [];
+    const allKeys = [...Object.keys(results.tradefi)];
 
     const maxLength = [
         ...Object.keys(results.tradefi),
@@ -24,15 +24,11 @@ const formatResults = (results) => {
     const tradefiKeys = Object.keys(results.tradefi);
     const btcKeys = Object.keys(results.btc);
 
-    for (let i = 0; i < maxLength; i++) {
-        if (tradefiKeys[i] === btcKeys[i] && btcKeys[i] && tradefiKeys[i]) {
-            allKeys.push(tradefiKeys[i]);
-        } else if (tradefiKeys[i] !== btcKeys[i] && btcKeys[i] && tradefiKeys[i]) {
-            if (!allKeys.includes(btcKeys[i])) allKeys.push(btcKeys[i]);
-            if (!allKeys.includes(tradefiKeys[i])) allKeys.push(tradefiKeys[i]);
+    for (let i = 0; i < tradefiKeys.length; i++) {
+        if (!tradefiKeys.includes(btcKeys[i])) {
+            allKeys.splice(i+2, 0, btcKeys[i]);
         }
     }
-
     console.log(allKeys)
 
     return allKeys.map((key) => ({
