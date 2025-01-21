@@ -29,6 +29,7 @@ const App = () => {
                         flexDirection: 'row',
                         gap: '20px',
                         justifyContent: 'center',
+                        padding: '30px',
                         '@media (max-width: 678px)': {
                             flexDirection: 'column',
                             width: '100%',
