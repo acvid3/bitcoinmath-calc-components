@@ -3,14 +3,14 @@ export const labelStyles = {
     fontSize: '14px',
     lineHeight: '20px',
     color: '#2E4E35',
-}
+};
 
 export const primaryTextStyles = {
     fontWeight: 700,
     fontSize: '32px',
     lineHeight: '38px',
     color: '#F1B314',
-}
+};
 
 export const buttonStyles = {
     borderRadius: '30px',
@@ -22,21 +22,21 @@ export const buttonStyles = {
     fontWeight: 700,
     color: '#18391F',
     textTransform: 'none',
-    "&:hover": {
-        backgroundColor: "#E9EBE4", // Відключає зміну фону при hover
-        boxShadow: "none", // Відключає тіні
+    '&:hover': {
+        backgroundColor: '#E9EBE4', // Відключає зміну фону при hover
+        boxShadow: 'none', // Відключає тіні
     },
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    columnGap: "10px",
-}
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    columnGap: '10px',
+};
 
 export const linkStyles = {
     color: '#2E4E35',
     marginTop: '20px',
     textDecorationColor: '#2E4E35',
-}
+};
 
 export const xLinkStyles = {
     borderRadius: '100%',
@@ -47,4 +47,4 @@ export const xLinkStyles = {
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: '10px',
-}
+};

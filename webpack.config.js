@@ -6,7 +6,7 @@ module.exports = {
     entry: './index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'calculator-home-purchase.js',
+        filename: 'calculator-college-savings.js',
     },
     module: {
         rules: [

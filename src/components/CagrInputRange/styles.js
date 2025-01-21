@@ -1,7 +1,7 @@
 export const styles = {
     container: {
         width: '100%',
-        padding: '20px',
+        padding: '10px 20px',
         boxSizing: 'border-box',
         borderRadius: '30px',
         backgroundColor: '#E9EBE4',
@@ -27,6 +27,7 @@ export const styles = {
         },
         '& .MuiSlider-markLabel': {
             transform: 'translateX(-50%) translateY(10px)',
+            marginTop: '-10px',
         },
         '& .MuiSlider-track': {
             backgroundColor: '#2E4E35',
@@ -37,6 +38,13 @@ export const styles = {
         },
         "& .MuiSlider-mark": {
             opacity: 0,
+        },
+        '& .MuiSlider-valueLabel': {
+            backgroundColor: '#E9EBE4',
+            color: '#F1B314',
+            borderRadius: '10px',
+            fontWeight: '700',
+            padding: '2px 6px',
         },
     }
 }
