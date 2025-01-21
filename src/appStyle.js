@@ -14,14 +14,14 @@ export const sx = {
     infoContainer: {
         display: 'flex',
         flexDirection: 'column',
-        gap: '10px'
+        gap: '10px',
     },
 
     toolbarPaper: {
         display: 'flex',
         flexDirection: 'column',
         gap: '10px',
-        boxShadow: 'none'
+        boxShadow: 'none',
     },
 
     resultsBox: {
@@ -36,13 +36,13 @@ export const sx = {
     resultsPaper: {
         borderRadius: '30px',
         height: 'fit-content',
-        overflow: 'hidden'
+        overflow: 'hidden',
     },
 
     chartBox: {
         display: 'flex',
         flexDirection: 'column',
-        gap: '10px'
+        gap: '10px',
     },
 
     chartPaper: {
@@ -65,4 +65,4 @@ export const sx = {
             width: '100%',
         },
     },
-}
+};

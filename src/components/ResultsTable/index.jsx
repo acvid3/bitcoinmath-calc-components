@@ -1,8 +1,8 @@
 import React from 'react';
-import {Box, Button, Table, TableBody, TableCell, TableContainer, TableRow} from '@mui/material';
+import { Box, Button, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { useResult } from '../../context/ResultContext';
-import { sx } from "./styles";
-import {labelsOrder, resultsDescriptions} from "./constants";
+import { sx } from './styles';
+import { labelsOrder, resultsDescriptions } from './constants';
 
 const toCapitalCase = (word) => {
     const firstLetterCap = word.charAt(0).toUpperCase();
@@ -12,20 +12,13 @@ const toCapitalCase = (word) => {
 };
 
 const formatResults = (results) => {
-    if (!results || !results.tradefi) return [];
+    if (!results || !results.comparison || !results.comparison.standard) return [];
 
-    return Object.keys(results.tradefi)
-        .map((key) => ({
-            label: toCapitalCase(key.replace(/_/g, ' ')),
-            tradefi: results.tradefi[key] || '—',
-            btc: results.btc[key] || '—',
-        }))
-        .filter((item) => labelsOrder.includes(item.label))
-        .sort((a, b) => {
-            const indexA = labelsOrder.indexOf(a.label);
-            const indexB = labelsOrder.indexOf(b.label);
-            return (indexA === -1 ? Infinity : indexA) - (indexB === -1 ? Infinity : indexB);
-        });
+    return Object.keys(results.tradefi).map((key) => ({
+        label: toCapitalCase(key.replace(/_/g, ' ')),
+        tradefi: results.tradefi[key],
+        btc: results.btc[key],
+    }));
 };
 
 const ResultsTable = () => {
@@ -41,35 +34,43 @@ const ResultsTable = () => {
 
     const formattedData = formatResults(results);
 
-    const getDollarSign = (label, value) => {
-        if (label === "Apr" || label === "Loan term" || label === "Multiple" || !value || value === '—') {
-            return "";
-        } else return "$";
-    }
-
     return (
         <TableContainer>
-            <Table>
+            <Table sx={{ fontWeight: 600 }}>
                 <TableBody>
                     {formattedData.map(({ label, tradefi, btc }) => (
                         <TableRow key={label} sx={sx.tableRow}>
                             <TableCell sx={sx.descriptionCell}>
-                                {resultsDescriptions.find(e => e.label === label)?.description &&
+                                {resultsDescriptions.find((e) => e.label === label)?.description && (
                                     <>
-                                        <Button sx={sx.descriptionIcon}>
-                                            i
-                                        </Button>
+                                        <Button sx={sx.descriptionIcon}>i</Button>
                                         <Box className={'description'} sx={sx.description}>
-                                            {resultsDescriptions.find(e => e.label === label)?.description}
+                                            {resultsDescriptions.find((e) => e.label === label)?.description}
                                         </Box>
                                     </>
-                                }
+                                )}
                             </TableCell>
                             <TableCell sx={sx.tableCell}>{label}</TableCell>
-                            <TableCell sx={sx.tableCell} align="right">{getDollarSign(label, tradefi)}{tradefi}</TableCell>
-                            <TableCell sx={sx.tableCell} align="right">{getDollarSign(label, btc)}{btc}</TableCell>
+                            <TableCell sx={sx.tableCell} align="right">
+                                {getDollarSign(label, tradefi)}
+                                {tradefi}
+                            </TableCell>
+                            <TableCell sx={sx.tableCell} align="right">
+                                {getDollarSign(label, btc)}
+                                {btc}
+                            </TableCell>
                         </TableRow>
                     ))}
+                    <TableRow sx={{ fontWeight: 700 }}>
+                        <TableCell>Difference $</TableCell>
+                        <TableCell align="right"> </TableCell>
+                        <TableCell align="right">${results?.comparison?.difference?.value}</TableCell>
+                    </TableRow>
+                    <TableRow sx={{ fontWeight: 700 }}>
+                        <TableCell>Difference %</TableCell>
+                        <TableCell align="right"> </TableCell>
+                        <TableCell align="right">{results?.comparison?.difference?.percentage}%</TableCell>
+                    </TableRow>
                 </TableBody>
             </Table>
         </TableContainer>
