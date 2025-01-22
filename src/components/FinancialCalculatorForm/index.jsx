@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Paper, Button } from '@mui/material';
 import { useResult } from '../../context/ResultContext';
-import { calculateCollegeSavings } from '../../api';
+import { calculateBtcLivingExpenses } from '../../api';
 import { inputFields } from './constants';
 import { styles } from './styles';
 import Input from '../Input';
@@ -18,7 +18,7 @@ const FinancialCalculatorForm = () => {
             try {
                 if (cagrValue) {
                     const updatedFormData = { ...formData, cagr: cagrValue };
-                    const results = await calculateCollegeSavings(updatedFormData);
+                    const results = await calculateBtcLivingExpenses(updatedFormData);
                     setResults(results);
                 }
             } catch (error) {
@@ -31,7 +31,7 @@ const FinancialCalculatorForm = () => {
 
     const handleCalculate = async () => {
         try {
-            const results = await calculateCollegeSavings(formData);
+            const results = await calculateBtcLivingExpenses(formData);
             setResults(results);
         } catch (error) {
             console.error('Error fetching results:', error);
@@ -40,13 +40,6 @@ const FinancialCalculatorForm = () => {
 
     const handleInputChange = (key, value) => {
         setFormData((prev) => ({ ...prev, [key]: Number(value) }));
-    };
-
-    const handleBlur = (key, value) => {
-        console.log(key, value);
-        if (value) {
-            setFormData((prev) => ({ ...prev, [key]: parseFloat(value).toLocaleString('en-US') }));
-        }
     };
 
     return (
