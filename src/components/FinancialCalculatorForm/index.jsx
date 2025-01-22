@@ -17,7 +17,7 @@ const FinancialCalculatorForm = () => {
         const fetchResults = async () => {
             try {
                 if (cagrValue) {
-                    const updatedFormData = { ...formData, cagr: cagrValue };
+                    const updatedFormData = { ...formData, bitcoin_cagr: cagrValue };
                     const results = await calculateCollegeSavings(updatedFormData);
                     setResults(results);
                 }

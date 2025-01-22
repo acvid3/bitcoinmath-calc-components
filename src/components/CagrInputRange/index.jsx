@@ -19,13 +19,7 @@ const CagrInputRange = () => {
 
     return (
         <Box sx={styles.container}>
-            <Box sx={styles.descriptionContainer}>
-                <Button sx={styles.descriptionIcon}>i</Button>
-                <Box className={'description'} sx={styles.description}>
-                    Vanguard 529 plans average 4-7%
-                </Box>
-                <Typography sx={styles.typography}>CAGR</Typography>
-            </Box>
+            <Typography sx={styles.typography}>BTC CAGR (%)</Typography>
             <Slider
                 value={tempValue}
                 onChange={handleChange}

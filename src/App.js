@@ -9,7 +9,7 @@ import CagrInputRange from './components/CagrInputRange';
 
 const App = () => {
     const containerRef = useRef(null);
-    const [setChartSize] = useState({ width: 600, height: 400 });
+    const [chartSize, setChartSize] = useState({ width: 600, height: 400 });
 
     useEffect(() => {
         if (containerRef.current) {

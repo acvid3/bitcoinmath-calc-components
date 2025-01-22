@@ -55,39 +55,4 @@ export const styles = {
             padding: '2px 6px',
         },
     },
-
-    descriptionIcon: {
-        color: '#00000051',
-        border: '0.5px #00000051 solid',
-        borderRadius: '100%',
-        fontWeight: 800,
-        fontSize: '10px',
-        transition: '0.1s',
-        minWidth: 'unset',
-        lineHeight: '10px',
-        textTransform: 'none',
-        width: '10px',
-        height: '18px',
-        '&:hover': {
-            borderColor: '#f1b314',
-            backgroundColor: '#f1b314',
-            color: '#ffffff',
-        },
-        "&:hover + .description, &:focus + .description": {
-            display: 'block',
-        },
-    },
-
-    description: {
-        fontFamily: 'Raleway',
-        position: 'absolute',
-        background: '#ffffff',
-        padding: '4px 8px',
-        zIndex: '100',
-        border: '1px #000 solid',
-        display: 'none',
-        fontSize: '12px',
-        fontWeight: 600,
-        margin: '-3px 0 0 20px'
-    }
 }
