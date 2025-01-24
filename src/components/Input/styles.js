@@ -14,6 +14,9 @@ export const sx = {
         display: 'flex',
         gap: '5px',
         alignItems: 'center',
+        "& a:hover .description, & a:focus .description": {
+            display: 'block',
+        },
     },
 
     message: {
@@ -87,6 +90,10 @@ export const sx = {
         display: 'none',
         fontSize: '12px',
         fontWeight: 600,
-        margin: '-3px 0 0 20px'
+        margin: '-3px 0 0 20px',
+        "a": {
+            color: '#2e4e35',
+            padding: '2px 5px',
+        }
     }
 }

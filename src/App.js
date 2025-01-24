@@ -1,15 +1,19 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Box, Paper } from '@mui/material';
-import { ResultProvider } from './context/ResultContext';
+import React, {useRef, useState, useEffect} from 'react';
+import {Box, Paper} from '@mui/material';
+import {ResultProvider} from './context/ResultContext';
 import FinancialCalculatorForm from './components/FinancialCalculatorForm';
-import { adjustChartSize } from './utils/resizeObserver';
-import { CagrProvider } from './context/CagrContext';
+import {adjustChartSize} from './utils/resizeObserver';
+import {CagrProvider} from './context/CagrContext';
 import DualAreaChart from './components/DualAreaChart';
 import CagrInputRange from './components/CagrInputRange';
+import {sx} from "./appStyle";
+import ResultsTable from "./components/ResultsTable";
+import InfoCard from "./components/InfoCard";
+import {FormProvider} from "./context/FormContext";
 
 const App = () => {
     const containerRef = useRef(null);
-    const [chartSize, setChartSize] = useState({ width: 600, height: 400 });
+    const [chartSize, setChartSize] = useState({width: 600, height: 400});
 
     useEffect(() => {
         if (containerRef.current) {
@@ -23,61 +27,36 @@ const App = () => {
     return (
         <ResultProvider>
             <CagrProvider>
-                <Box
-                    sx={{
+                <FormProvider>
+                    <Box sx={{
+                        width: '100%',
                         display: 'flex',
-                        flexDirection: 'row',
-                        gap: '20px',
                         justifyContent: 'center',
-                        padding: '30px',
-                        '@media (max-width: 678px)': {
-                            flexDirection: 'column',
-                            width: '100%',
-                        },
-                    }}
-                >
-                    <FinancialCalculatorForm />
+                    }}>
+                        <Box sx={sx.parentContainer}>
+                            <FinancialCalculatorForm/>
 
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                        <Box>
-                            <Paper sx={{ display: 'flex', flexDirection: 'column', gap: '20px', boxShadow: 'none' }}>
-                                <CagrInputRange />
-                            </Paper>
-                        </Box>
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                gap: '20px',
-                                width: '1015px',
-
-                                '@media (max-width: 678px)': {
-                                    flexDirection: 'column',
-                                    width: '100%',
-                                },
-                            }}
-                        >
-                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                                <Paper
-                                    ref={containerRef}
-                                    sx={{
-                                        width: '1015px',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        borderRadius: '30px',
-                                        '@media (max-width: 678px)': {
-                                            maxWidth: '100%',
-                                            width: '100%',
-                                        },
-                                    }}
-                                >
-                                    <DualAreaChart data={[]} />
-                                </Paper>
+                            <Box sx={sx.infoContainer}>
+                                <Box>
+                                    <Paper sx={sx.toolbarPaper}>
+                                        <CagrInputRange/>
+                                    </Paper>
+                                </Box>
+                                <Box sx={sx.resultsBox}>
+                                    <Box sx={sx.chartBox}>
+                                        <Paper ref={containerRef} sx={sx.chartPaper}>
+                                            <DualAreaChart data={[]}/>
+                                        </Paper>
+                                    </Box>
+                                    <Box sx={sx.infoCardBox}>
+                                        <Paper sx={sx.resultsPaper}><ResultsTable/></Paper>
+                                        <Paper sx={sx.infoCardPaper}><InfoCard/></Paper>
+                                    </Box>
+                                </Box>
                             </Box>
                         </Box>
                     </Box>
-                </Box>
+                </FormProvider>
             </CagrProvider>
         </ResultProvider>
     );

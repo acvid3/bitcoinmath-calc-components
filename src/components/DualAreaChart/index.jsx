@@ -27,8 +27,6 @@ const DualAreaChart = (props) => {
         { label: `BTC Net Value: ${chartData[chartData.length - 1].btc_net_value}`, color: '#F1B314' },
     ];
 
-    console.log('chartData', chartData);
-
     return (
         <Box
             sx={{
@@ -47,7 +45,7 @@ const DualAreaChart = (props) => {
                 <AreaChart data={chartData} margin={{ top: 10, right: 20, left: -10, bottom: 0 }}>
                     <CartesianGrid horizontal vertical={false} stroke="#E0E0E0" strokeDasharray="0" />
                     <XAxis height={60} dataKey="year" tick={{ fill: 'rgb(46, 78, 53)', fontSize: 12, fontFamily: 'Raleway' }} axisLine={{ stroke: '#E0E0E0', strokeWidth: 1 }} tickLine={false} label={{ value: 'Age', position: 'insideBottom', offset: -10, fill: '#4F4F4F', fontSize: 14 }} />
-                    <YAxis width={80} tickFormatter={(value) => `$${value.toFixed(1)}`} tick={{ fill: 'rgb(46, 78, 53)', fontSize: 12, fontFamily: 'Raleway' }} axisLine={false} tickLine={false} />
+                    <YAxis width={90} tickFormatter={(value) => `$${value.toFixed(1)}`} tick={{ fill: 'rgb(46, 78, 53)', fontSize: 12, fontFamily: 'Raleway' }} axisLine={false} tickLine={false} />
                     <Tooltip
                         formatter={(value) => `$${value.toLocaleString()}`}
                         labelFormatter={(label) => `Year: ${label}`}
@@ -68,8 +66,8 @@ const DualAreaChart = (props) => {
                             <stop offset="100%" stopColor="#FFFFFF66" />
                         </linearGradient>
                     </defs>
-                    <Area type="monotone" dataKey="net_value" stroke="#2E4E35" strokeWidth={2} fill="url(#colorStandard)" />
-                    <Area type="monotone" dataKey="btc_net_value" stroke="#F1B314" strokeWidth={2} fill="url(#colorBTC)" />
+                    <Area type="stepAfter" dataKey="net_value" stroke="#2E4E35" strokeWidth={2} fill="url(#colorStandard)" />
+                    <Area type="stepAfter" dataKey="btc_net_value" stroke="#F1B314" strokeWidth={2} fill="url(#colorBTC)" />
                 </AreaChart>
             </ResponsiveContainer>
         </Box>

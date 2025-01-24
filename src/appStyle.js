@@ -2,6 +2,7 @@ export const sx = {
     parentContainer: {
         padding: '30px 0',
         display: 'flex',
+        maxWidth: '1360px',
         flexDirection: 'row',
         justifyContent: 'center',
         gap: '15px',
@@ -26,6 +27,7 @@ export const sx = {
 
     resultsBox: {
         display: 'flex',
+        flexDirection: 'column',
         gap: '20px',
         '@media (max-width: 678px)': {
             flexDirection: 'column',
@@ -34,9 +36,14 @@ export const sx = {
     },
 
     resultsPaper: {
+        width: '700px',
         borderRadius: '30px',
         height: 'fit-content',
         overflow: 'hidden',
+        boxSizing: 'border-box',
+        '@media (max-width: 678px)': {
+            width: '100%',
+        },
     },
 
     chartBox: {
@@ -47,7 +54,7 @@ export const sx = {
 
     chartPaper: {
         height: '400px',
-        width: '497px',
+        // width: '1000px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -58,9 +65,22 @@ export const sx = {
         },
     },
 
+    infoCardBox: {
+        display: 'flex',
+        gap: '15px',
+        justifyContent: 'space-between',
+        alignItems: 'top',
+        '@media (max-width: 678px)': {
+            flexDirection: 'column',
+            gap: '15px',
+        },
+    },
+
     infoCardPaper: {
-        width: '497px',
+        width: '300px',
         borderRadius: '30px',
+        boxSizing: 'border-box',
+        height: 'min-content',
         '@media (max-width: 678px)': {
             width: '100%',
         },

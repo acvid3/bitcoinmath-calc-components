@@ -1,7 +1,25 @@
 export const sx = {
     tableCell: {
-        padding: '5px 20px',
+        padding: '0',
         margin: '0px',
+        border: 'none',
+        textAlign: 'center',
+        fontSize: '14px',
+        maxWidth: '60px',
+        width: 'min-content',
+        '@media (max-width: 678px)': {
+            padding: '8px',
+        },
+    },
+
+    tableCellInfo: {
+        padding: '5px 0',
+        margin: '0px',
+        fontWeight: '700',
+        textAlign: 'center',
+        border: 'none',
+        borderRight: '1px solid #E9EBE4',
+        width: 'fit-content',
         '@media (max-width: 678px)': {
             padding: '8px',
         },
@@ -9,6 +27,7 @@ export const sx = {
 
     tableRow: {
         transition: '0.1s',
+        color: '#2E4E35',
         '&:hover': {
         },
 
