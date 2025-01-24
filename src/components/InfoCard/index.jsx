@@ -30,10 +30,10 @@ const InfoCard = () => {
                 <strong> {formData?.re_aar}% </strong> annually, results in a net asset value of
                 <strong> {results?.tradefi?.net_value} </strong> after
                 <strong> {formData?.checkpoint_year} </strong>years. Comparatively, putting only
-                <strong> ${results?.btc?.amount_down} </strong>down and using the remaining btc_investment
+                <strong> ${results?.btc?.amount_down} </strong>down and using the remaining
                 <strong> ${results?.btc?.btc_investment} </strong> to buy Bitcoin appreciating at
                 <strong> {cagrValue}% </strong> annually, produces an ending net value of
-                <strong> ${results?.tradefi?.net_value} </strong>(End Term Value, Bitcoin), a difference of
+                <strong> ${results?.tradefi?.net_value} </strong>, a difference of
                 <strong> ${results?.difference?.dollar} </strong>, or roughly
                 <strong> {results?.difference?.percent} </strong>.
             </p>
