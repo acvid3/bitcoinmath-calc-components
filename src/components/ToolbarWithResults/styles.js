@@ -5,7 +5,7 @@ export const sx = {
         justifyContent: 'space-between',
         borderRadius: '30px',
         border: '1px solid #E9EBE4',
-        padding: '20px',
+        padding: '15px 20px',
         width: '100%',
         boxSizing: 'border-box',
         '@media (max-width: 678px)': {

@@ -19,7 +19,7 @@ const CagrInputRange = () => {
 
     return (
         <Box sx={styles.container}>
-            <Typography sx={styles.typography}>CAGR</Typography>
+            <Typography sx={styles.typography}>CAGR (%):</Typography>
             <Slider
                 value={tempValue}
                 onChange={handleChange}
@@ -29,6 +29,7 @@ const CagrInputRange = () => {
                 max={100}
                 step={1}
                 marks={marks} sx={styles.slider}
+                valueLabelDisplay={cagrValue == "0" ? "off" : "on"}
             />
         </Box>
     );

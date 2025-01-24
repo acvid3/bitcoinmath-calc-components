@@ -2,9 +2,10 @@ export const sx = {
     container: {
         flex: 1,
         maxWidth: '325px',
-        width: '100%',
+        width: '325px',
         '@media (max-width: 678px)': {
             maxWidth: 'unset',
+            width: '100%',
         },
     },
 
