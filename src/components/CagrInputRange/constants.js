@@ -1,10 +1,6 @@
-import React from "react";
+import React from 'react';
 
 export const marks = [
-    // {
-    //     value: 0,
-    //     label: <img src="/icons/bear.svg" alt="Bear" style={{ width: '20px', height: '20px' }} />,
-    // },
     {
         value: 0,
         label: <span>0</span>,

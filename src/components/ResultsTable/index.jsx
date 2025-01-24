@@ -10,13 +10,17 @@ const toCapitalCase = (word) => {
 };
 
 const formatResults = (results) => {
-    if (!results || !results.comparison || !results.comparison.standard) return [];
+    if (!results.tradefi) return [];
 
-    return Object.keys(results.comparison.standard).map((key) => ({
-        label: toCapitalCase(key.replace(/_/g, ' ')),
-        tradefi: results.comparison.standard[key].toLocaleString('en-US'),
-        btc: results.comparison.bitcoin[key].toLocaleString('en-US'),
-    }));
+    const resultsKeys = [...new Set([...Object.keys(results.tradefi), ...Object.keys(results.bitcoin)])];
+
+    return resultsKeys.map((key) => {
+        return {
+            label: toCapitalCase(key.replace(/_/g, ' ')),
+            tradefi: results.tradefi?.[key]?.toLocaleString('en-US') || '-',
+            bitcoin: results.bitcoin?.[key]?.toLocaleString('en-US') || '-',
+        };
+    });
 };
 
 const ResultsTable = () => {
@@ -27,29 +31,19 @@ const ResultsTable = () => {
     }
 
     const formattedData = formatResults(results);
-    console.log("difference: ", results);
+    console.log({ formattedData });
 
     return (
         <TableContainer>
-            <Table sx={{fontWeight: 600}}>
+            <Table sx={{ fontWeight: 600 }}>
                 <TableBody>
-                    {formattedData.map(({ label, tradefi, btc }) => (
+                    {formattedData.map(({ label, tradefi, bitcoin }) => (
                         <TableRow key={label}>
                             <TableCell>{label}</TableCell>
                             <TableCell align="right">${tradefi}</TableCell>
-                            <TableCell align="right">${btc}</TableCell>
+                            <TableCell align="right">${bitcoin}</TableCell>
                         </TableRow>
                     ))}
-                    <TableRow sx={{fontWeight: 700}}>
-                        <TableCell>Difference $</TableCell>
-                        <TableCell align="right">{" "}</TableCell>
-                        <TableCell align="right">${results?.comparison?.difference?.value}</TableCell>
-                    </TableRow>
-                    <TableRow sx={{fontWeight: 700}}>
-                        <TableCell>Difference %</TableCell>
-                        <TableCell align="right">{" "}</TableCell>
-                        <TableCell align="right">{results?.comparison?.difference?.percentage}%</TableCell>
-                    </TableRow>
                 </TableBody>
             </Table>
         </TableContainer>

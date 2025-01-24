@@ -1,6 +1,10 @@
 export const inputFields = [
-    { id: 'monthly_contribution', label: 'Monthly Contribution', placeholder: 'Enter Monthly Contribution' },
-    { id: 'snp500_index_cagr', label: 'S&P 500 Index CAGR', placeholder: 'Enter S&P 500 Index CAGR' },
-    { id: 'years_to_retirement', label: 'Years To Retirement', placeholder: 'Enter Years To Retirement' },
-    { id: 'cagr', label: 'CAGR', placeholder: 'Enter CAGR' },
+    { id: 'home_price', label: 'Home Price', placeholder: 'Enter Home Price' },
+    { id: 'apr', label: 'APR', placeholder: 'Enter APR' },
+    { id: 'loan_term', label: 'Toan Term', placeholder: 'Enter Toan Term' },
+    { id: 'monthly_rental_income', label: 'Monthly Rental Income', placeholder: 'Enter Monthly Rental Income' },
+    { id: 'other_expenses', label: 'Other Expenses', placeholder: 'Enter Other Expenses' },
+    { id: 'average_cagr', label: 'Average Cagr', placeholder: 'Enter Average Cagr' },
+    { id: 'yoy_rent_increase', label: 'YoY Rent Increase', placeholder: 'Enter YoY Rent Increase' },
+    { id: 'btc_current_price', label: 'BTC Current Price', placeholder: 'Enter BTC Current Price' },
 ];

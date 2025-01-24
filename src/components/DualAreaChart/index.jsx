@@ -1,29 +1,21 @@
 import React, { useMemo } from 'react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import { Box } from '@mui/material';
-import {useResult} from "../../context/ResultContext";
+import { useResult } from '../../context/ResultContext';
 // import results from '../../api/testResult.json';
 
 const DualAreaChart = ({ data }) => {
     const { results } = useResult();
 
-    const resultData = {
-        standard_values: results?.yearly_values_stocks,
-        btc_values: results?.yearly_values_bitcoin,
-    }
-
-    console.log("results: ", resultData);
-
     const chartData = useMemo(() => {
-
-        if (!resultData || !resultData.standard_values || !resultData.btc_values) {
+        if (!results?.['rental_re_plus_bitcoin']) {
             return [];
         }
 
-        return resultData.standard_values.map((value, index) => ({
-            year: value.year || 0,
-            standard: resultData.standard_values[index]?.investment || 0,
-            btc: resultData.btc_values[index]?.investment || 0,
+        return results['rental_re_plus_bitcoin'].map((yearData, index) => ({
+            year: index + 1,
+            total_value_rental: yearData['total_value_rental'],
+            bitcoin_price: yearData['bitcoin_price'],
         }));
     }, [results]);
 
@@ -68,8 +60,8 @@ const DualAreaChart = ({ data }) => {
                             <stop offset="100%" stopColor="#FFFFFF66" />
                         </linearGradient>
                     </defs>
-                    <Area type="monotone" dataKey="standard" stroke="#2E4E35" strokeWidth={2} fill="url(#colorStandard)" />
-                    <Area type="monotone" dataKey="btc" stroke="#F1B314" strokeWidth={2} fill="url(#colorBTC)" />
+                    <Area type="monotone" dataKey="total_value_rental" stroke="#2E4E35" strokeWidth={2} fill="url(#colorStandard)" />
+                    <Area type="monotone" dataKey="bitcoin_price" stroke="#F1B314" strokeWidth={2} fill="url(#colorBTC)" />
                 </AreaChart>
             </ResponsiveContainer>
         </Box>

@@ -1,39 +1,38 @@
 import React from 'react';
-import {Box, Link, Typography} from '@mui/material';
-import {styles} from './styles';
-import {useResult} from '../../context/ResultContext';
+import { Box, Link, Typography } from '@mui/material';
+import { styles } from './styles';
+import { useResult } from '../../context/ResultContext';
 
-const ToolbarWithResults = ({toggleResultsChart, setToggleResultsChart}) => {
-    const {results} = useResult();
+const ToolbarWithResults = ({ toggleResultsChart, setToggleResultsChart }) => {
+    const { results } = useResult();
 
     const onChartView = () => {
         setToggleResultsChart(true);
-    }
+    };
 
     const onSummaryView = () => {
         setToggleResultsChart(false);
-    }
+    };
 
-    const whatYoullHave = results?.comparison?.standard?.value_at_retirement || '0';
-    const whatYoullNeed = results?.comparison?.bitcoin?.value_at_retirement || '0';
+    const difference = { dollar: results?.difference?.dollar || '0', percentage: results?.difference?.percentage || '0' };
 
     return (
         <Box sx={styles.container}>
-            <Typography sx={styles.title}>Retirement savings</Typography>
+            <Typography sx={styles.title}>Rental RE</Typography>
             <Box sx={styles.childContainer}>
                 <Box>
                     <Typography sx={styles.label}>
                         <Box sx={styles.marker('#2E4E35')}></Box>
-                        What you'll have:
+                        Difference $
                     </Typography>
-                    <Typography sx={styles.primaryText}>${whatYoullHave}</Typography>
+                    <Typography sx={styles.primaryText}>${difference.dollar}</Typography>
                 </Box>
                 <Box>
                     <Typography sx={styles.label}>
                         <Box sx={styles.marker('#F1B314')}></Box>
-                        What you'll need:
+                        Difference %
                     </Typography>
-                    <Typography sx={styles.primaryText}>${whatYoullNeed}</Typography>
+                    <Typography sx={styles.primaryText}>${difference.percentage}</Typography>
                 </Box>
                 <Box sx={styles.tabsContainer}>
                     <Box sx={styles.tabs}>
@@ -44,7 +43,7 @@ const ToolbarWithResults = ({toggleResultsChart, setToggleResultsChart}) => {
                             Summary view
                         </Box>
                     </Box>
-                    <Box sx={{margin: '10px 10px 0 0'}}>
+                    <Box sx={{ margin: '10px 10px 0 0' }}>
                         <Link href={''} sx={styles.link}>
                             How did we calculate your results?
                         </Link>
