@@ -6,9 +6,11 @@ import { inputFields } from './constants';
 import { styles } from './styles';
 import Input from '../Input';
 import { useCagr } from '../../context/CagrContext';
+import {useForm} from "../../context/FormContext";
 
 const FinancialCalculatorForm = () => {
-    const [formData, setFormData] = useState({});
+    // const [formData, setFormData] = useState({});
+    const {formData, setFormData} = useForm();
     const { setResults } = useResult();
 
     const { cagrValue } = useCagr();
