@@ -12,7 +12,7 @@ const DualAreaChart = () => {
     }
 
     const chartData = useMemo(() => {
-        console.log("results: ", resultData);
+        // console.log("results: ", resultData);
         if (!resultData || !resultData.standard_values || !resultData.btc_values) {
             return [];
         }
