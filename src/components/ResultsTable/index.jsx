@@ -16,8 +16,8 @@ const formatResults = (results) => {
 
     return Object.keys(results.btc).map((key) => ({
         label: toCapitalCase(key.replace(/_/g, ' ')),
-        status_quo: results.status_quo[key] ? "$" + results.status_quo[key] : "-",
-        btc: results.btc[key] ? "$" + results.btc[key] : "-",
+        status_quo: results.status_quo[key] ? results.status_quo[key] : "-",
+        btc: results.btc[key] ? results.btc[key] : "-",
     }));
 };
 
@@ -34,8 +34,8 @@ const ResultsTable = () => {
 
     const formattedData = formatResults({status_quo: results.status_quo, btc: results.btc});
 
-    const getDollarSign = (label) => {
-        if (label === "Apr" || label === "Loan term") {
+    const getDollarSign = (label, value) => {
+        if (label === "Apr" || label === "Loan term" || label === "Term months" || value === '-') {
             return "";
         } else return "$";
     }
@@ -47,8 +47,14 @@ const ResultsTable = () => {
                     {formattedData.map(({ label, status_quo, btc }) => (
                         <TableRow key={label} sx={sx.tableRow}>
                             <TableCell sx={sx.tableCell}>{label}</TableCell>
-                            <TableCell sx={sx.tableCell} align="right">{status_quo}</TableCell>
-                            <TableCell sx={sx.tableCell} align="right">{btc}</TableCell>
+                            <TableCell sx={sx.tableCell} align="right">
+                                {getDollarSign(label, status_quo)}
+                                {status_quo}
+                            </TableCell>
+                            <TableCell sx={sx.tableCell} align="right">
+                                {getDollarSign(label, btc)}
+                                {btc}
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
