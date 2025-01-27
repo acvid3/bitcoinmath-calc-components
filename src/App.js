@@ -7,7 +7,7 @@ import {adjustChartSize} from './utils/resizeObserver';
 import ToolbarWithResults from './components/ToolbarWithResults';
 import {CagrProvider} from './context/CagrContext';
 import CagrInputRange from './components/CagrInputRange';
-import { sx } from "./appStyle";
+import {sx} from "./appStyle";
 import DualAreaChart from "./components/DualAreaChart";
 // import DualAreaChart from "./components/DualAreaChart";
 
@@ -27,24 +27,30 @@ const App = () => {
     return (
         <ResultProvider>
             <CagrProvider>
-                <Box sx={sx.parentContainer}>
-                    <FinancialCalculatorForm/>
+                <Box sx={{
+                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                }}>
+                    <Box sx={sx.parentContainer}>
+                        <FinancialCalculatorForm/>
 
-                    <Box sx={sx.infoContainer}>
-                        <Box>
-                            <Paper sx={sx.toolbarPaper}>
-                                <CagrInputRange/>
-                                <ToolbarWithResults/>
-                            </Paper>
-                        </Box>
-                        <Box sx={sx.resultsBox}>
-                            <Paper sx={sx.resultsPaper}>
-                                <ResultsTable/>
-                            </Paper>
-                            <Box sx={sx.chartBox}>
-                                <Paper ref={containerRef} sx={sx.chartPaper}>
-                                    <DualAreaChart/>
+                        <Box sx={sx.infoContainer}>
+                            <Box>
+                                <Paper sx={sx.toolbarPaper}>
+                                    <CagrInputRange/>
+                                    <ToolbarWithResults/>
                                 </Paper>
+                            </Box>
+                            <Box sx={sx.resultsBox}>
+                                <Paper sx={sx.resultsPaper}>
+                                    <ResultsTable/>
+                                </Paper>
+                                <Box sx={sx.chartBox}>
+                                    <Paper ref={containerRef} sx={sx.chartPaper}>
+                                        <DualAreaChart/>
+                                    </Paper>
+                                </Box>
                             </Box>
                         </Box>
                     </Box>
