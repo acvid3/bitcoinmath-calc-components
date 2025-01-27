@@ -84,9 +84,13 @@ export const styles = {
         padding: '4px 14px',
         boxSizing: 'border-box',
         textAlign: 'center',
+        transition: '0.2s',
         '@media (max-width: 678px)': {
             width: '50%',
-        }
+        },
+        '&:hover': {
+            color: '#000000',
+        },
     },
 
     selectedTab: {
