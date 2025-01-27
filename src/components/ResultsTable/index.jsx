@@ -1,6 +1,9 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { useResult } from '../../context/ResultContext';
+import { sx } from "./styles";
+import { resultsDescriptions } from "./constants";
+
 
 const toCapitalCase = (word) => {
     const firstLetterCap = word.charAt(0).toUpperCase();
@@ -34,7 +37,7 @@ const ResultsTable = () => {
             <Table sx={{fontWeight: 600}}>
                 <TableBody>
                     {formattedData.map(({ label, tradefi, btc }) => (
-                        <TableRow key={label}>
+                        <TableRow key={label} sx={sx.tableRow}>
                             <TableCell>{label}</TableCell>
                             <TableCell align="right">${tradefi}</TableCell>
                             <TableCell align="right">${btc}</TableCell>

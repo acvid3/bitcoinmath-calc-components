@@ -1,12 +1,25 @@
 import React from 'react';
-import { TextField, Box, Typography } from '@mui/material';
-import { containerStyles, inputStyles, labelStyles } from './styles';
+import {TextField, Box, Typography, Button} from '@mui/material';
+import {sx} from './styles';
+import {inputDescriptions} from "../FinancialCalculatorForm/constants";
 
-const Input = ({ id, label, value, onChange, placeholder, handleBlur }) => {
+const Input = ({id, label, value, onChange, placeholder, handleBlur}) => {
+
+    const description = inputDescriptions.find(d => d.label === label)?.description;
 
     return (
-        <Box sx={containerStyles}>
-            {label && <Typography sx={labelStyles}>{label}</Typography>}
+        <Box sx={sx.container}>
+            {label && <Typography sx={sx.label}>
+                {label}
+                {description &&
+                    <span>
+                        <Button sx={sx.descriptionIcon}>i</Button>
+                        <Box className={'description'} sx={sx.description}>
+                            {description}
+                        </Box>
+                    </span>
+                }
+            </Typography>}
             <TextField
                 id={id}
                 value={value}
@@ -15,7 +28,7 @@ const Input = ({ id, label, value, onChange, placeholder, handleBlur }) => {
                 placeholder={placeholder}
                 variant="outlined"
                 fullWidth
-                sx={inputStyles}
+                sx={sx.input}
             />
         </Box>
     );
