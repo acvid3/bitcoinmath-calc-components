@@ -11,10 +11,8 @@ const DualAreaChart = () => {
         btc_values: results?.yearly_total_btc_value,
     }
 
-    console.log("results: ", resultData);
-
     const chartData = useMemo(() => {
-
+        console.log("results: ", resultData);
         if (!resultData || !resultData.standard_values || !resultData.btc_values) {
             return [];
         }
@@ -33,7 +31,7 @@ const DualAreaChart = () => {
     }, [results]);
 
     if (chartData.length === 0) {
-        return <div>No data available</div>;
+        return <Box sx={{padding: '20px'}}>No data available</Box>;
     }
 
     return (

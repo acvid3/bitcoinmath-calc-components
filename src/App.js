@@ -9,6 +9,7 @@ import {CagrProvider} from './context/CagrContext';
 import CagrInputRange from './components/CagrInputRange';
 import { sx } from "./appStyle";
 import DualAreaChart from "./components/DualAreaChart";
+// import DualAreaChart from "./components/DualAreaChart";
 
 const App = () => {
     const containerRef = useRef(null);

@@ -5,7 +5,7 @@ export const sx = {
         justifyContent: 'space-between',
         borderRadius: '30px',
         border: '1px solid #E9EBE4',
-        padding: '20px',
+        padding: '10px 20px',
         width: '100%',
         boxSizing: 'border-box',
         '@media (max-width: 678px)': {
@@ -24,14 +24,14 @@ export const sx = {
     primaryText: {
         fontWeight: 700,
         fontSize: '32px',
-        lineHeight: '38px',
+        lineHeight: '35px',
         color: '#F1B314',
     },
 
     button: {
         borderRadius: '30px',
         border: 'none',
-        height: '40px',
+        height: '35px',
         background: '#E9EBE4',
         padding: '12px 24px',
         fontSize: '14px',
@@ -57,8 +57,8 @@ export const sx = {
     xLink: {
         borderRadius: '100%',
         border: '1px solid #E9EBE4',
-        height: '40px',
-        width: '40px',
+        height: '35px',
+        width: '35px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
