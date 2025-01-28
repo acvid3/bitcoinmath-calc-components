@@ -6,9 +6,10 @@ import { inputFields } from './constants';
 import { styles } from './styles';
 import Input from '../Input';
 import { useCagr } from '../../context/CagrContext';
+import { useForm } from "../../context/FormContext";
 
 const FinancialCalculatorForm = () => {
-    const [formData, setFormData] = useState({});
+    const {formData, setFormData} = useForm();
     const { setResults } = useResult();
 
     const { cagrValue } = useCagr();
@@ -17,7 +18,7 @@ const FinancialCalculatorForm = () => {
         const fetchResults = async () => {
             try {
                 if (cagrValue) {
-                    const updatedFormData = { ...formData, cagr: cagrValue };
+                    const updatedFormData = { ...formData, term: 60, cagr: cagrValue };
                     const results = await calculateAutoPurchaseData(updatedFormData);
                     setResults(results);
                 }
@@ -31,7 +32,7 @@ const FinancialCalculatorForm = () => {
 
     const handleCalculate = async () => {
         const updatedFormData = cagrValue
-            ? { ...formData, cagr: cagrValue }
+            ? { ...formData, term: 60, cagr: cagrValue }
             : { ...formData };
         const results = await calculateAutoPurchaseData(updatedFormData);
         setResults(results);
@@ -48,6 +49,10 @@ const FinancialCalculatorForm = () => {
                     {inputFields.map(({ id, label, placeholder }) => (
                         <Input key={id} id={id} label={label} placeholder={placeholder} value={formData[id] || ''} onChange={(value) => handleInputChange(id, value)} />
                     ))}
+                    <Box sx={styles.term}>
+                        <span>Loan term</span>
+                        <span>60</span>
+                    </Box>
                     <Button variant="contained" color="primary" fullWidth onClick={handleCalculate} sx={{ marginTop: 2, backgroundColor: '#3c6e47', borderRadius: '30px' }}>
                         Calculate
                     </Button>

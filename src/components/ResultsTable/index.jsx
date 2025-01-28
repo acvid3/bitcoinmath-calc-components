@@ -67,6 +67,12 @@ const ResultsTable = () => {
         <TableContainer>
             <Table>
                 <TableBody>
+                    <TableRow sx={sx.tableRow}>
+                        <TableCell sx={sx.tableCell}></TableCell>
+                        <TableCell sx={sx.tableCell}></TableCell>
+                        <TableCell sx={sx.tableCell} align="center">Tradfi</TableCell>
+                        <TableCell sx={sx.tableCell} align="center">Bitcoin</TableCell>
+                    </TableRow>
                     {formattedData.map(({label, tradefi, btc}) => (
                         <TableRow key={label} sx={sx.tableRow}>
                             <TableCell sx={sx.descriptionCell}>
@@ -84,10 +90,10 @@ const ResultsTable = () => {
                             <TableCell sx={sx.tableCell}>
                                 {label}
                             </TableCell>
-                            <TableCell sx={sx.tableCell} align="right">
+                            <TableCell sx={sx.tableCell} align="center">
                                 {getDollarSign(label, tradefi)}{tradefi}{getPercentSign(label, tradefi)}
                             </TableCell>
-                            <TableCell sx={sx.tableCell} align="right">
+                            <TableCell sx={sx.tableCell} align="center">
                                 {getDollarSign(label, btc)}{btc}{getPercentSign(label, btc)}
                             </TableCell>
                         </TableRow>

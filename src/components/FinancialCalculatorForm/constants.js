@@ -3,5 +3,5 @@ export const inputFields = [
     { id: 'cash_down', label: 'Cash Down ($)', placeholder: 'Enter cash down' },
     { id: 'apr', label: 'APR (%)', placeholder: 'Enter APR' },
     { id: 'btc_price', label: 'BTC Price ($)', placeholder: 'Enter BTC price' },
-    { id: 'term', label: 'Term (months)', placeholder: 'Enter term' },
+    // { id: 'term', label: 'Term (months)', placeholder: 'Enter term' },
 ];
