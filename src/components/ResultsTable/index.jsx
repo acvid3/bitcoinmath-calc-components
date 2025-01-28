@@ -45,7 +45,7 @@ const ResultsTable = () => {
 
     const formattedData = formatResults({selling: results.selling, borrowing: results.borrowing});
 
-    const noDollarSignsValues = ["Borrowing apr", "Loan term years", "Cap gain tax"];
+    const noDollarSignsValues = ["Borrowing apr", "Loan term years", "Cap gain tax", "Total btc"];
     const percentSignValues = ["Cap gain tax", "Borrowing apr"]
 
     const getDollarSign = (label, value) => {
@@ -68,10 +68,10 @@ const ResultsTable = () => {
                         <TableRow key={label} sx={sx.tableRow}>
                             <TableCell sx={sx.tableCell}>{label}</TableCell>
                             <TableCell sx={sx.tableCell} align="right">
-                                {getDollarSign(label, borrowing)}{borrowing}{getPercentSign(label, borrowing)}
+                                {getDollarSign(label, borrowing)}{selling}{getPercentSign(label, selling)}
                             </TableCell>
                             <TableCell sx={sx.tableCell} align="right">
-                                {getDollarSign(label, selling)}{selling}{getPercentSign(label, selling)}
+                                {getDollarSign(label, selling)}{borrowing}{getPercentSign(label, borrowing)}
                             </TableCell>
                         </TableRow>
                     ))}
