@@ -28,8 +28,9 @@ const CagrInputRange = () => {
                 min={0}
                 max={100}
                 step={1}
-                marks={marks} sx={styles.slider}
-                valueLabelDisplay={cagrValue == "0" ? "off" : "on"}
+                marks={marks}
+                sx={styles.slider}
+                valueLabelDisplay={"on"}
             />
         </Box>
     );
