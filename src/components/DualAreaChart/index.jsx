@@ -45,7 +45,7 @@ const DualAreaChart = (props) => {
                 <AreaChart data={chartData} margin={{ top: 10, right: 20, left: -10, bottom: 0 }}>
                     <CartesianGrid horizontal vertical={false} stroke="#E0E0E0" strokeDasharray="0" />
                     <XAxis height={60} dataKey="year" tick={{ fill: 'rgb(46, 78, 53)', fontSize: 12, fontFamily: 'Raleway' }} axisLine={{ stroke: '#E0E0E0', strokeWidth: 1 }} tickLine={false} label={{ value: 'Age', position: 'insideBottom', offset: -10, fill: '#4F4F4F', fontSize: 14 }} />
-                    <YAxis width={90} tickFormatter={(value) => `$${value.toFixed(1)}`} tick={{ fill: 'rgb(46, 78, 53)', fontSize: 12, fontFamily: 'Raleway' }} axisLine={false} tickLine={false} />
+                    <YAxis width={100} tickFormatter={(value) => `$${value.toFixed(1)}`} tick={{ fill: 'rgb(46, 78, 53)', fontSize: 12, fontFamily: 'Raleway' }} axisLine={false} tickLine={false} />
                     <Tooltip
                         formatter={(value) => `$${value.toLocaleString()}`}
                         labelFormatter={(label) => `Year: ${label}`}

@@ -48,8 +48,8 @@ const ResultsTable = () => {
                 <TableBody>
                     <TableRow sx={sx.tableRow}>
                         <TableCell sx={sx.tableCell}>Year</TableCell>
-                        <TableCell sx={sx.tableCell}>Annual Income</TableCell>
                         <TableCell sx={sx.tableCell}>BTC Price</TableCell>
+                        <TableCell sx={sx.tableCell}>Annual Income</TableCell>
                         <TableCell sx={sx.tableCell}>BTC Acquired</TableCell>
                         <TableCell sx={sx.tableCell}>Aggregate BTC</TableCell>
                         <TableCell sx={sx.tableCell}>Total BTC Value</TableCell>
@@ -62,16 +62,16 @@ const ResultsTable = () => {
                     {formattedData.map(e =>
                         <TableRow key={e.year} sx={sx.tableRow}>
                             <TableCell sx={sx.tableCellInfo}>{e.year}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.annual_income}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.btc_price}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.btc_acquired}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.aggregate_btc}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.total_btc_value}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.interest_paid}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.yearly_loan}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.total_loan}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.net_increase}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.income_plus_bitcoin}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.btc_price}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.annual_income}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.btc_acquired.toFixed(2)}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.aggregate_btc.toFixed(2)}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.total_btc_value}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.interest_paid}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.yearly_loan}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.total_loan}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.net_increase}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.income_plus_bitcoin}</TableCell>
                         </TableRow>
                     )}
                 </TableBody>

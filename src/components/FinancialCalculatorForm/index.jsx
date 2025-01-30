@@ -18,7 +18,7 @@ const FinancialCalculatorForm = () => {
         const fetchResults = async () => {
             try {
                 if (cagrValue) {
-                    const updatedFormData = { ...formData, bitcoin_cagr: cagrValue };
+                    const updatedFormData = { ...formData, bitcoin_cagr: cagrValue, years: 20 };
                     const results = await calculateBtcLivingData(updatedFormData);
                     setResults(results);
                 }
@@ -32,7 +32,7 @@ const FinancialCalculatorForm = () => {
 
     const handleCalculate = async () => {
         try {
-            const results = await calculateBtcLivingData({ ...formData, bitcoin_cagr: cagrValue});
+            const results = await calculateBtcLivingData({ ...formData, bitcoin_cagr: cagrValue, years: 20});
             setResults(results);
         } catch (error) {
             console.error('Error fetching results:', error);
