@@ -39,7 +39,7 @@ export const sx = {
     },
 
     resultsPaper: {
-        width: '700px',
+        width: '1015px',
         borderRadius: '30px',
         height: 'fit-content',
         overflow: 'hidden',
@@ -60,12 +60,15 @@ export const sx = {
 
     chartPaper: {
         height: '400px',
-        // width: '1000px',
+        width: '1015px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: '30px',
+        '@media (max-width: 1200px)': {
+            width: 'unset',
+        },
         '@media (max-width: 678px)': {
             width: '100%',
         },

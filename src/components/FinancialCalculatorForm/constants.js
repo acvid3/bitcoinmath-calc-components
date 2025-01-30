@@ -1,7 +1,7 @@
 export const inputFields = [
-    { id: 'btc_price', label: 'BTC Price ($):', placeholder: 'Enter BTC Price' },
-    { id: 'monthly_contribution', label: 'Monthly Contribution ($):', placeholder: 'Enter Monthly Contribution' },
-    // { id: 'annualized_total', label: 'Annualized Total ($)', placeholder: 'Enter Annualized Total' },
-    { id: 'cagr', label: '529 CAGR:', placeholder: 'Enter CAGR' },
-    // { id: 'years', label: 'Term Years', placeholder: 'Enter Term Years' },
+    { id: 'monthly_net_income', label: 'Monthly Net Income:', placeholder: 'Monthly Net Income' },
+    { id: 'years', label: 'Years:', placeholder: 'Years' },
+    { id: 'apr', label: 'APR:', placeholder: 'APR' },
+    { id: 'yoy_salary_increase', label: 'YoY Salary Increase:', placeholder: 'YoY Salary Increase' },
+    { id: 'btc_price', label: 'BTC Price:', placeholder: 'BTC Price' },
 ];

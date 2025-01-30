@@ -13,8 +13,8 @@ const DualAreaChart = (props) => {
         }
         return results?.data.map((value, index) => ({
             year: value.year || 0,
-            net_value: results?.data[index]?.net_value || 0,
-            btc_net_value: results?.data[index]?.btc_net_value || 0,
+            annual_income: results?.data[index]?.annual_income || 0,
+            income_plus_bitcoin: results?.data[index]?.income_plus_bitcoin || 0,
         }));
     }, [results]);
 
@@ -23,8 +23,8 @@ const DualAreaChart = (props) => {
     }
 
     const chartItems = [
-        { label: `529 Net Value: ${chartData[chartData.length - 1].net_value}`, color: '#2E4E35' },
-        { label: `BTC Net Value: ${chartData[chartData.length - 1].btc_net_value}`, color: '#F1B314' },
+        { label: `Annual Income: ${chartData[chartData.length - 1].annual_income}`, color: '#2E4E35' },
+        { label: `Income Plus Bitcoin: ${chartData[chartData.length - 1].income_plus_bitcoin}`, color: '#F1B314' },
     ];
 
     return (
@@ -66,8 +66,8 @@ const DualAreaChart = (props) => {
                             <stop offset="100%" stopColor="#FFFFFF66" />
                         </linearGradient>
                     </defs>
-                    <Area type="stepAfter" dataKey="net_value" stroke="#2E4E35" strokeWidth={2} fill="url(#colorStandard)" />
-                    <Area type="stepAfter" dataKey="btc_net_value" stroke="#F1B314" strokeWidth={2} fill="url(#colorBTC)" />
+                    <Area type="linear" dataKey="annual_income" stroke="#2E4E35" strokeWidth={2} fill="url(#colorStandard)" />
+                    <Area type="linear" dataKey="income_plus_bitcoin" stroke="#F1B314" strokeWidth={2} fill="url(#colorBTC)" />
                 </AreaChart>
             </ResponsiveContainer>
         </Box>

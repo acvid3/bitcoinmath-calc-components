@@ -16,12 +16,16 @@ const formatResults = (data) => {
 
     return data.map((entry) => ({
         year: entry.year,
-        btcPrice: entry.btc_price,
-        contributionAmount: entry.contribution_amount,
-        totalBTC: entry.total_btc,
-        aggregateBTC: entry.aggregate,
-        btcNetValue: entry.btc_net_value,
-        netValue: entry.net_value,
+        annual_income: entry.annual_income,
+        btc_price: entry.btc_price,
+        btc_acquired: entry.btc_acquired,
+        aggregate_btc: entry.aggregate_btc,
+        total_btc_value: entry.total_btc_value,
+        interest_paid: entry.interest_paid,
+        yearly_loan: entry.yearly_loan,
+        total_loan: entry.total_loan,
+        net_increase: entry.net_increase,
+        income_plus_bitcoin: entry.income_plus_bitcoin,
     }));
 };
 
@@ -44,22 +48,30 @@ const ResultsTable = () => {
                 <TableBody>
                     <TableRow sx={sx.tableRow}>
                         <TableCell sx={sx.tableCell}>Year</TableCell>
+                        <TableCell sx={sx.tableCell}>Annual Income</TableCell>
                         <TableCell sx={sx.tableCell}>BTC Price</TableCell>
-                        <TableCell sx={sx.tableCell}>Contribution Amount</TableCell>
-                        <TableCell sx={sx.tableCell}>Total BTC</TableCell>
-                        <TableCell sx={sx.tableCell}>Aggregate</TableCell>
-                        <TableCell sx={sx.tableCell}>BTC Net Value</TableCell>
-                        <TableCell sx={sx.tableCell}>529 Net Value</TableCell>
+                        <TableCell sx={sx.tableCell}>BTC Acquired</TableCell>
+                        <TableCell sx={sx.tableCell}>Aggregate BTC</TableCell>
+                        <TableCell sx={sx.tableCell}>Total BTC Value</TableCell>
+                        <TableCell sx={sx.tableCell}>Interest Paid</TableCell>
+                        <TableCell sx={sx.tableCell}>Yearly Loan</TableCell>
+                        <TableCell sx={sx.tableCell}>Total Loan</TableCell>
+                        <TableCell sx={sx.tableCell}>Net Increase</TableCell>
+                        <TableCell sx={sx.tableCell}>Income Plus Bitcoin</TableCell>
                     </TableRow>
                     {formattedData.map(e =>
                         <TableRow key={e.year} sx={sx.tableRow}>
                             <TableCell sx={sx.tableCellInfo}>{e.year}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.btcPrice}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.contributionAmount}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.totalBTC.toFixed(3)}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.aggregateBTC.toFixed(3)}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.btcNetValue}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.netValue}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.annual_income}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.btc_price}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.btc_acquired}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.aggregate_btc}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.total_btc_value}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.interest_paid}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.yearly_loan}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.total_loan}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.net_increase}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.income_plus_bitcoin}</TableCell>
                         </TableRow>
                     )}
                 </TableBody>

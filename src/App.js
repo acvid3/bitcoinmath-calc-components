@@ -50,7 +50,7 @@ const App = () => {
                                     </Box>
                                     <Box sx={sx.infoCardBox}>
                                         <Paper sx={sx.resultsPaper}><ResultsTable/></Paper>
-                                        <Paper sx={sx.infoCardPaper}><InfoCard/></Paper>
+                                        {/*<Paper sx={sx.infoCardPaper}><InfoCard/></Paper>*/}
                                     </Box>
                                 </Box>
                             </Box>
