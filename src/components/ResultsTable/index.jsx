@@ -1,6 +1,8 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { useResult } from '../../context/ResultContext';
+import { sx } from "./styles";
+
 
 const toCapitalCase = (word) => {
     const firstLetterCap = word.charAt(0).toUpperCase();
@@ -42,11 +44,16 @@ const ResultsTable = () => {
         <TableContainer>
             <Table>
                 <TableBody>
+                    <TableRow sx={sx.tableRow}>
+                        <TableCell sx={sx.tableCell}></TableCell>
+                        <TableCell sx={sx.tableCell} align="center">Tradfi</TableCell>
+                        <TableCell sx={sx.tableCell} align="center">Bitcoin</TableCell>
+                    </TableRow>
                     {formattedData.map(({ label, tradefi, btc }) => (
-                        <TableRow key={label}>
-                            <TableCell>{label}</TableCell>
-                            <TableCell align="right">{getDollarSign(label)}{tradefi}</TableCell>
-                            <TableCell align="right">{getDollarSign(label)}{btc}</TableCell>
+                        <TableRow sx={sx.tableRow} key={label}>
+                            <TableCell sx={sx.tableCell}>{label}</TableCell>
+                            <TableCell sx={sx.tableCell} align="center">{getDollarSign(label)}{tradefi}</TableCell>
+                            <TableCell sx={sx.tableCell} align="center">{getDollarSign(label)}{btc}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

@@ -3,5 +3,5 @@ export const inputFields = [
     { id: 'apy', label: 'APY', placeholder: 'Enter APY' },
     { id: 'inflation_percent', label: 'Inflation percent (%)', placeholder: 'Enter inflation percent' },
     { id: 'number_of_years', label: 'Number of years', placeholder: 'Enter number of years' },
-    // { id: 'cagr', label: 'CAGR', placeholder: 'Enter CAGR'},
+    // { id: 'btc_current_price', label: 'BTC current price', placeholder: 'Enter BTC current price' },
 ];
