@@ -49,7 +49,7 @@ const ResultsTable = () => {
     const percentSignValues = ["Cap gain tax", "Borrowing apr"]
 
     const getDollarSign = (label, value) => {
-        if (value === "—" || noDollarSignsValues.includes(label)) {
+        if (value === '—' || noDollarSignsValues.includes(label)) {
             return "";
         } else return "$";
     }
@@ -64,14 +64,19 @@ const ResultsTable = () => {
         <TableContainer>
             <Table>
                 <TableBody>
+                    <TableRow sx={sx.tableRow}>
+                        <TableCell sx={sx.tableCell}></TableCell>
+                        <TableCell sx={sx.tableCell} align="center">Selling</TableCell>
+                        <TableCell sx={sx.tableCell} align="center">Borrowing</TableCell>
+                    </TableRow>
                     {formattedData.map(({ label, borrowing, selling }) => (
                         <TableRow key={label} sx={sx.tableRow}>
                             <TableCell sx={sx.tableCell}>{label}</TableCell>
-                            <TableCell sx={sx.tableCell} align="right">
-                                {getDollarSign(label, borrowing)}{selling}{getPercentSign(label, selling)}
+                            <TableCell sx={sx.tableCell} align="center">
+                                {getDollarSign(label, selling)}{selling}{getPercentSign(label, selling)}
                             </TableCell>
-                            <TableCell sx={sx.tableCell} align="right">
-                                {getDollarSign(label, selling)}{borrowing}{getPercentSign(label, borrowing)}
+                            <TableCell sx={sx.tableCell} align="center">
+                                {getDollarSign(label, borrowing)}{borrowing}{getPercentSign(label, borrowing)}
                             </TableCell>
                         </TableRow>
                     ))}
