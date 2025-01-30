@@ -32,7 +32,7 @@ const ToolbarWithResults = ({ toggleResultsChart, setToggleResultsChart }) => {
                         <Box sx={styles.marker('#F1B314')}></Box>
                         Difference %
                     </Typography>
-                    <Typography sx={styles.primaryText}>${difference.percentage}</Typography>
+                    <Typography sx={styles.primaryText}>{difference.percentage}%</Typography>
                 </Box>
                 <Box sx={styles.tabsContainer}>
                     <Box sx={styles.tabs}>

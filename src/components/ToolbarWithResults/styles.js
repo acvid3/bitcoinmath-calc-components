@@ -2,7 +2,7 @@ export const styles = {
     container: {
         borderRadius: '30px',
         border: '1px solid #E9EBE4',
-        padding: '30px',
+        padding: '10px 20px',
         width: '100%',
         boxSizing: 'border-box',
     },
@@ -21,7 +21,7 @@ export const styles = {
     title: {
         fontSize: '16px',
         fontWeight: 700,
-        paddingBottom: '30px',
+        paddingBottom: '10px',
     },
 
     label: {
@@ -84,9 +84,13 @@ export const styles = {
         padding: '4px 14px',
         boxSizing: 'border-box',
         textAlign: 'center',
+        transition: '0.2s',
         '@media (max-width: 678px)': {
             width: '50%',
-        }
+        },
+        '&:hover': {
+            color: '#000000',
+        },
     },
 
     selectedTab: {

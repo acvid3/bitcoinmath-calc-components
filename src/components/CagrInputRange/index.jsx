@@ -14,7 +14,17 @@ const CagrInputRange = () => {
     return (
         <Box sx={styles.container}>
             <Typography sx={styles.typography}>CAGR</Typography>
-            <Slider value={cagrValue} onChange={handleChange} aria-labelledby="cagr-slider" min={0} max={100} step={1} marks={marks} sx={styles.slider} />
+            <Slider
+                value={cagrValue}
+                onChange={handleChange}
+                aria-labelledby="cagr-slider"
+                min={0}
+                max={100}
+                step={1}
+                marks={marks}
+                sx={styles.slider}
+                valueLabelDisplay={cagrValue == "0" ? "off" : "on"}
+            />
         </Box>
     );
 };

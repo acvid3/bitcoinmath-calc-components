@@ -20,7 +20,7 @@ const DualAreaChart = ({ data }) => {
     }, [results]);
 
     if (chartData.length === 0) {
-        return <div>No data available</div>;
+        return <Box sx={{ textAlign: 'center', padding: '20px'}}>No results available.</Box>;
     }
 
     return (

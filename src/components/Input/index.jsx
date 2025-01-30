@@ -1,12 +1,13 @@
 import React from 'react';
 import { TextField, Box, Typography } from '@mui/material';
-import { containerStyles, inputStyles, labelStyles } from './styles';
+import { sx } from "./styles";
+
 
 const Input = ({ id, label, value, onChange, placeholder, handleBlur }) => {
 
     return (
-        <Box sx={containerStyles}>
-            {label && <Typography sx={labelStyles}>{label}</Typography>}
+        <Box sx={sx.container}>
+            {label && <Typography sx={sx.label}>{label}</Typography>}
             <TextField
                 id={id}
                 value={value}
@@ -15,7 +16,8 @@ const Input = ({ id, label, value, onChange, placeholder, handleBlur }) => {
                 placeholder={placeholder}
                 variant="outlined"
                 fullWidth
-                sx={inputStyles}
+                sx={sx.input}
+                type={"number"}
             />
         </Box>
     );
