@@ -17,11 +17,10 @@ const InfoCard = () => {
         return <div style={{ textAlign: 'center', padding: '20px' }}>Bad Request.</div>;
     }
 
-    const { tradefi, btc, difference } = results;
+    // const { tradefi, btc, difference } = results;
 
     const year = results?.data[results.data.length-1].year;
     const data = results.data[year-1];
-    console.log(data);
 
     return (
         <div style={styles.card}>
@@ -32,7 +31,7 @@ const InfoCard = () => {
                 <strong> {formData?.cagr}</strong> compound growth annually, after {year} years you would have roughly
                 <strong> {data.btc_net_value}</strong>. Comparatively, putting the same amount into Bitcoin appreciating at
                 <strong> {cagrValue}</strong> annually, produces an ending net value of
-                <strong> {data.btc_net_value}</strong>
+                <strong> {data.btc_net_value}</strong>.
                 {/*, a difference of*/}
                 {/*<strong> ${ }</strong>(Difference $) or roughly*/}
                 {/*<strong> { }%</strong>(Difference%)*/}

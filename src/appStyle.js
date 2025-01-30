@@ -6,6 +6,9 @@ export const sx = {
         flexDirection: 'row',
         justifyContent: 'center',
         gap: '15px',
+        '@media (max-width: 1200px)': {
+            width: '100%',
+        },
         '@media (max-width: 678px)': {
             flexDirection: 'column',
             width: '100%',
@@ -41,6 +44,9 @@ export const sx = {
         height: 'fit-content',
         overflow: 'hidden',
         boxSizing: 'border-box',
+        '@media (max-width: 1200px)': {
+            width: '100%',
+        },
         '@media (max-width: 678px)': {
             width: '100%',
         },

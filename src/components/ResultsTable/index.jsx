@@ -37,7 +37,6 @@ const ResultsTable = () => {
     }
 
     const formattedData = formatResults(results.data);
-    console.log(formattedData);
 
     return (
         <TableContainer sx={{padding: '15px 0'}}>

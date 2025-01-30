@@ -9,7 +9,6 @@ import { useCagr } from '../../context/CagrContext';
 import {useForm} from "../../context/FormContext";
 
 const FinancialCalculatorForm = () => {
-    // const [formData, setFormData] = useState({});
     const { setResults } = useResult();
     const {formData, setFormData} = useForm();
 
@@ -19,7 +18,7 @@ const FinancialCalculatorForm = () => {
         const fetchResults = async () => {
             try {
                 if (cagrValue) {
-                    const updatedFormData = { ...formData, bitcoin_cagr: cagrValue };
+                    const updatedFormData = { ...formData, bitcoin_cagr: cagrValue, years: 18 };
                     const results = await calculateCollegeSavings(updatedFormData);
                     setResults(results);
                 }
@@ -33,7 +32,7 @@ const FinancialCalculatorForm = () => {
 
     const handleCalculate = async () => {
         try {
-            const results = await calculateCollegeSavings(formData);
+            const results = await calculateCollegeSavings({ ...formData, bitcoin_cagr: cagrValue, years: 18 });
             setResults(results);
         } catch (error) {
             console.error('Error fetching results:', error);
@@ -41,14 +40,7 @@ const FinancialCalculatorForm = () => {
     };
 
     const handleInputChange = (key, value) => {
-        setFormData((prev) => ({ ...prev, [key]: Number(value) }));
-    };
-
-    const handleBlur = (key, value) => {
-        console.log(key, value);
-        if (value) {
-            setFormData((prev) => ({ ...prev, [key]: parseFloat(value).toLocaleString('en-US') }));
-        }
+        setFormData((prev) => ({ ...prev, [key]: value }));
     };
 
     return (
@@ -56,9 +48,22 @@ const FinancialCalculatorForm = () => {
             <Paper elevation={3} sx={styles.paper}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     {inputFields.map(({ id, label, placeholder }) => (
-                        <Input key={id} id={id} label={label} placeholder={placeholder} value={formData[id] || ''} onChange={(value) => handleInputChange(id, value)} />
+                        <Input
+                            key={id}
+                            id={id}
+                            label={label}
+                            placeholder={placeholder}
+                            value={formData[id] || ''}
+                            onChange={(value) => handleInputChange(id, value)}
+                        />
                     ))}
-                    <Button variant="contained" color="primary" fullWidth onClick={handleCalculate} sx={{ marginTop: 2, backgroundColor: '#3c6e47', borderRadius: '30px' }}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                        onClick={handleCalculate}
+                        sx={{ marginTop: 2, backgroundColor: '#3c6e47', borderRadius: '30px' }}
+                    >
                         Calculate
                     </Button>
                 </Box>
