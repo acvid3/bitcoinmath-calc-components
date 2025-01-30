@@ -14,6 +14,7 @@ const Input = ({id, label, value, onChange, placeholder}) => {
                 variant="outlined"
                 fullWidth
                 sx={sx.input}
+                type={"number"}
             />
         </Box>
     );
