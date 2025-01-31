@@ -8,6 +8,7 @@ export const styles = {
         },
     },
     paper: {
+        boxShadow: 'none',
         padding: '20px',
         backgroundColor: '#E9EBE4',
         borderRadius: '30px',
