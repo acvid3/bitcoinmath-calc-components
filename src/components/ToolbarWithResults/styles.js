@@ -5,7 +5,7 @@ export const sx = {
         justifyContent: 'space-between',
         borderRadius: '30px',
         border: '1px solid #E9EBE4',
-        padding: '10px 20px',
+        padding: '20px',
         width: '100%',
         boxSizing: 'border-box',
         '@media (max-width: 678px)': {
@@ -16,7 +16,7 @@ export const sx = {
 
     label: {
         fontWeight: 600,
-        fontSize: '14px',
+        fontSize: '18px',
         lineHeight: '20px',
         color: '#2E4E35',
     },
@@ -26,6 +26,7 @@ export const sx = {
         fontSize: '32px',
         lineHeight: '35px',
         color: '#F1B314',
+        marginTop: '16px',
     },
 
     button: {

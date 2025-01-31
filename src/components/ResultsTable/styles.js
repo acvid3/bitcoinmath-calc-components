@@ -1,7 +1,45 @@
 export const sx = {
-    tableCell: {
-        padding: '5px 20px',
+    table: {
+        padding: '20px',
+        width: '100%',
+        boxSizing: 'border-box',
+    },
+
+    tableLabel: {
+        padding: '0px',
         margin: '0px',
+        borderBottom: 'none',
+        borderRight: '1px solid #E9EBE4',
+        fontSize: '14px',
+        fontWeight: 600,
+
+        '@media (max-width: 678px)': {
+            padding: '8px',
+        },
+    },
+
+    tableCell: {
+        padding: '5px',
+        margin: '0px',
+        borderBottom: 'none',
+        borderRight: '1px solid #E9EBE4',
+        fontSize: '14px',
+        fontWeight: 600,
+
+        '@media (max-width: 678px)': {
+            padding: '8px',
+        },
+    },
+
+    tableCellTop: {
+        color: '#2E4E3577',
+        width: 'min-content',
+        padding: '5px',
+        margin: '0px',
+        border: 'none',
+        fontSize: '14px',
+        fontWeight: 600,
+
         '@media (max-width: 678px)': {
             padding: '8px',
         },
@@ -10,8 +48,8 @@ export const sx = {
     tableRow: {
         transition: '0.1s',
         '&:hover': {
-        },
 
+        },
     },
 
     descriptionCell: {

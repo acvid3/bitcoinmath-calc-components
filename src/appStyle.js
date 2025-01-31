@@ -40,6 +40,8 @@ export const sx = {
     },
 
     resultsPaper: {
+        border: '1px solid #E9EBE4',
+        boxShadow: 'none',
         width: '800px',
         borderRadius: '30px',
         height: 'fit-content',
@@ -56,6 +58,8 @@ export const sx = {
     },
 
     chartPaper: {
+        border: '1px solid #E9EBE4',
+        boxShadow: 'none',
         height: '500px',
         width: '497px',
         display: 'flex',

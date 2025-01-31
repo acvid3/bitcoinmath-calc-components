@@ -10,6 +10,8 @@ import {CagrProvider} from './context/CagrContext';
 import CagrInputRange from './components/CagrInputRange';
 import {sx} from "./appStyle";
 
+
+
 const App = () => {
     const containerRef = useRef(null);
     const [chartSize, setChartSize] = useState({width: 600, height: 400});

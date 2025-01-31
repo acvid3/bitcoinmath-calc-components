@@ -56,7 +56,7 @@ const FinancialCalculatorForm = () => {
                             message={message}
                         />
                     ))}
-                    <Button variant="contained" color="primary" fullWidth onClick={handleCalculate} sx={{ marginTop: 2, backgroundColor: '#3c6e47', borderRadius: '30px' }}>
+                    <Button variant="contained" color="primary" fullWidth onClick={handleCalculate} sx={styles.button}>
                         Calculate
                     </Button>
                 </Box>

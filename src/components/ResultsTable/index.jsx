@@ -9,7 +9,7 @@ const toCapitalCase = (word) => {
     const firstLetterCap = word.charAt(0).toUpperCase();
     const remainingLetters = word.slice(1);
 
-    return firstLetterCap + remainingLetters;
+    return (firstLetterCap + remainingLetters).replace(/(btc|apr|usd)/gi, match => match.toUpperCase());
 };
 
 const formatResults = (results) => {
@@ -61,17 +61,17 @@ const ResultsTable = () => {
     }
 
     return (
-        <TableContainer>
+        <TableContainer sx={sx.table}>
             <Table>
                 <TableBody>
                     <TableRow sx={sx.tableRow}>
-                        <TableCell sx={sx.tableCell}></TableCell>
-                        <TableCell sx={sx.tableCell} align="center">Selling</TableCell>
-                        <TableCell sx={sx.tableCell} align="center">Borrowing</TableCell>
+                        <TableCell sx={sx.tableCellTop}></TableCell>
+                        <TableCell sx={sx.tableCellTop} align="center">Selling</TableCell>
+                        <TableCell sx={sx.tableCellTop} align="center">Borrowing</TableCell>
                     </TableRow>
                     {formattedData.map(({ label, borrowing, selling }) => (
                         <TableRow key={label} sx={sx.tableRow}>
-                            <TableCell sx={sx.tableCell}>{label}</TableCell>
+                            <TableCell sx={sx.tableLabel}>{label}</TableCell>
                             <TableCell sx={sx.tableCell} align="center">
                                 {getDollarSign(label, selling)}{selling}{getPercentSign(label, selling)}
                             </TableCell>

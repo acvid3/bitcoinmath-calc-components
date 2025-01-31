@@ -29,6 +29,7 @@ export const sx = {
     },
 
     input: {
+        marginBottom: '20px',
         '& .MuiOutlinedInput-root': {
             height: '40px',
             borderRadius: '30px',

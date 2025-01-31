@@ -13,7 +13,7 @@ const ToolbarWithResults = (props) => {
                 <Typography sx={sx.primaryText}>${results?.difference?.dollar || 0}</Typography>
             </Box>
             <Box>
-                <Typography sx={sx.label}>Difference %</Typography>
+                <Typography sx={sx.label}>Benefit %</Typography>
                 <Typography sx={sx.primaryText}>{results?.difference?.percentage || '0%'}</Typography>
             </Box>
             <Box sx={{ textAlign: 'right' }}>

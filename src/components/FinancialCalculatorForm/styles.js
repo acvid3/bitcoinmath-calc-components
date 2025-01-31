@@ -11,12 +11,13 @@ export const styles = {
             width: '100%',
         },
     },
+
     paper: {
+        border: '1px solid #E9EBE4',
+        boxShadow: 'none',
         padding: '20px',
         backgroundColor: '#E9EBE4',
         borderRadius: '30px',
-        border: '1px solid #E9EBE4',
-        // height: '100%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -24,5 +25,12 @@ export const styles = {
         '@media (max-width: 678px)': {
             width: '100%',
         },
+    },
+
+    button: {
+        marginTop: '8px',
+        backgroundColor: '#3c6e47',
+        borderRadius: '30px',
+        boxShadow: 'none',
     },
 };
