@@ -71,4 +71,30 @@ export const sx = {
             width: '100%',
         },
     },
+
+    infoCardBox: {
+        display: 'flex',
+        gap: '15px',
+        justifyContent: 'space-between',
+        flexDirection: 'column',
+        height: '100%',
+        alignItems: 'center',
+        '@media (max-width: 678px)': {
+            flexDirection: 'column',
+            gap: '15px',
+        },
+    },
+
+    infoCardPaper: {
+        boxShadow: 'none',
+        width: '497px',
+        // width: '100%',
+        borderRadius: '30px',
+        border: '1px solid #E9EBE4',
+        boxSizing: 'border-box',
+        height: 'min-content',
+        '@media (max-width: 678px)': {
+            width: '100%',
+        },
+    },
 }

@@ -3,6 +3,7 @@ export const sx = {
         display: 'flex',
         flexDirection: 'column',
         gap: '8px',
+        marginBottom: '20px',
     },
 
     label: {
@@ -29,7 +30,6 @@ export const sx = {
     },
 
     input: {
-        marginBottom: '20px',
         '& .MuiOutlinedInput-root': {
             height: '40px',
             borderRadius: '30px',

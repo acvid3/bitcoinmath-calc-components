@@ -15,14 +15,6 @@ const Input = ({ id, label, value, onChange, placeholder, message }) => {
         <Box sx={sx.container}>
             {label && <Typography sx={sx.label}>
                 {label}
-                {description &&
-                    <span>
-                        <Button sx={sx.descriptionIcon}>i</Button>
-                        <Box className={'description'} sx={sx.description}>
-                            {description}
-                        </Box>
-                    </span>
-                }
             </Typography>}
             <TextField
                 id={id}
@@ -36,6 +28,7 @@ const Input = ({ id, label, value, onChange, placeholder, message }) => {
                 error={results?.data?.status === 400 && isInputError}
                 helperText={isInputError ? results?.message : ''}
             />
+            {description && <Typography sx={sx.message}>{description}</Typography>}
         </Box>
     );
 };

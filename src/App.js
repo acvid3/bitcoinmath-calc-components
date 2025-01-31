@@ -9,6 +9,7 @@ import ToolbarWithResults from './components/ToolbarWithResults';
 import {CagrProvider} from './context/CagrContext';
 import CagrInputRange from './components/CagrInputRange';
 import {sx} from "./appStyle";
+import InfoCard from "./components/InfoCard";
 
 
 
@@ -47,10 +48,11 @@ const App = () => {
                                 <Paper sx={sx.resultsPaper}>
                                     <ResultsTable/>
                                 </Paper>
-                                <Box sx={sx.chartBox}>
+                                <Box sx={sx.infoCardBox}>
                                     <Paper ref={containerRef} sx={sx.chartPaper}>
                                         <FinancialChart chartSize={chartSize}/>
                                     </Paper>
+                                    {/*<Paper sx={sx.infoCardPaper}><InfoCard/></Paper>*/}
                                 </Box>
                             </Box>
                         </Box>
