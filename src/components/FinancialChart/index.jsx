@@ -39,7 +39,7 @@ const FinancialChart = ({chartSize}) => {
                 </defs>
                 <CartesianGrid horizontal={true} vertical={false}/>
                 <XAxis dataKey="name" tickLine={false} axisLine={false}/>
-                <YAxis tickLine={false} axisLine={false} tickFormatter={formatYAxis} width={80}/>
+                <YAxis tickLine={false} axisLine={false} tickFormatter={formatYAxis} width={85}/>
                 <Tooltip/>
                 <Bar
                     dataKey="Tradfi"

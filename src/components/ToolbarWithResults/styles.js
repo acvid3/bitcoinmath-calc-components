@@ -5,20 +5,25 @@ export const sx = {
         justifyContent: 'space-between',
         borderRadius: '30px',
         border: '1px solid #E9EBE4',
-        padding: '10px 20px',
+        padding: '20px',
         width: '100%',
         boxSizing: 'border-box',
         '@media (max-width: 678px)': {
             flexDirection: 'column',
-            gap: '30px',
+            gap: '20px',
+            alignItems: 'center',
+            textAlign: 'center',
         },
     },
 
     label: {
         fontWeight: 600,
-        fontSize: '14px',
-        lineHeight: '20px',
+        fontSize: '16px',
+        lineHeight: '18.78px',
         color: '#2E4E35',
+        '@media (max-width: 678px)': {
+            paddingBottom: '20px',
+        }
     },
 
     primaryText: {
@@ -28,13 +33,20 @@ export const sx = {
         color: '#F1B314',
     },
 
+    buttonsBox: {
+        textAlign: 'right',
+        '@media (max-width: 678px)': {
+            order: 1,
+        },
+    },
+
     button: {
         borderRadius: '30px',
         border: 'none',
         height: '35px',
         background: '#E9EBE4',
         padding: '12px 24px',
-        fontSize: '14px',
+        fontSize: '16px',
         fontWeight: 700,
         color: '#18391F',
         textTransform: 'none',
@@ -46,12 +58,22 @@ export const sx = {
         alignItems: "center",
         justifyContent: "center",
         columnGap: "10px",
+        '@media (max-width: 678px)': {
+            width: '247px',
+        }
     },
 
     link: {
-        color: '#2E4E35',
+        color: '#2E4E3599',
         marginTop: '20px',
-        textDecorationColor: '#2E4E35',
+        textDecorationColor: '#2E4E3599',
+        fontSize: '16px',
+        fontFamily: 'Raleway',
+        fontWeight: 600,
+        '@media (max-width: 678px)': {
+            textAlign: 'center',
+            margin: '0px',
+        },
     },
 
     xLink: {
@@ -63,5 +85,13 @@ export const sx = {
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: '10px',
+    },
+
+    linkBox: {
+        margin: '10px 10px 0 0',
+        '@media (max-width: 678px)': {
+            textAlign: 'center',
+            margin: '0px',
+        },
     }
 }
