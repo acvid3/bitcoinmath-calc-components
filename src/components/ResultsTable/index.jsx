@@ -45,7 +45,7 @@ const ResultsTable = () => {
 
     const formattedData = formatResults({status_quo: results.status_quo, btc: results.btc});
 
-    const noDollarSignsValues = ["APR", "Loan term", "Term months", "Annual appreciation"];
+    const noDollarSignsValues = ["APR", "Loan term", "Term months", "Annual appreciation", "BTC acquired"];
     const percentSignValues = ["Cap gain tax", "Annual appreciation"]
 
 
