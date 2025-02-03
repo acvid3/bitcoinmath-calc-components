@@ -16,6 +16,10 @@ const ToolbarWithResults = (props) => {
                 <Typography sx={sx.label}>Difference %</Typography>
                 <Typography sx={sx.primaryText}>{results?.difference?.percent || '0%'}</Typography>
             </Box>
+            <Box>
+                <Typography sx={sx.label}>Multiple</Typography>
+                <Typography sx={sx.primaryText}>{results?.difference?.multiple || '0'}</Typography>
+            </Box>
             <Box sx={{ textAlign: 'right' }}>
                 <Box sx={{ display: 'flex' }}>
                     <Link sx={sx.xLink}>

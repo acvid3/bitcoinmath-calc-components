@@ -31,5 +31,5 @@ export const labelsOrder  = [
     "Total asset value",
     "Plus savings",
     "Net value",
-    "Multiple"
+    // "Multiple"
 ];
