@@ -9,7 +9,7 @@ const ToolbarWithResults = (props) => {
     return (
         <Box sx={sx.container}>
             <Box sx={{
-                display: 'flex',
+                display: 'none',
 
                 '@media (max-width: 678px)': {
                     display: 'flex',
