@@ -8,7 +8,8 @@ const toCapitalCase = (word) => {
     const firstLetterCap = word.charAt(0).toUpperCase();
     const remainingLetters = word.slice(1);
 
-    return (firstLetterCap + remainingLetters).replace(/(btc|apr|usd)/gi, match => match.toUpperCase());
+    return (firstLetterCap + remainingLetters)
+        .replace(/(Btc|Apr|btc|apr|usd)/gi, match => match.toUpperCase());
 };
 
 const formatResults = (results) => {
@@ -52,7 +53,7 @@ const ResultsTable = () => {
     const formattedData = formatResults(results);
 
     const getDollarSign = (label, value) => {
-        if (label === "Apr" || label === "Annual depreciation" || value === '—') {
+        if (label === "Apr" || label === "Annual depreciation" || label === "BTC acquired" || value === '—') {
             return "";
         } else return "$";
     }
