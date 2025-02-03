@@ -16,14 +16,20 @@ export const sx = {
         width: '1015px',
         display: 'flex',
         flexDirection: 'column',
-        gap: '20px'
+        gap: '20px',
+        '@media (max-width: 678px)': {
+            width: '100%',
+        },
     },
 
     toolbarPaper: {
         display: 'flex',
         flexDirection: 'column',
         gap: '20px',
-        boxShadow: 'none'
+        boxShadow: 'none',
+        '@media (max-width: 678px)': {
+            width: '100%',
+        },
     },
 
     resultsBox: {
@@ -47,7 +53,10 @@ export const sx = {
     chartBox: {
         display: 'flex',
         flexDirection: 'column',
-        gap: '20px'
+        gap: '20px',
+        '@media (max-width: 678px)': {
+            width: '100%',
+        },
     },
 
     chartPaper: {
