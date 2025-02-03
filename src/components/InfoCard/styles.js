@@ -3,7 +3,7 @@ export const styles = {
         backgroundColor: '#E9EBE4',
         borderRadius: '30px',
         padding: '20px',
-        fontSize: '14px !important',
+        fontSize: '16px !important',
         fontWeight: 600,
         color: '#2E4E35',
         lineHeight: '1.5',
