@@ -9,7 +9,9 @@ const toCapitalCase = (word) => {
     const firstLetterCap = word.charAt(0).toUpperCase();
     const remainingLetters = word.slice(1);
 
-    return firstLetterCap + remainingLetters;
+    return (firstLetterCap + remainingLetters)
+        .replace(/(Btc|Apr|btc|apr|usd)/gi, match => match.toUpperCase())
+        .replace(/(Bitcoin)/gi, "BTC");
 };
 
 const formatResults = (results) => {
@@ -20,8 +22,8 @@ const formatResults = (results) => {
         ...Object.keys(results.status_quo).filter(key => !Object.keys(results.btc).includes(key))
     ].map((key) => ({
         label: toCapitalCase(key.replace(/_/g, ' ')),
-        status_quo: results.status_quo[key] ? results.status_quo[key] : "-",
-        btc: results.btc[key] ? results.btc[key] : "-",
+        status_quo: results.status_quo[key] ? results.status_quo[key] : "—",
+        btc: results.btc[key] ? results.btc[key] : "—",
     })).filter((item) => labelsOrder.includes(item.label))
         .sort((a, b) => {
             const indexA = labelsOrder.indexOf(a.label);
@@ -43,14 +45,18 @@ const ResultsTable = () => {
 
     const formattedData = formatResults({status_quo: results.status_quo, btc: results.btc});
 
+    const noDollarSignsValues = ["APR", "Loan term", "Term months", "Annual appreciation"];
+    const percentSignValues = ["Cap gain tax", "Annual appreciation"]
+
+
     const getDollarSign = (label, value) => {
-        if (label === "Apr" || label === "Loan term" || label === "Term months" || label === "Annual appreciation" || value === '-') {
+        if (value === '—' || noDollarSignsValues.includes(label)) {
             return "";
         } else return "$";
     }
 
     const getPercentSign = (label, value) => {
-        if (label === "Annual appreciation" && value !== '-') {
+        if (percentSignValues.includes(label) && value !== '—') {
             return "%";
         } else return "";
     }

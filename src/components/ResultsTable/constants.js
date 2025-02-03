@@ -1,6 +1,6 @@
 export const labelsOrder = [
     "Current equity",
-    "Apr",
+    "APR",
     "Loan term",
     "Monthly principal",
     "Monthly interest",
@@ -8,9 +8,9 @@ export const labelsOrder = [
     "Annual payment",
     "Annual appreciation",
     "Equity value after term",
-    "Bitcoin investment",
-    "Bitcoin acquired",
-    "Ending bitcoin value",
+    "BTC investment",
+    "BTC acquired",
+    "Ending BTC value",
     "Less heloc payments",
     "Net investment value"
 ];
