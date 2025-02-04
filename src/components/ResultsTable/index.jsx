@@ -34,8 +34,8 @@ const formatResults = (results) => {
 
     return allKeys.map((key) => ({
         label: toCapitalCase(key.replace(/_/g, ' ')),
-        tradefi: results.tradefi[key]?.toLocaleString() || '—',
-        btc: results.btc[key]?.toLocaleString() || '—',
+        tradefi: results.tradefi[key]?.toLocaleString('fr-FR') || '—',
+        btc: results.btc[key]?.toLocaleString('fr-FR') || '—',
     }));
 };
 
