@@ -11,7 +11,15 @@ export const sx = {
         transition: '0.1s',
         '&:hover': {
         },
-
+        // '@media (max-width: 678px)': {
+        //     margin: '0 15px',
+        //     fontWeight: 600,
+        // },
+        // "&:nth-of-type(even)": {
+        //     '@media (max-width: 678px)': {
+        //         background: '#E9EBE4',
+        //     },
+        // },
     },
 
     descriptionCell: {

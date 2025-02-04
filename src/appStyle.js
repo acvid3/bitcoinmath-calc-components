@@ -38,7 +38,10 @@ export const sx = {
         border: '1px solid #E9EBE4',
         borderRadius: '30px',
         height: 'fit-content',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        '@media (max-width: 678px)': {
+            // border: 'none',
+        }
     },
 
     chartBox: {
