@@ -43,6 +43,8 @@ export const sx = {
     },
 
     resultsPaper: {
+        border: '1px solid #E9EBE4',
+        boxShadow: 'none',
         width: '700px',
         borderRadius: '30px',
         height: 'fit-content',
@@ -59,12 +61,24 @@ export const sx = {
     },
 
     chartPaper: {
+        border: '1px solid #E9EBE4',
+        boxShadow: 'none',
         // height: '600px',
         width: '497px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        borderRadius: '30px',
+        '@media (max-width: 678px)': {
+            width: '100%',
+        },
+    },
+
+    infoCardPaper: {
+        boxShadow: 'none',
+        border: '1px solid #E9EBE4',
+        width: '497px',
         borderRadius: '30px',
         '@media (max-width: 678px)': {
             width: '100%',

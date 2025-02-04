@@ -3,6 +3,7 @@ export const sx = {
         display: 'flex',
         flexDirection: 'column',
         gap: '8px',
+        paddingBottom: '20px',
     },
 
     label: {

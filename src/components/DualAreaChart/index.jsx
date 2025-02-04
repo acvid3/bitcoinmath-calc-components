@@ -30,7 +30,6 @@ const DualAreaChart = () => {
     return (
         <Box
             sx={{
-                border: '1px solid #E0E0E0',
                 borderRadius: '30px',
                 padding: '16px',
                 background: '#FFFFFF',
