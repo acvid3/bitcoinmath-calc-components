@@ -75,4 +75,14 @@ export const sx = {
             width: '100%',
         },
     },
+
+    infoCardPaper: {
+        boxShadow: 'none',
+        border: '1px solid #E9EBE4',
+        width: '497px',
+        borderRadius: '30px',
+        '@media (max-width: 678px)': {
+            width: '100%',
+        },
+    },
 }
