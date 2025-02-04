@@ -10,6 +10,7 @@ export const sx = {
     },
 
     paper: {
+        boxShadow: 'none',
         padding: '20px',
         backgroundColor: '#E9EBE4',
         borderRadius: '30px',
@@ -24,7 +25,8 @@ export const sx = {
     },
 
     button: {
-        marginTop: 2,
+        boxShadow: 'none',
+        marginTop: '8px',
         backgroundColor: '#3c6e47',
         borderRadius: '30px'
     }

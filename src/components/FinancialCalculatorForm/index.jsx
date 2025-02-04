@@ -17,7 +17,14 @@ const FinancialCalculatorForm = () => {
         const fetchResults = async () => {
             try {
                 if (cagrValue) {
-                    const updatedFormData = { ...formData, cagr: cagrValue };
+                    const updatedFormData = {
+                        // ...formData,
+                        cagr: cagrValue,
+                        apy: formData?.apy,
+                        inflation_percent: formData?.inflation_percent,
+                        number_of_years: formData?.number_of_years,
+                        total_cash_savings: formData?.total_cash_savings
+                    };
                     const results = await calculateCashData(updatedFormData);
                     setResults(results);
                 }
@@ -30,9 +37,14 @@ const FinancialCalculatorForm = () => {
     }, [cagrValue, formData]);
 
     const handleCalculate = async () => {
-        const updatedFormData = cagrValue
-            ? { ...formData, cagr: cagrValue }
-            : { ...formData, cagr: 0 };
+        const updatedFormData = {
+            // ...formData,
+            cagr: cagrValue || 0,
+            apy: formData?.apy,
+            inflation_percent: formData?.inflation_percent,
+            number_of_years: formData?.number_of_years,
+            total_cash_savings: formData?.total_cash_savings
+        };
         const results = await calculateCashData(updatedFormData);
         setResults(results);
     };

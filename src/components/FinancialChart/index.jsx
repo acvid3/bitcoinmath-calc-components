@@ -2,6 +2,7 @@ import React from 'react';
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip} from 'recharts';
 import ChartLabels from '../ChartLabels';
 import {useResult} from '../../context/ResultContext';
+import {CustomLabel, CustomShape, CustomShapeBTC} from "../ChartUtils/ChartUtils";
 
 const FinancialChart = ({chartSize}) => {
     const {results} = useResult();
@@ -54,21 +55,14 @@ const FinancialChart = ({chartSize}) => {
                         fontWeight: '600',
                         fontFamily: 'Raleway',
                     }}
+                    shape={<CustomShape />}
                 />
                 <Bar
                     dataKey="BTC"
                     fill="url(#colorBTC)"
                     radius={[10, 10, 0, 0]}
-                    label={{
-                        position: 'insideTop',
-                        offset: 45,
-                        color: '#2E4E35',
-                        formatter: (value) => `$${value.toLocaleString()}`,
-                        fontSize: 14,
-                        fill: '#2E4E35',
-                        fontWeight: '600',
-                        fontFamily: 'Raleway',
-                    }}
+                    label={<CustomLabel />}
+                    shape={<CustomShapeBTC />}
                 />
             </BarChart>
         </>

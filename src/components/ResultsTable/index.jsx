@@ -8,7 +8,7 @@ const toCapitalCase = (word) => {
     const firstLetterCap = word.charAt(0).toUpperCase();
     const remainingLetters = word.slice(1);
 
-    return firstLetterCap + remainingLetters;
+    return (firstLetterCap + remainingLetters).replace(/(Btc|btc|apr|usd|apy)/gi, match => match.toUpperCase());
 };
 
 const formatResults = (results) => {
@@ -16,8 +16,8 @@ const formatResults = (results) => {
 
     return Object.keys(results.tradefi).map((key) => ({
         label: toCapitalCase(key.replace(/_/g, ' ')),
-        tradefi: results.tradefi[key],
-        btc: results.btc[key],
+        tradefi: results.tradefi[key]?.toLocaleString(),
+        btc: results.btc[key]?.toLocaleString(),
     }));
 };
 
@@ -35,7 +35,7 @@ const ResultsTable = () => {
     const formattedData = formatResults({tradefi: results.tradefi, btc: results.btc});
 
     const getDollarSign = (label) => {
-        if (label === "Apr" || label === "Loan term") {
+        if (label === "Apr" || label === "Loan term" || label === "Real APY") {
             return "";
         } else return "$";
     }
