@@ -23,18 +23,18 @@ const InfoCard = () => {
         <div style={styles.card}>
             <p>
                 Based on your inputs, buying a
-                <strong> ${formData?.home_price} </strong>home with
-                <strong> ${results?.tradefi?.amount_down} </strong>down at
+                <strong> ${formData?.home_price?.toLocaleString('fr-FR')} </strong>home with
+                <strong> ${results?.tradefi?.amount_down?.toLocaleString('fr-FR')} </strong>down at
                 <strong> {formData?.apr}% </strong>APR over a
-                <strong> {formData?.term} </strong> month term, appreciating at
-                <strong> {formData?.re_aar}% </strong> annually, results in a net asset value of
-                <strong> {results?.tradefi?.net_value} </strong> after
-                <strong> {formData?.checkpoint_year} </strong>years. Comparatively, putting only
-                <strong> ${results?.btc?.amount_down} </strong>down and using the remaining
-                <strong> ${results?.btc?.btc_investment} </strong> to buy Bitcoin appreciating at
+                <strong> {formData?.term?.toLocaleString('fr-FR')} </strong> month term, appreciating at
+                <strong> {formData?.re_aar?.toLocaleString('fr-FR')}% </strong> annually, results in a net asset value of
+                <strong> {results?.tradefi?.net_value?.toLocaleString('fr-FR')} </strong> after
+                <strong> {formData?.checkpoint_year?.toLocaleString('fr-FR')} </strong>years. Comparatively, putting only
+                <strong> ${results?.btc?.amount_down?.toLocaleString('fr-FR')} </strong>down and using the remaining
+                <strong> ${results?.btc?.btc_investment?.toLocaleString('fr-FR')} </strong> to buy Bitcoin appreciating at
                 <strong> {cagrValue}% </strong> annually, produces an ending net value of
-                <strong> ${results?.tradefi?.net_value} </strong>, a difference of
-                <strong> ${results?.difference?.dollar} </strong>, or roughly
+                <strong> ${results?.tradefi?.net_value?.toLocaleString('fr-FR')} </strong>, a difference of
+                <strong> ${results?.difference?.dollar?.toLocaleString('fr-FR')} </strong>, or roughly
                 <strong> {results?.difference?.percent} </strong>.
             </p>
             <p style={styles.disclaimer}>(This is a hypothetical model built on assumptions and user inputs. It is not financial advice and should not be relied upon for investment decisions.)</p>

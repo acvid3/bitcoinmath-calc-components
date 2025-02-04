@@ -17,8 +17,8 @@ const formatResults = (results) => {
     return Object.keys(results.tradefi)
         .map((key) => ({
             label: toCapitalCase(key.replace(/_/g, ' ')),
-            tradefi: results.tradefi[key]?.toLocaleString() || '—',
-            btc: results.btc[key]?.toLocaleString() || '—',
+            tradefi: results.tradefi[key]?.toLocaleString('fr-FR') || '—',
+            btc: results.btc[key]?.toLocaleString('fr-FR') || '—',
         }))
         .filter((item) => labelsOrder.includes(item.label))
         .sort((a, b) => {
