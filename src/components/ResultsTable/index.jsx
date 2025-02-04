@@ -30,12 +30,12 @@ const formatResults = (results) => {
             allKeys.splice(i+2, 0, btcKeys[i]);
         }
     }
-    console.log(allKeys)
+    // console.log(allKeys)
 
     return allKeys.map((key) => ({
         label: toCapitalCase(key.replace(/_/g, ' ')),
-        tradefi: results.tradefi[key] || '—',
-        btc: results.btc[key] || '—',
+        tradefi: results.tradefi[key]?.toLocaleString() || '—',
+        btc: results.btc[key]?.toLocaleString() || '—',
     }));
 };
 
