@@ -6,6 +6,9 @@ export const sx = {
         maxWidth: '1360px',
         justifyContent: 'center',
         gap: '20px',
+        '@media (max-width: 1200px)': {
+            width: 'unset',
+        },
         '@media (max-width: 678px)': {
             padding: '0',
             flexDirection: 'column',
@@ -18,6 +21,9 @@ export const sx = {
         display: 'flex',
         flexDirection: 'column',
         gap: '20px',
+        '@media (max-width: 1200px)': {
+            width: 'unset',
+        },
         '@media (max-width: 678px)': {
             width: '100%',
         },
@@ -49,6 +55,9 @@ export const sx = {
         borderRadius: '30px',
         height: 'fit-content',
         overflow: 'hidden',
+        '@media (max-width: 1200px)': {
+            width: 'unset',
+        },
         '@media (max-width: 678px)': {
             width: '100%',
         },
@@ -70,6 +79,9 @@ export const sx = {
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: '30px',
+        '@media (max-width: 1200px)': {
+            // width: 'unset',
+        },
         '@media (max-width: 678px)': {
             width: '100%',
         },
@@ -80,6 +92,9 @@ export const sx = {
         border: '1px solid #E9EBE4',
         width: '497px',
         borderRadius: '30px',
+        '@media (max-width: 1200px)': {
+            // width: 'unset',
+        },
         '@media (max-width: 678px)': {
             width: '100%',
         },

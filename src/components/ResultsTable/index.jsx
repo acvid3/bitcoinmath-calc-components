@@ -22,8 +22,8 @@ const formatResults = (results) => {
         ...Object.keys(results.status_quo).filter(key => !Object.keys(results.btc).includes(key))
     ].map((key) => ({
         label: toCapitalCase(key.replace(/_/g, ' ')),
-        status_quo: results.status_quo[key] ? results.status_quo[key] : "—",
-        btc: results.btc[key] ? results.btc[key] : "—",
+        status_quo: results.status_quo[key]?.toLocaleString('fr-FR') || "—",
+        btc: results.btc[key]?.toLocaleString('fr-FR') || "—",
     })).filter((item) => labelsOrder.includes(item.label))
         .sort((a, b) => {
             const indexA = labelsOrder.indexOf(a.label);
