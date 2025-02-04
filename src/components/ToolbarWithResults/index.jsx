@@ -37,7 +37,7 @@ const ToolbarWithResults = (props) => {
             </Box>
             <Box>
                 <Typography sx={sx.label}>Difference $</Typography>
-                <Typography sx={sx.primaryText}>${results?.difference?.dollar?.toLocaleString() || 0}</Typography>
+                <Typography sx={sx.primaryText}>${results?.difference?.dollar?.toLocaleString('fr-FR') || 0}</Typography>
             </Box>
             <Box>
                 <Typography sx={sx.label}>Difference %</Typography>
