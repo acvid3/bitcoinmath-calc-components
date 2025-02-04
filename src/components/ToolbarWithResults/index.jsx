@@ -41,7 +41,7 @@ const ToolbarWithResults = (props) => {
             </Box>
             <Box>
                 <Typography sx={sx.label}>Difference %</Typography>
-                <Typography sx={sx.primaryText}>{results?.difference?.percent?.replace(/(%)/gi, '') || '0'}</Typography>
+                <Typography sx={sx.primaryText}>{results?.difference?.percent || '0%'}</Typography>
             </Box>
             <Box sx={sx.buttonsBox}>
                 <Box sx={{

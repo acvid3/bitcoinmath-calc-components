@@ -17,6 +17,9 @@ export const sx = {
         display: 'flex',
         flexDirection: 'column',
         gap: '20px',
+        '@media (max-width: 1200px)': {
+            width: 'unset',
+        },
         '@media (max-width: 678px)': {
             width: '100%',
         },
