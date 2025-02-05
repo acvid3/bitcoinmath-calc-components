@@ -26,12 +26,12 @@ const InfoCard = () => {
         <div style={styles.card}>
             <p>
                 Based on your inputs, investing
-                <strong> ${formData?.monthly_contribution}</strong> each month, or roughly
-                <strong> {data.total_btc}</strong> every year into a College Savings 529 Plan, earning
-                <strong> {formData?.cagr}</strong> compound growth annually, after {year} years you would have roughly
-                <strong> {data.btc_net_value}</strong>. Comparatively, putting the same amount into Bitcoin appreciating at
+                <strong> ${formData?.monthly_contribution?.toLocaleString('fr-FR')}</strong> each month, or roughly
+                <strong> {data.total_btc?.toLocaleString('fr-FR')}</strong> every year into a College Savings 529 Plan, earning
+                <strong> {formData?.cagr?.toLocaleString('fr-FR')}</strong> compound growth annually, after {year} years you would have roughly
+                <strong> ${data.btc_net_value?.toLocaleString('fr-FR')}</strong>. Comparatively, putting the same amount into Bitcoin appreciating at
                 <strong> {cagrValue}</strong> annually, produces an ending net value of
-                <strong> {data.btc_net_value}</strong>.
+                <strong> ${data.btc_net_value?.toLocaleString('fr-FR')}</strong>
                 {/*, a difference of*/}
                 {/*<strong> ${ }</strong>(Difference $) or roughly*/}
                 {/*<strong> { }%</strong>(Difference%)*/}

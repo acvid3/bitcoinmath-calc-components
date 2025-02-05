@@ -54,12 +54,12 @@ const ResultsTable = () => {
                     {formattedData.map(e =>
                         <TableRow key={e.year} sx={sx.tableRow}>
                             <TableCell sx={sx.tableCellInfo}>{e.year}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.btcPrice}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.contributionAmount}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.totalBTC.toFixed(3)}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.aggregateBTC.toFixed(3)}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.btcNetValue}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.netValue}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.btcPrice?.toLocaleString('fr-FR')}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.contributionAmount?.toLocaleString('fr-FR')}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.totalBTC.toFixed(2)?.toLocaleString('fr-FR')}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.aggregateBTC.toFixed(2)?.toLocaleString('fr-FR')}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.btcNetValue?.toLocaleString('fr-FR')}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.netValue?.toLocaleString('fr-FR')}</TableCell>
                         </TableRow>
                     )}
                 </TableBody>

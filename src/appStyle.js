@@ -39,6 +39,8 @@ export const sx = {
     },
 
     resultsPaper: {
+        boxShadow: 'none',
+        border: '1px solid #E9EBE4',
         width: '700px',
         borderRadius: '30px',
         height: 'fit-content',
@@ -59,6 +61,8 @@ export const sx = {
     },
 
     chartPaper: {
+        boxShadow: 'none',
+        border: '1px solid #E9EBE4',
         height: '400px',
         // width: '1000px',
         display: 'flex',
@@ -83,6 +87,8 @@ export const sx = {
     },
 
     infoCardPaper: {
+        boxShadow: 'none',
+        border: '1px solid #E9EBE4',
         width: '300px',
         borderRadius: '30px',
         boxSizing: 'border-box',

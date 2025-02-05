@@ -13,10 +13,11 @@ export const styles = {
         },
     },
     paper: {
+        boxShadow: 'none',
+        border: '1px solid #E9EBE4',
         padding: '20px',
         backgroundColor: '#E9EBE4',
         borderRadius: '30px',
-        border: '1px solid #E9EBE4',
         // height: '100%',
         display: 'flex',
         flexDirection: 'column',
