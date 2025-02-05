@@ -25,17 +25,20 @@ const InfoCard = () => {
     return (
         <div style={styles.card}>
             <p>
-                Based on your inputs, investing
-                <strong> ${formData?.monthly_contribution}</strong> each month, or roughly
-                <strong> {data.total_btc}</strong> every year into a College Savings 529 Plan, earning
-                <strong> {formData?.cagr}</strong> compound growth annually, after {year} years you would have roughly
-                <strong> {data.btc_net_value}</strong>. Comparatively, putting the same amount into Bitcoin appreciating at
-                <strong> {cagrValue}</strong> annually, produces an ending net value of
-                <strong> {data.btc_net_value}</strong>.
-                {/*, a difference of*/}
-                {/*<strong> ${ }</strong>(Difference $) or roughly*/}
-                {/*<strong> { }%</strong>(Difference%)*/}
-                .
+                Based on your inputs, earning
+                <strong> ${formData?.monthly_net_income * 12} </strong> dollars per year with a
+                <strong> {formData?.yoy_salary_increase}% </strong>annual increase results in a Nominal Annual Income of
+                <strong> ${data?.annual_income} </strong>after 20 years.  Factoring in
+                (inflation) % for inflation, however, means in real terms your actual purchasing power will be
+                <strong> ${data?.btc_acquired}</strong>, representing a loss of roughly
+                <strong> {data?.btc_acquired}%</strong>. If, however, you were to convert those dollars into Bitcoin at
+                <strong> {cagrValue}% </strong>CAGR annually, and borrow the needed salary each year at
+                <strong> {formData?.apr}%</strong>, after 20 years of generating the same income along with the same inflation rate, your total holdings would be
+                <strong> ${data?.interest_paid} </strong>BTC, worth roughly
+                <strong> ${data?.yearly_loan}</strong>. Less the total borrowing costs of
+                <strong> ${data?.income_plus_bitcoin}</strong>, this would produce a net benefit of
+                <strong> ${data?.net_increase}</strong>, or roughly
+                (T26) additional value earned per year in Bitcoin.
             </p>
             <p style={styles.disclaimer}>
                 (This is a hypothetical model built on assumptions and user inputs.

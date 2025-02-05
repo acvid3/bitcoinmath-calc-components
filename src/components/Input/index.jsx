@@ -3,23 +3,11 @@ import {TextField, Box, Typography, Button} from '@mui/material';
 import {sx} from './styles';
 import {inputDescriptions} from "./constants";
 
-const Input = ({id, label, value, onChange, placeholder}) => {
-
-    const description = inputDescriptions.find(d => d.label === label)?.description;
+const Input = ({id, label, value, onChange, placeholder, message}) => {
 
     return (
         <Box sx={sx.container}>
-            {label && <Typography sx={sx.label}>
-                {label}
-                {description &&
-                    <span>
-                        <Button sx={sx.descriptionIcon}>i</Button>
-                        <Box className={'description'} sx={sx.description}>
-                            {description}
-                        </Box>
-                    </span>
-                }
-            </Typography>}
+            {label && <Typography sx={sx.label}>{label}</Typography>}
             <TextField
                 id={id}
                 value={value}
@@ -30,6 +18,7 @@ const Input = ({id, label, value, onChange, placeholder}) => {
                 sx={sx.input}
                 type={"number"}
             />
+            {message && <Typography sx={sx.message}>{message}</Typography>}
         </Box>
     );
 };

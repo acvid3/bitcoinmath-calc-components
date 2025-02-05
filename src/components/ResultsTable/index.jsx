@@ -62,16 +62,16 @@ const ResultsTable = () => {
                     {formattedData.map(e =>
                         <TableRow key={e.year} sx={sx.tableRow}>
                             <TableCell sx={sx.tableCellInfo}>{e.year}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.btc_price}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.annual_income}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.btc_acquired.toFixed(2)}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.aggregate_btc.toFixed(2)}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.total_btc_value}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.interest_paid}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.yearly_loan}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.total_loan}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.net_increase}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.income_plus_bitcoin}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.btc_price.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.annual_income.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{e.btc_acquired.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.aggregate_btc.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.total_btc_value.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.interest_paid.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.yearly_loan.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.total_loan.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.net_increase.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${e.income_plus_bitcoin.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
                         </TableRow>
                     )}
                 </TableBody>

@@ -47,12 +47,13 @@ const FinancialCalculatorForm = () => {
         <Box sx={styles.container}>
             <Paper elevation={3} sx={styles.paper}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    {inputFields.map(({ id, label, placeholder }) => (
+                    {inputFields.map(({ id, label, placeholder, message }) => (
                         <Input
                             key={id}
                             id={id}
                             label={label}
                             placeholder={placeholder}
+                            message={message}
                             value={formData[id] || ''}
                             onChange={(value) => handleInputChange(id, value)}
                         />
