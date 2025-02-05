@@ -1,9 +1,9 @@
 export const labelsOrder = [
-    "Total btc",
-    "Total usd value",
+    "Total BTC",
+    "Total USD value",
     "Cap gain tax",
     "Net value",
-    "Borrowing apr",
+    "Borrowing APR",
     "Yearly interest owed",
     "Loan term years",
     "Total cost",

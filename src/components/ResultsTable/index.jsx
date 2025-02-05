@@ -9,7 +9,7 @@ const toCapitalCase = (word) => {
     const firstLetterCap = word.charAt(0).toUpperCase();
     const remainingLetters = word.slice(1);
 
-    return (firstLetterCap + remainingLetters).replace(/(btc|apr|usd)/gi, match => match.toUpperCase());
+    return (firstLetterCap + remainingLetters).replace(/(Btc|btc|apr|usd)/gi, match => match.toUpperCase());
 };
 
 const formatResults = (results) => {
@@ -22,8 +22,8 @@ const formatResults = (results) => {
 
     return allKeys.map((key) => ({
         label: toCapitalCase(key.replace(/_/g, ' ')),
-        borrowing: results.borrowing[key] || '—',
-        selling: results.selling[key] || '—',
+        borrowing: results.borrowing[key]?.toLocaleString('fr-FR') || '—',
+        selling: results.selling[key]?.toLocaleString('fr-FR') || '—',
     })).filter((item) => labelsOrder.includes(item.label))
         .sort((a, b) => {
             const indexA = labelsOrder.indexOf(a.label);
