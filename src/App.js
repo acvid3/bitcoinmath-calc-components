@@ -69,6 +69,9 @@ const App = () => {
                                             justifyContent: 'center',
                                             alignItems: 'center',
                                             borderRadius: '30px',
+                                            boxShadow: 'none',
+                                            border: '1px solid #E9EBE4',
+
                                             '@media (max-width: 678px)': {
                                                 maxWidth: '100%',
                                                 width: '100%',
@@ -78,7 +81,12 @@ const App = () => {
                                         <DualAreaChart data={chartData.data}/>
                                     </Paper>
                                 </Box>
-                                : <Paper sx={{borderRadius: '30px', width: '100%'}}>
+                                : <Paper sx={{
+                                    borderRadius: '30px',
+                                    width: '100%',
+                                    boxShadow: 'none',
+                                    border: '1px solid #E9EBE4',
+                                }}>
                                     <ResultsTable/>
                                 </Paper>
                             }

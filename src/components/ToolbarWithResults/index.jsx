@@ -14,8 +14,9 @@ const ToolbarWithResults = ({toggleResultsChart, setToggleResultsChart}) => {
         setToggleResultsChart(false);
     }
 
-    const whatYoullHave = results?.comparison?.standard?.value_at_retirement || '0';
-    const whatYoullNeed = results?.comparison?.bitcoin?.value_at_retirement || '0';
+    const dollar = results?.comparison?.difference?.value || '0';
+    const percent = results?.comparison?.difference?.percentage || '0';
+    const multiple = results?.comparison?.difference?.multiple || '0';
 
     return (
         <Box sx={styles.container}>
@@ -23,17 +24,24 @@ const ToolbarWithResults = ({toggleResultsChart, setToggleResultsChart}) => {
             <Box sx={styles.childContainer}>
                 <Box>
                     <Typography sx={styles.label}>
-                        <Box sx={styles.marker('#2E4E35')}></Box>
-                        What you'll have:
+                        {/*<Box sx={styles.marker('#2E4E35')}></Box>*/}
+                        Difference $
                     </Typography>
-                    <Typography sx={styles.primaryText}>${whatYoullHave}</Typography>
+                    <Typography sx={styles.primaryText}>${dollar}</Typography>
                 </Box>
                 <Box>
                     <Typography sx={styles.label}>
-                        <Box sx={styles.marker('#F1B314')}></Box>
-                        What you'll need:
+                        {/*<Box sx={styles.marker('#F1B314')}></Box>*/}
+                        Difference %
                     </Typography>
-                    <Typography sx={styles.primaryText}>${whatYoullNeed}</Typography>
+                    <Typography sx={styles.primaryText}>{percent}%</Typography>
+                </Box>
+                <Box>
+                    <Typography sx={styles.label}>
+                        {/*<Box sx={styles.marker('#F1B314')}></Box>*/}
+                        Multiple %
+                    </Typography>
+                    <Typography sx={styles.primaryText}>{multiple}%</Typography>
                 </Box>
                 <Box sx={styles.tabsContainer}>
                     <Box sx={styles.tabs}>

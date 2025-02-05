@@ -53,18 +53,25 @@ const FinancialCalculatorForm = () => {
         <Box sx={styles.container}>
             <Paper elevation={3} sx={styles.paper}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    {inputFields.map(({ id, label, placeholder }) => (
+                    {inputFields.map(({ id, label, placeholder, message }) => (
                         <Input
                             key={id}
                             id={id}
                             label={label}
+                            message={message}
                             placeholder={placeholder}
                             value={formData[id] || ''}
                             onChange={(value) => handleInputChange(id, value)}
                             handleBlur={(value) => handleBlur(id, value)}
                         />
                     ))}
-                    <Button variant="contained" color="primary" fullWidth onClick={handleCalculate} sx={{ marginTop: 2, backgroundColor: '#3c6e47', borderRadius: '30px' }}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                        onClick={handleCalculate}
+                        sx={{ marginTop: '28px', backgroundColor: '#3c6e47', borderRadius: '30px', boxShadow: 'none' }}
+                    >
                         Calculate
                     </Button>
                 </Box>

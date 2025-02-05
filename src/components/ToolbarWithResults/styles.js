@@ -45,7 +45,8 @@ export const styles = {
         fontWeight: 700,
         fontSize: '32px',
         lineHeight: '38px',
-        color: '#2E4E35',
+        // color: '#2E4E35',
+        color: '#F1B314',
     },
 
     tabsContainer: {
