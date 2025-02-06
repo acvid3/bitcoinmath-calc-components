@@ -32,6 +32,6 @@ export const styles = {
         fontFamily: 'Raleway',
         fontSize: '14px',
         color: '#2E4E35',
-        padding: '15px 10px 0',
+        padding: '15px 10px',
     }
 };

@@ -46,12 +46,21 @@ export const sx = {
     description: {
         position: 'absolute',
         background: '#ffffff',
-        padding: '4px 8px',
+        borderRadius: '30px',
         zIndex: '100',
-        border: '1px #000 solid',
+        border: '1px #F1B314 solid',
         display: 'none',
-        fontSize: '12px',
+        fontSize: '14px',
         fontWeight: 600,
-        margin: '0 0 20px 20px'
+        // margin: '0 0 25px 0',
+        fontFamily: 'Raleway',
+        maxWidth: '300px',
+        textAlign: 'center',
+    },
+
+    descriptionBackground: {
+        background: '#F1B3141A',
+        padding: '10px 14px',
+        borderRadius: '30px',
     }
 }

@@ -3,6 +3,7 @@ import {Box, Button, Table, TableBody, TableCell, TableContainer, TableRow} from
 import {useResult} from '../../context/ResultContext';
 import {sx} from "./styles";
 import {resultsDescriptions} from "./constants";
+import {formatNumber} from "../../utils/numberFormatter";
 
 const toCapitalCase = (word) => {
     const firstLetterCap = word.charAt(0).toUpperCase();
@@ -34,8 +35,8 @@ const formatResults = (results) => {
 
     return allKeys.map((key) => ({
         label: toCapitalCase(key.replace(/_/g, ' ')),
-        tradefi: results.tradefi[key]?.toLocaleString('fr-FR') || '—',
-        btc: results.btc[key]?.toLocaleString('fr-FR') || '—',
+        tradefi: formatNumber(results.tradefi[key]) || '—',
+        btc: formatNumber(results.btc[key]) || '—',
     }));
 };
 
@@ -83,7 +84,9 @@ const ResultsTable = () => {
                                             i
                                         </Button>
                                         <Box className={'description'} sx={sx.description}>
-                                            {resultsDescriptions.find(e => e.label === label)?.description}
+                                            <Box sx={sx.descriptionBackground}>
+                                                {resultsDescriptions.find(e => e.label === label)?.description}
+                                            </Box>
                                         </Box>
                                     </>
                                 }

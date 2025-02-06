@@ -20,7 +20,7 @@ const FinancialChart = ({chartSize}) => {
         },
     ];
 
-    const formatYAxis = (value) => `$${value?.toLocaleString('fr-FR')}`;
+    const formatYAxis = (value) => `$${value?.toLocaleString('en-US')}`;
 
     return (
         <>
@@ -49,7 +49,7 @@ const FinancialChart = ({chartSize}) => {
                         position: 'insideTop',
                         offset: 45,
                         color: '#2E4E35',
-                        formatter: (value) => `$${value?.toLocaleString('fr-FR')}`,
+                        formatter: (value) => `$${value?.toLocaleString('en-US')}`,
                         fontSize: 14,
                         fill: '#2E4E35',
                         fontWeight: '600',

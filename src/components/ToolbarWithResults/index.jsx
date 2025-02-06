@@ -2,9 +2,12 @@ import React from 'react';
 import { Box, Button, ButtonBase, Link, Paper, Typography } from '@mui/material';
 import { sx } from './styles';
 import { useResult } from '../../context/ResultContext';
+import {formatNumber} from "../../utils/numberFormatter";
 
 const ToolbarWithResults = (props) => {
     const { results } = useResult();
+
+// ?.replace(/(%)/gi, "")
 
     return (
         <Box sx={sx.container}>
@@ -37,11 +40,11 @@ const ToolbarWithResults = (props) => {
             </Box>
             <Box>
                 <Typography sx={sx.label}>Difference $</Typography>
-                <Typography sx={sx.primaryText}>${results?.difference?.dollar?.toLocaleString('fr-FR') || 0}</Typography>
+                <Typography sx={sx.primaryText}>${formatNumber(results?.difference?.dollar) || 0}</Typography>
             </Box>
             <Box>
                 <Typography sx={sx.label}>Difference %</Typography>
-                <Typography sx={sx.primaryText}>{results?.difference?.percent?.replace(/(%)/gi, "") || '0'}</Typography>
+                <Typography sx={sx.primaryText}>{results?.difference?.percent || '0%'}</Typography>
             </Box>
             <Box sx={sx.buttonsBox}>
                 <Box sx={{
