@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Button, Table, TableBody, TableCell, TableContainer, TableRow} from '@mui/material';
-import { useResult } from '../../context/ResultContext';
-import { sx } from "./styles";
+import {useResult} from '../../context/ResultContext';
+import {sx} from "./styles";
 import {labelsOrder, resultsDescriptions} from "./constants";
 
 const toCapitalCase = (word) => {
@@ -29,14 +29,14 @@ const formatResults = (results) => {
 };
 
 const ResultsTable = () => {
-    const { results } = useResult();
+    const {results} = useResult();
 
     if (!results) {
-        return <div style={{ textAlign: 'center', padding: '20px' }}>No results available.</div>;
+        return <div style={{textAlign: 'center', padding: '20px'}}>No results available.</div>;
     }
 
     if (!results?.data?.status === 400) {
-        return <div style={{ textAlign: 'center', padding: '20px' }}>Bad Request.</div>;
+        return <div style={{textAlign: 'center', padding: '20px'}}>Bad Request.</div>;
     }
 
     const formattedData = formatResults(results);
@@ -57,7 +57,7 @@ const ResultsTable = () => {
                         <TableCell sx={sx.tableCell} align="center">Tradfi</TableCell>
                         <TableCell sx={sx.tableCell} align="center">Bitcoin</TableCell>
                     </TableRow>
-                    {formattedData.map(({ label, tradefi, btc }) => (
+                    {formattedData.map(({label, tradefi, btc}) => (
                         <TableRow key={label} sx={sx.tableRow}>
                             <TableCell sx={sx.descriptionCell}>
                                 {resultsDescriptions.find(e => e.label === label)?.description &&
@@ -66,13 +66,16 @@ const ResultsTable = () => {
                                             i
                                         </Button>
                                         <Box className={'description'} sx={sx.description}>
-                                            {resultsDescriptions.find(e => e.label === label)?.description}
+                                            <Box sx={sx.descriptionBackground}>
+                                                {resultsDescriptions.find(e => e.label === label)?.description}
+                                            </Box>
                                         </Box>
                                     </>
                                 }
                             </TableCell>
                             <TableCell sx={sx.tableCell}>{label}</TableCell>
-                            <TableCell sx={sx.tableCell} align="center">{getDollarSign(label, tradefi)}{tradefi}</TableCell>
+                            <TableCell sx={sx.tableCell}
+                                       align="center">{getDollarSign(label, tradefi)}{tradefi}</TableCell>
                             <TableCell sx={sx.tableCell} align="center">{getDollarSign(label, btc)}{btc}</TableCell>
                         </TableRow>
                     ))}
