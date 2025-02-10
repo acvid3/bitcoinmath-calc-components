@@ -1,5 +1,6 @@
 import {Rectangle} from "recharts";
 import React from "react";
+import {formatNumber} from "../../utils/numberFormatter";
 
 export const CustomShape = (props) => {
     return (
@@ -38,7 +39,7 @@ export const CustomLabel = ({ x, y, width, value }) => {
                 fontWeight="600"
                 fontFamily="Raleway"
             >
-                ${value?.toLocaleString('fr-FR')}
+                ${formatNumber(value)}
             </text>
             <svg x="-10" y='10' width="24" height="32" viewBox="0 0 24 32" fill="none"
                  xmlns="http://www.w3.org/2000/svg">

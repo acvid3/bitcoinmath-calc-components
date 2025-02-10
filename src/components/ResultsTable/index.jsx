@@ -3,6 +3,7 @@ import {Box, Button, Table, TableBody, TableCell, TableContainer, TableRow} from
 import {useResult} from '../../context/ResultContext';
 import {sx} from "./styles";
 import {labelsOrder, resultsDescriptions} from "./constants";
+import {formatNumber} from "../../utils/numberFormatter";
 
 const toCapitalCase = (word) => {
     const firstLetterCap = word.charAt(0).toUpperCase();
@@ -17,8 +18,8 @@ const formatResults = (results) => {
     return Object.keys(results.tradefi)
         .map((key) => ({
             label: toCapitalCase(key.replace(/_/g, ' ')),
-            tradefi: results.tradefi[key]?.toLocaleString('fr-FR') || '—',
-            btc: results.btc[key]?.toLocaleString('fr-FR') || '—',
+            tradefi: formatNumber(results.tradefi[key]) || '—',
+            btc: formatNumber(results.btc[key]) || '—',
         }))
         .filter((item) => labelsOrder.includes(item.label))
         .sort((a, b) => {
