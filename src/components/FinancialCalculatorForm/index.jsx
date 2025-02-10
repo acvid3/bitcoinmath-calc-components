@@ -61,6 +61,20 @@ const FinancialCalculatorForm = () => {
                         <span>Loan term</span>
                         <span>60</span>
                     </Box>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                        onClick={handleCalculate}
+                        sx={{
+                            boxShadow: 'none',
+                            marginTop: '28px',
+                            backgroundColor: '#3c6e47',
+                            borderRadius: '30px'
+                        }}
+                    >
+                        Calculate
+                    </Button>
                 </Box>
             </Paper>
         </Box>
