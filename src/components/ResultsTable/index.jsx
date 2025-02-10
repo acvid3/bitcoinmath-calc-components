@@ -2,6 +2,7 @@ import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { useResult } from '../../context/ResultContext';
 import { sx } from "./styles";
+import {formatNumber} from "../../utils/numberFormatter";
 
 
 const toCapitalCase = (word) => {
@@ -16,8 +17,8 @@ const formatResults = (results) => {
 
     return Object.keys(results.tradefi).map((key) => ({
         label: toCapitalCase(key.replace(/_/g, ' ')),
-        tradefi: results.tradefi[key]?.toLocaleString('fr-FR'),
-        btc: results.btc[key]?.toLocaleString('fr-FR'),
+        tradefi: formatNumber(results.tradefi[key]),
+        btc: formatNumber(results.btc[key]),
     }));
 };
 
