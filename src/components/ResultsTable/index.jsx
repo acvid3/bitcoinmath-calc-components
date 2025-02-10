@@ -3,6 +3,7 @@ import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/mate
 import { useResult } from '../../context/ResultContext';
 import { sx } from "./styles";
 import { resultsDescriptions } from "./constants";
+import {formatNumber} from "../../utils/numberFormatter";
 
 
 const toCapitalCase = (word) => {
@@ -17,8 +18,8 @@ const formatResults = (results) => {
 
     return Object.keys(results.comparison.standard).map((key) => ({
         label: toCapitalCase(key.replace(/_/g, ' ')),
-        tradefi: results.comparison.standard[key].toLocaleString('en-US'),
-        btc: results.comparison.bitcoin[key].toLocaleString('en-US'),
+        tradefi: formatNumber(results.comparison.standard[key]),
+        btc: formatNumber(results.comparison.bitcoin[key]),
     }));
 };
 

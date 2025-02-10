@@ -2,6 +2,7 @@ import React from 'react';
 import {Box, Link, Typography} from '@mui/material';
 import {styles} from './styles';
 import {useResult} from '../../context/ResultContext';
+import {formatNumber} from "../../utils/numberFormatter";
 
 const ToolbarWithResults = ({toggleResultsChart, setToggleResultsChart}) => {
     const {results} = useResult();
@@ -27,7 +28,7 @@ const ToolbarWithResults = ({toggleResultsChart, setToggleResultsChart}) => {
                         {/*<Box sx={styles.marker('#2E4E35')}></Box>*/}
                         Difference $
                     </Typography>
-                    <Typography sx={styles.primaryText}>${dollar}</Typography>
+                    <Typography sx={styles.primaryText}>${formatNumber(dollar)}</Typography>
                 </Box>
                 <Box>
                     <Typography sx={styles.label}>

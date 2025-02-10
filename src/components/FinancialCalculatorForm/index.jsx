@@ -42,13 +42,6 @@ const FinancialCalculatorForm = () => {
         setFormData((prev) => ({ ...prev, [key]: value }));
     };
 
-    const handleBlur = (key, value) => {
-        console.log(key, value);
-        if (value) {
-            setFormData((prev) => ({ ...prev, [key]: parseFloat(value).toLocaleString('en-US')}));
-        }
-    }
-
     return (
         <Box sx={styles.container}>
             <Paper elevation={3} sx={styles.paper}>
@@ -62,7 +55,6 @@ const FinancialCalculatorForm = () => {
                             placeholder={placeholder}
                             value={formData[id] || ''}
                             onChange={(value) => handleInputChange(id, value)}
-                            handleBlur={(value) => handleBlur(id, value)}
                         />
                     ))}
                     <Button

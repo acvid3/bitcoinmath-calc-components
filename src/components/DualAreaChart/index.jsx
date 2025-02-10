@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import { Box } from '@mui/material';
 import {useResult} from "../../context/ResultContext";
+import {formatNumber} from "../../utils/numberFormatter";
 // import results from '../../api/testResult.json';
 
 const DualAreaChart = ({ data }) => {
@@ -49,7 +50,7 @@ const DualAreaChart = ({ data }) => {
                     <XAxis dataKey="year" tick={{ fill: '#4F4F4F', fontSize: 12 }} axisLine={{ stroke: '#E0E0E0', strokeWidth: 1 }} tickLine={false} label={{ value: 'Age', position: 'insideBottom', offset: -10, fill: '#4F4F4F', fontSize: 14 }} />
                     <YAxis width={100} tickFormatter={(value) => `$${(value).toFixed(1)}`} tick={{ fill: '#4F4F4F', fontSize: 12 }} axisLine={false} tickLine={false} />
                     <Tooltip
-                        formatter={(value) => `$${value.toLocaleString()}`}
+                        formatter={(value) => `$${formatNumber(value)}`}
                         labelFormatter={(label) => `Year: ${label}`}
                         contentStyle={{
                             backgroundColor: '#FFFFFF',

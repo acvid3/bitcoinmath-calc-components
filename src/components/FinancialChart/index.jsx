@@ -2,6 +2,7 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import ChartLabels from '../ChartLabels';
 import { useResult } from '../../context/ResultContext';
+import {formatNumber} from "../../utils/numberFormatter";
 
 const FinancialChart = ({ chartSize }) => {
     const { results } = useResult();
@@ -19,7 +20,7 @@ const FinancialChart = ({ chartSize }) => {
         },
     ];
 
-    const formatYAxis = (value) => `$${value.toLocaleString()}`;
+    const formatYAxis = (value) => `$${formatNumber(value)}`;
 
     return (
         <>
@@ -46,7 +47,7 @@ const FinancialChart = ({ chartSize }) => {
                     radius={[10, 10, 0, 0]}
                     label={{
                         position: 'top',
-                        formatter: (value) => `$${value.toLocaleString()}`,
+                        formatter: (value) => `$${formatNumber(value)}`,
                         fontSize: 12,
                         fill: '#2E4E35',
                     }}
@@ -57,7 +58,7 @@ const FinancialChart = ({ chartSize }) => {
                     radius={[10, 10, 0, 0]}
                     label={{
                         position: 'top',
-                        formatter: (value) => `$${value.toLocaleString()}`,
+                        formatter: (value) => `$${formatNumber(value)}`,
                         fontSize: 12,
                         fill: '#F1B314',
                     }}
