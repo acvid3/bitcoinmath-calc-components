@@ -3,6 +3,7 @@ import {Table, TableBody, TableCell, TableContainer, TableRow} from '@mui/materi
 import {useResult} from '../../context/ResultContext';
 import {sx} from "./styles";
 import {labelsOrder} from "./constants";
+import {formatNumber} from "../../utils/numbersFormatter";
 
 
 const toCapitalCase = (word) => {
@@ -22,8 +23,8 @@ const formatResults = (results) => {
         ...Object.keys(results.status_quo).filter(key => !Object.keys(results.btc).includes(key))
     ].map((key) => ({
         label: toCapitalCase(key.replace(/_/g, ' ')),
-        status_quo: results.status_quo[key]?.toLocaleString('fr-FR') || "—",
-        btc: results.btc[key]?.toLocaleString('fr-FR') || "—",
+        status_quo: formatNumber(results.status_quo[key]) || "—",
+        btc: formatNumber(results.btc[key]) || "—",
     })).filter((item) => labelsOrder.includes(item.label))
         .sort((a, b) => {
             const indexA = labelsOrder.indexOf(a.label);

@@ -1,6 +1,6 @@
 import React, {useRef, useState, useEffect} from 'react';
 import {Box, Paper} from '@mui/material';
-import {ResultProvider} from './context/ResultContext';
+import {ResultProvider, useResult} from './context/ResultContext';
 import FinancialCalculatorForm from './components/FinancialCalculatorForm';
 import ResultsTable from './components/ResultsTable';
 import {adjustChartSize} from './utils/resizeObserver';
@@ -11,11 +11,13 @@ import {sx} from "./appStyle";
 import DualAreaChart from "./components/DualAreaChart";
 import InfoCard from "./components/InfoCard";
 import {FormProvider} from "./context/FormContext";
-// import DualAreaChart from "./components/DualAreaChart";
+import GetStartedBanner from "./components/GetStartedBanner";
 
 const App = () => {
     const containerRef = useRef(null);
     const [chartSize, setChartSize] = useState({width: 600, height: 400});
+
+    const {results} = useResult();
 
     useEffect(() => {
         if (containerRef.current) {
@@ -27,43 +29,42 @@ const App = () => {
     }, [containerRef]);
 
     return (
-        <ResultProvider>
-            <CagrProvider>
-                <FormProvider>
-                    <Box sx={{
-                        width: '100%',
-                        display: 'flex',
-                        justifyContent: 'center',
-                    }}>
-                        <Box sx={sx.parentContainer}>
-                            <FinancialCalculatorForm/>
+        <CagrProvider>
+            <FormProvider>
+                <Box sx={{
+                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                }}>
+                    <Box sx={sx.parentContainer}>
+                        <FinancialCalculatorForm/>
 
-                            <Box sx={sx.infoContainer}>
-                                <Box>
-                                    <Paper sx={sx.toolbarPaper}>
-                                        <CagrInputRange/>
-                                        <ToolbarWithResults/>
+                        <Box sx={sx.infoContainer}>
+                            <Box>
+                                <Paper sx={sx.toolbarPaper}>
+                                    <CagrInputRange/>
+                                    <ToolbarWithResults/>
+                                </Paper>
+                            </Box>
+                            <Box sx={results ? sx.resultsBox : {display: 'none'}}>
+                                <Paper sx={sx.resultsPaper}>
+                                    <ResultsTable/>
+                                </Paper>
+                                <Box sx={sx.chartBox}>
+                                    <Paper ref={containerRef} sx={sx.chartPaper}>
+                                        <DualAreaChart/>
                                     </Paper>
-                                </Box>
-                                <Box sx={sx.resultsBox}>
-                                    <Paper sx={sx.resultsPaper}>
-                                        <ResultsTable/>
+                                    <Paper sx={sx.infoCardPaper}>
+                                        <InfoCard/>
                                     </Paper>
-                                    <Box sx={sx.chartBox}>
-                                        <Paper ref={containerRef} sx={sx.chartPaper}>
-                                            <DualAreaChart/>
-                                        </Paper>
-                                        <Paper sx={sx.infoCardPaper}>
-                                            <InfoCard/>
-                                        </Paper>
-                                    </Box>
                                 </Box>
                             </Box>
+                            {!results && <GetStartedBanner/>}
                         </Box>
                     </Box>
-                </FormProvider>
-            </CagrProvider>
-        </ResultProvider>
+                </Box>
+            </FormProvider>
+        </CagrProvider>
     );
 };
 
