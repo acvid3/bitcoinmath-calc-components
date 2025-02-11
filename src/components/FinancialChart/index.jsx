@@ -3,6 +3,7 @@ import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Rectangle} from 're
 import ChartLabels from '../ChartLabels';
 import {useResult} from '../../context/ResultContext';
 import {CustomLabel, CustomShape, CustomShapeBTC} from "../ChartUtils";
+import {formatNumber} from "../../utils/numberFormatter";
 
 
 const FinancialChart = ({chartSize}) => {
@@ -21,7 +22,7 @@ const FinancialChart = ({chartSize}) => {
         },
     ];
 
-    const formatYAxis = (value) => `$${value.toLocaleString()}`;
+    const formatYAxis = (value) => `$${formatNumber(value)}`;
 
     return (
         <>
@@ -50,7 +51,7 @@ const FinancialChart = ({chartSize}) => {
                         position: 'insideTop',
                         offset: 45,
                         color: '#2E4E35',
-                        formatter: (value) => `$${value.toLocaleString()}`,
+                        formatter: (value) => `$${formatNumber(value)}`,
                         fontSize: 14,
                         fill: '#2E4E35',
                         fontWeight: '600',

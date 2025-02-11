@@ -3,6 +3,7 @@ import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/mate
 import { useResult } from '../../context/ResultContext';
 import {sx} from "./styles";
 import {labelsOrder} from "./constants";
+import {formatNumber} from "../../utils/numberFormatter";
 
 
 const toCapitalCase = (word) => {
@@ -22,8 +23,8 @@ const formatResults = (results) => {
 
     return allKeys.map((key) => ({
         label: toCapitalCase(key.replace(/_/g, ' ')),
-        borrowing: results.borrowing[key]?.toLocaleString('fr-FR') || '—',
-        selling: results.selling[key]?.toLocaleString('fr-FR') || '—',
+        borrowing: formatNumber(results.borrowing[key]) || '—',
+        selling: formatNumber(results.selling[key]) || '—',
     })).filter((item) => labelsOrder.includes(item.label))
         .sort((a, b) => {
             const indexA = labelsOrder.indexOf(a.label);

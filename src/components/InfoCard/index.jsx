@@ -3,6 +3,7 @@ import { useResult } from '../../context/ResultContext';
 import { useCagr } from '../../context/CagrContext';
 import { styles } from './styles';
 import {useForm} from "../../context/FormContext";
+import {formatNumber} from "../../utils/numberFormatter";
 
 const InfoCard = () => {
     const { results } = useResult();
@@ -23,19 +24,19 @@ const InfoCard = () => {
         <div style={styles.card}>
             <p>
                 Based on your inputs, selling
-                <strong> {formData?.total_bitcoin_sold} </strong> BTC with an estimated
+                <strong> {formatNumber(formData?.total_bitcoin_sold)} </strong> BTC with an estimated
                 <strong> {formData?.loan_apr}% </strong>Capital Gains Tax, means your take home cash value is roughly
-                <strong> ${selling?.net_value?.toLocaleString('fr-FR')}</strong>. Comparatively, if you were to borrow the cash at
+                <strong> ${formatNumber(selling?.net_value)}</strong>. Comparatively, if you were to borrow the cash at
                 <strong> {formData?.loan_apr}% </strong>APR for a term of
-                <strong> {formData?.loan_term_years?.toLocaleString('fr-FR')} </strong>Years, you would pay an estimated
-                <strong> ${borrowing?.yearly_interest_owed?.toLocaleString('fr-FR')} </strong>in interest expense annually, or
-                <strong> ${borrowing?.total_cost?.toLocaleString('fr-FR')} </strong>over the term of the loan. If Bitcoin has a compound annual growth rate of
+                <strong> {formatNumber(formData?.loan_term_years)} </strong>Years, you would pay an estimated
+                <strong> ${formatNumber(borrowing?.yearly_interest_owed)} </strong>in interest expense annually, or
+                <strong> ${formatNumber(borrowing?.total_cost)} </strong>over the term of the loan. If Bitcoin has a compound annual growth rate of
                 <strong> {cagrValue}%</strong>, the same B5 BTC will have an ending term value of
-                <strong> ${borrowing?.end_of_term_value?.toLocaleString('fr-FR')}</strong>. Less the borrowing costs of
-                <strong> ${borrowing?.total_cost?.toLocaleString('fr-FR')}</strong>, the ending cash value is
-                <strong> ${difference?.dollar?.toLocaleString('fr-FR')} </strong>which is
+                <strong> ${formatNumber(borrowing?.end_of_term_value)}</strong>. Less the borrowing costs of
+                <strong> ${formatNumber(borrowing?.total_cost)}</strong>, the ending cash value is
+                <strong> ${formatNumber(difference?.dollar)} </strong>which is
                 (F25)x greater than the Selling Scenario, a difference of
-                <strong> ${difference?.dollar?.toLocaleString('fr-FR')}</strong>, or roughly
+                <strong> ${formatNumber(difference?.dollar)}</strong>, or roughly
                 <strong> {difference?.percentage}%</strong>.
             </p>
             <p style={styles.disclaimer}>
