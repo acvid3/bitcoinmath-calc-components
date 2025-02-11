@@ -3,6 +3,7 @@ import {Box, Button, Table, TableBody, TableCell, TableContainer, TableRow} from
 import {useResult} from '../../context/ResultContext';
 import {sx} from './styles';
 import {labelsOrder, resultsDescriptions} from './constants';
+import {formatNumber} from "../../utils/numberFormatter";
 
 const toCapitalCase = (word) => {
     const firstLetterCap = word.charAt(0).toUpperCase();
@@ -62,16 +63,16 @@ const ResultsTable = () => {
                     {formattedData.map(e =>
                         <TableRow key={e.year} sx={sx.tableRow}>
                             <TableCell sx={sx.tableCellInfo}>{e.year}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.btc_price.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.annual_income.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.btc_acquired.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.aggregate_btc.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.total_btc_value.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.interest_paid.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.yearly_loan.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.total_loan.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.net_increase.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>${e.income_plus_bitcoin.toFixed(0)?.toLocaleString('fr-FR')}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${formatNumber(e.btc_price.toFixed(0))}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${formatNumber(e.annual_income.toFixed(0))}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{formatNumber(e.btc_acquired.toFixed(0))}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${formatNumber(e.aggregate_btc.toFixed(0))}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${formatNumber(e.total_btc_value.toFixed(0))}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${formatNumber(e.interest_paid.toFixed(0))}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${formatNumber(e.yearly_loan.toFixed(0))}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${formatNumber(e.total_loan.toFixed(0))}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${formatNumber(e.net_increase.toFixed(0))}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>${formatNumber(e.income_plus_bitcoin.toFixed(0))}</TableCell>
                         </TableRow>
                     )}
                 </TableBody>

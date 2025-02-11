@@ -1,6 +1,6 @@
 import React, {useRef, useState, useEffect} from 'react';
 import {Box, Paper} from '@mui/material';
-import {ResultProvider} from './context/ResultContext';
+import {ResultProvider, useResult} from './context/ResultContext';
 import FinancialCalculatorForm from './components/FinancialCalculatorForm';
 import {adjustChartSize} from './utils/resizeObserver';
 import {CagrProvider} from './context/CagrContext';
@@ -10,10 +10,13 @@ import {sx} from "./appStyle";
 import ResultsTable from "./components/ResultsTable";
 import InfoCard from "./components/InfoCard";
 import {FormProvider} from "./context/FormContext";
+import GetStartedBanner from "./components/GetStartedBanner";
 
 const App = () => {
     const containerRef = useRef(null);
     const [chartSize, setChartSize] = useState({width: 600, height: 400});
+
+    const {results} = useResult();
 
     useEffect(() => {
         if (containerRef.current) {
@@ -25,40 +28,39 @@ const App = () => {
     }, [containerRef]);
 
     return (
-        <ResultProvider>
-            <CagrProvider>
-                <FormProvider>
-                    <Box sx={{
-                        width: '100%',
-                        display: 'flex',
-                        justifyContent: 'center',
-                    }}>
-                        <Box sx={sx.parentContainer}>
-                            <FinancialCalculatorForm/>
+        <CagrProvider>
+            <FormProvider>
+                <Box sx={{
+                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                }}>
+                    <Box sx={sx.parentContainer}>
+                        <FinancialCalculatorForm/>
 
-                            <Box sx={sx.infoContainer}>
-                                <Box>
-                                    <Paper sx={sx.toolbarPaper}>
-                                        <CagrInputRange/>
+                        <Box sx={sx.infoContainer}>
+                            <Box>
+                                <Paper sx={sx.toolbarPaper}>
+                                    <CagrInputRange/>
+                                </Paper>
+                            </Box>
+                            <Box sx={results ? sx.resultsBox : {display: 'none'}}>
+                                <Box sx={sx.chartBox}>
+                                    <Paper ref={containerRef} sx={sx.chartPaper}>
+                                        <DualAreaChart data={[]}/>
                                     </Paper>
                                 </Box>
-                                <Box sx={sx.resultsBox}>
-                                    <Box sx={sx.chartBox}>
-                                        <Paper ref={containerRef} sx={sx.chartPaper}>
-                                            <DualAreaChart data={[]}/>
-                                        </Paper>
-                                    </Box>
-                                    <Box sx={sx.infoCardBox}>
-                                        <Paper sx={sx.resultsPaper}><ResultsTable/></Paper>
-                                        <Paper sx={sx.infoCardPaper}><InfoCard/></Paper>
-                                    </Box>
+                                <Box sx={sx.infoCardBox}>
+                                    <Paper sx={sx.resultsPaper}><ResultsTable/></Paper>
+                                    <Paper sx={sx.infoCardPaper}><InfoCard/></Paper>
                                 </Box>
                             </Box>
+                            {!results && <GetStartedBanner/>}
                         </Box>
                     </Box>
-                </FormProvider>
-            </CagrProvider>
-        </ResultProvider>
+                </Box>
+            </FormProvider>
+        </CagrProvider>
     );
 };
 
