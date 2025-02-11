@@ -11,3 +11,31 @@ export const calculateHomeEquityData = async (data) => {
         return error.response.data;
     }
 };
+
+export const downloadPDF = async (data) => {
+    try {
+        const response = await fetch('/wp-json/custom/v2/generate-pdf', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/pdf',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (!response.ok) throw new Error(`Error server: ${response.status}`);
+
+        return response.blob();
+    } catch (error) {
+        console.error('error bad request PDF:', error);
+    }
+};
+
+// (async () => {
+//     const blob = await downloadPDF({
+//         svg: "<svg><rect width='100' height='100' style='fill:blue;'/></svg>",
+//         node: `<div class="MuiBox-root></div>`,
+//     });
+//     const url = URL.createObjectURL(blob);
+//     window.open(url);
+// })();

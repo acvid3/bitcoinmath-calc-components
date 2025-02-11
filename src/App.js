@@ -19,6 +19,8 @@ const App = () => {
 
     const {results} = useResult();
 
+    const {resultsTableRef} = useRef();
+
     useEffect(() => {
         if (containerRef.current) {
             const resizeObserver = new ResizeObserver(() => adjustChartSize(containerRef, setChartSize));
@@ -43,12 +45,12 @@ const App = () => {
                             <Box>
                                 <Paper sx={sx.toolbarPaper}>
                                     <CagrInputRange/>
-                                    <ToolbarWithResults/>
+                                    <ToolbarWithResults resultsTableRef={resultsTableRef}/>
                                 </Paper>
                             </Box>
                             <Box sx={results ? sx.resultsBox : {display: 'none'}}>
                                 <Paper sx={sx.resultsPaper}>
-                                    <ResultsTable/>
+                                    <ResultsTable resultsTableRef={resultsTableRef}/>
                                 </Paper>
                                 <Box sx={sx.chartBox}>
                                     <Paper ref={containerRef} sx={sx.chartPaper}>

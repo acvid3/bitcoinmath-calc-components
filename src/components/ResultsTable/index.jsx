@@ -33,7 +33,7 @@ const formatResults = (results) => {
         });
 };
 
-const ResultsTable = () => {
+const ResultsTable = (props) => {
     const {results} = useResult();
 
     if (!results) {
@@ -64,9 +64,9 @@ const ResultsTable = () => {
 
 
     return (
-        <TableContainer>
+        <TableContainer id={"results-table"}>
             <Table>
-                <TableBody>
+                <TableBody ref={props.resultsTableRef}>
                     <TableRow sx={sx.tableRow}>
                         <TableCell sx={sx.tableCell}></TableCell>
                         <TableCell sx={sx.tableCell} align="center">Status Quo</TableCell>
