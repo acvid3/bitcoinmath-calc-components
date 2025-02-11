@@ -3,6 +3,7 @@ import {Box, Button, Table, TableBody, TableCell, TableContainer, TableRow} from
 import {useResult} from '../../context/ResultContext';
 import {sx} from './styles';
 import {labelsOrder, resultsDescriptions} from './constants';
+import {formatNumber} from "../../utils/numberFormatter";
 
 const toCapitalCase = (word) => {
     const firstLetterCap = word.charAt(0).toUpperCase();
@@ -54,12 +55,12 @@ const ResultsTable = () => {
                     {formattedData.map(e =>
                         <TableRow key={e.year} sx={sx.tableRow}>
                             <TableCell sx={sx.tableCellInfo}>{e.year}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.btcPrice?.toLocaleString('fr-FR')}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.contributionAmount?.toLocaleString('fr-FR')}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.totalBTC.toFixed(2)?.toLocaleString('fr-FR')}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.aggregateBTC.toFixed(2)?.toLocaleString('fr-FR')}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.btcNetValue?.toLocaleString('fr-FR')}</TableCell>
-                            <TableCell sx={sx.tableCellInfo}>{e.netValue?.toLocaleString('fr-FR')}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{formatNumber(e.btcPrice)}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{formatNumber(e.contributionAmount)}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{formatNumber(e.totalBTC.toFixed(2))}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{formatNumber(e.aggregateBTC.toFixed(2))}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{formatNumber(e.btcNetValue)}</TableCell>
+                            <TableCell sx={sx.tableCellInfo}>{formatNumber(e.netValue)}</TableCell>
                         </TableRow>
                     )}
                 </TableBody>

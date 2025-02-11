@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './src/App';
 import './src/style.css';
-import { createTheme, ThemeProvider } from '@mui/material';
+import {createTheme, ThemeProvider} from '@mui/material';
+import {ResultProvider} from "./src/context/ResultContext";
 
 const theme = createTheme({
     typography: {
@@ -13,7 +14,9 @@ const theme = createTheme({
 ReactDOM.render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>
-            <App />
+            <ResultProvider>
+                <App/>
+            </ResultProvider>
         </ThemeProvider>
     </React.StrictMode>,
     document.getElementById('root')

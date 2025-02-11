@@ -3,6 +3,7 @@ import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianG
 import { Box } from '@mui/material';
 import { useResult } from '../../context/ResultContext';
 import ChartLabels from '../ChartLabels';
+import {formatNumber} from "../../utils/numberFormatter";
 
 const DualAreaChart = (props) => {
     const { results } = useResult();
@@ -54,13 +55,13 @@ const DualAreaChart = (props) => {
                     />
                     <YAxis
                         width={90}
-                        tickFormatter={(value) => `$${value.toFixed(1)?.toLocaleString('fr-FR')}`}
+                        tickFormatter={(value) => `$${formatNumber(value.toFixed(1))}`}
                         tick={{ fill: 'rgb(46, 78, 53)', fontSize: 12, fontFamily: 'Raleway' }}
                         axisLine={false}
                         tickLine={false}
                     />
                     <Tooltip
-                        formatter={(value) => `$${value.toLocaleString()}`}
+                        formatter={(value) => `$${formatNumber(value)}`}
                         labelFormatter={(label) => `Year: ${label}`}
                         contentStyle={{
                             backgroundColor: '#FFFFFF',
