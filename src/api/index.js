@@ -11,3 +11,14 @@ export const calculateCashData = async (data) => {
         return error.response.data;
     }
 };
+
+export const currencyPriceBtc = async () => {
+    try {
+        const url = "http://13.61.153.104/wp-json/btc-calculator/v1/cryptocurrency-price?symbol=BTCUSDT";
+        const response = await axios.get(url);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching results:', error);
+        return error.response.data;
+    }
+}

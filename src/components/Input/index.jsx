@@ -27,6 +27,11 @@ const Input = ({ id, label, value, onChange, placeholder, message }) => {
                 helperText={isInputError ? results?.message?.replace(/_/g, ' ') : ''}
             />
             {message && <Typography sx={sx.message}>{message}</Typography>}
+            {label === "Annual Inflation %" &&
+                <Typography sx={sx.message}>
+                    <a href={"https://truflation.com/marketplace/truflation-us-aggregated"}>read more</a>
+                </Typography>
+            }
         </Box>
     );
 };
