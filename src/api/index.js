@@ -17,6 +17,17 @@ export const calculateAutoPurchaseData = async (data) => {
     }
 };
 
+export const currencyPriceBtc = async () => {
+    try {
+        const url = "http://13.61.153.104/wp-json/btc-calculator/v1/cryptocurrency-price?symbol=BTCUSDT";
+        const response = await axios.get(url);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching results:', error);
+        return error.response.data;
+    }
+}
+
 export const calculateRetirementData = async (data) => {
     try {
         const apiUrl = 'http://13.61.153.104/wp-json/btc-calculator/v1/calculate-retirement';
@@ -37,3 +48,23 @@ export const calculateRetirementData = async (data) => {
         }
     }
 };
+
+export const downloadPDF = async (data) => {
+    try {
+        const response = await fetch('http://13.61.153.104/wp-json/custom/v2/generate-pdf', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/pdf',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (!response.ok) throw new Error(`Error server: ${response.status}`);
+
+        return response.blob();
+    } catch (error) {
+        console.error('error bad request PDF:', error);
+    }
+};
+

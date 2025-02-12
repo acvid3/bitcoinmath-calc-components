@@ -26,7 +26,7 @@ const InfoCard = () => {
             <p>
                 Based on your inputs, buying a
                 <strong> ${formatNumber(formData?.car_price)}</strong> car at
-                <strong> {tradefi?.apr} APR</strong> over a <strong>60 month loan term</strong> with a down payment of
+                <strong> {formatNumber(tradefi?.apr)} APR</strong> over a <strong>60 month loan term</strong> with a down payment of
                 <strong> ${formatNumber(tradefi?.amount_down)}</strong>, results in an ending net asset value of
                 <strong> ${formatNumber(tradefi?.end_term_value)}</strong>. Comparatively, putting only
                 <strong> ${formatNumber(btc?.amount_down)}</strong> down and investing
@@ -34,7 +34,7 @@ const InfoCard = () => {
                 <strong> {cagrValue}% CAGR</strong>, produces an ending net value of
                 <strong> ${formatNumber(btc?.ending_term_value)}</strong>, a difference of
                 <strong> ${formatNumber(difference?.dollar)}</strong> or roughly
-                <strong> {difference?.percent}</strong>.
+                <strong> {formatNumber(difference?.percent)}</strong>.
             </p>
             <p style={styles.disclaimer}>
                 (This is a hypothetical model built on assumptions and user inputs.

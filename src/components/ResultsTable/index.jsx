@@ -4,6 +4,7 @@ import {useResult} from '../../context/ResultContext';
 import {sx} from "./styles";
 import {resultsDescriptions} from "./constants";
 import {formatNumber} from "../../utils/numberFormatter";
+import DescriptionIcon from "../DescriptionIcon";
 
 const toCapitalCase = (word) => {
     const firstLetterCap = word.charAt(0).toUpperCase();
@@ -79,16 +80,7 @@ const ResultsTable = () => {
                         <TableRow key={label} sx={sx.tableRow}>
                             <TableCell sx={sx.descriptionCell}>
                                 {resultsDescriptions.find(e => e.label === label)?.description &&
-                                    <>
-                                        <Button sx={sx.descriptionIcon}>
-                                            i
-                                        </Button>
-                                        <Box className={'description'} sx={sx.description}>
-                                            <Box sx={sx.descriptionBackground}>
-                                                {resultsDescriptions.find(e => e.label === label)?.description}
-                                            </Box>
-                                        </Box>
-                                    </>
+                                    <DescriptionIcon resultsDescriptions={resultsDescriptions} label={label}/>
                                 }
                             </TableCell>
                             <TableCell sx={sx.tableCell}>
@@ -102,6 +94,30 @@ const ResultsTable = () => {
                             </TableCell>
                         </TableRow>
                     ))}
+                    <TableRow sx={sx.tableRow}>
+                        <TableCell sx={sx.tableCell}>
+                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Difference $"}/>
+                        </TableCell>
+                        <TableCell sx={sx.tableCell} align="left">Difference $</TableCell>
+                        <TableCell sx={sx.tableCell} align="center"></TableCell>
+                        <TableCell sx={sx.tableCell} align="center">${formatNumber(results?.difference?.dollar) || 0}</TableCell>
+                    </TableRow>
+                    <TableRow sx={sx.tableRow}>
+                        <TableCell sx={sx.tableCell}>
+                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Difference %"}/>
+                        </TableCell>
+                        <TableCell sx={sx.tableCell} align="left">Difference %</TableCell>
+                        <TableCell sx={sx.tableCell} align="center"></TableCell>
+                        <TableCell sx={sx.tableCell} align="center">{formatNumber(results?.difference?.division) || 0}%</TableCell>
+                    </TableRow>
+                    <TableRow sx={sx.tableRow}>
+                        <TableCell sx={sx.tableCell}>
+                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Difference"}/>
+                        </TableCell>
+                        <TableCell sx={sx.tableCell} align="left">Difference</TableCell>
+                        <TableCell sx={sx.tableCell} align="center"></TableCell>
+                        <TableCell sx={sx.tableCell} align="center">{formatNumber(results?.difference?.percent) || 0}</TableCell>
+                    </TableRow>
                 </TableBody>
             </Table>
         </TableContainer>
