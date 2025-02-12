@@ -24,6 +24,8 @@ const DualAreaChart = () => {
         }));
     }, [results]);
 
+    console.log(chartData);
+
     if (chartData.length === 0) {
         return <Box sx={{padding: '20px'}}>No data available</Box>;
     }
