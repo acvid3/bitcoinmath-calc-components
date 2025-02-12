@@ -1,16 +1,20 @@
 import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
-import { useResult } from '../../context/ResultContext';
+import {Table, TableBody, TableCell, TableContainer, TableRow} from '@mui/material';
+import {useResult} from '../../context/ResultContext';
 import {sx} from "./styles";
 import {labelsOrder} from "./constants";
 import {formatNumber} from "../../utils/numberFormatter";
+import DescriptionIcon from "../DescriptionIcon";
+import {resultsDescriptions} from "./constants";
 
 
 const toCapitalCase = (word) => {
     const firstLetterCap = word.charAt(0).toUpperCase();
     const remainingLetters = word.slice(1);
 
-    return (firstLetterCap + remainingLetters).replace(/(Btc|btc|apr|usd)/gi, match => match.toUpperCase());
+    return (firstLetterCap + remainingLetters)
+        .replace(/(Btc|btc|apr|usd)/gi, match => match.toUpperCase())
+        .replace(/(Bitcoin|bitcoin)/gi, "BTC");
 };
 
 const formatResults = (results) => {
@@ -34,20 +38,20 @@ const formatResults = (results) => {
 };
 
 const ResultsTable = () => {
-    const { results } = useResult();
+    const {results} = useResult();
 
     if (!results) {
-        return <div style={{ textAlign: 'center', padding: '20px' }}>No results available.</div>;
+        return <div style={{textAlign: 'center', padding: '20px'}}>No results available.</div>;
     }
 
     if (!results?.data?.status === 400) {
-        return <div style={{ textAlign: 'center', padding: '20px' }}>Bad Request.</div>;
+        return <div style={{textAlign: 'center', padding: '20px'}}>Bad Request.</div>;
     }
 
     const formattedData = formatResults({selling: results.selling, borrowing: results.borrowing});
 
-    const noDollarSignsValues = ["Borrowing apr", "Loan term years", "Cap gain tax", "Total btc"];
-    const percentSignValues = ["Cap gain tax", "Borrowing apr"]
+    const noDollarSignsValues = ["Borrowing apr", "Loan term years", "Total btc"];
+    const percentSignValues = ["Borrowing apr"];
 
     const getDollarSign = (label, value) => {
         if (value === '—' || noDollarSignsValues.includes(label)) {
@@ -67,11 +71,17 @@ const ResultsTable = () => {
                 <TableBody>
                     <TableRow sx={sx.tableRow}>
                         <TableCell sx={sx.tableCellTop}></TableCell>
+                        <TableCell sx={sx.tableCellTop}></TableCell>
                         <TableCell sx={sx.tableCellTop} align="center">Selling</TableCell>
                         <TableCell sx={sx.tableCellTop} align="center">Borrowing</TableCell>
                     </TableRow>
-                    {formattedData.map(({ label, borrowing, selling }) => (
+                    {formattedData.map(({label, borrowing, selling}) => (
                         <TableRow key={label} sx={sx.tableRow}>
+                            <TableCell sx={sx.descriptionCell}>
+                                {resultsDescriptions.find(e => e.label === label)?.description &&
+                                    <DescriptionIcon resultsDescriptions={resultsDescriptions} label={label}/>
+                                }
+                            </TableCell>
                             <TableCell sx={sx.tableLabel}>{label}</TableCell>
                             <TableCell sx={sx.tableCell} align="center">
                                 {getDollarSign(label, selling)}{selling}{getPercentSign(label, selling)}
@@ -81,6 +91,33 @@ const ResultsTable = () => {
                             </TableCell>
                         </TableRow>
                     ))}
+                    <TableRow sx={sx.tableRow}>
+                        <TableCell sx={sx.descriptionCell}>
+                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Difference $"}/>
+                        </TableCell>
+                        <TableCell sx={sx.tableCell} align="left">Difference $</TableCell>
+                        <TableCell sx={sx.tableCell} align="center"></TableCell>
+                        <TableCell sx={sx.tableCell}
+                                   align="center">${formatNumber(results?.difference?.dollar) || 0}</TableCell>
+                    </TableRow>
+                    <TableRow sx={sx.tableRow}>
+                        <TableCell sx={sx.descriptionCell}>
+                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Difference"}/>
+                        </TableCell>
+                        <TableCell sx={sx.tableCell} align="left">Difference %</TableCell>
+                        <TableCell sx={sx.tableCell} align="center"></TableCell>
+                        <TableCell sx={sx.tableCell}
+                                   align="center">{formatNumber(results?.difference?.percentage) || 0}%</TableCell>
+                    </TableRow>
+                    <TableRow sx={sx.tableRow}>
+                        <TableCell sx={sx.descriptionCell}>
+                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Difference %"}/>
+                        </TableCell>
+                        <TableCell sx={sx.tableCell} align="left">Multiple</TableCell>
+                        <TableCell sx={sx.tableCell} align="center"></TableCell>
+                        <TableCell sx={sx.tableCell}
+                                   align="center">{formatNumber(results?.difference?.multiple) || 0}</TableCell>
+                    </TableRow>
                 </TableBody>
             </Table>
         </TableContainer>

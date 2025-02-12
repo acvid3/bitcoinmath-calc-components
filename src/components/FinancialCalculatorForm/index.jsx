@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Paper, Button } from '@mui/material';
 import { useResult } from '../../context/ResultContext';
-import { calculateSellingCompareBorrowingData } from '../../api';
+import {calculateSellingCompareBorrowingData, currencyPriceBtc} from '../../api';
 import { inputFields } from './constants';
 import { styles } from './styles';
 import Input from '../Input';
@@ -29,6 +29,12 @@ const FinancialCalculatorForm = () => {
 
         fetchResults();
     }, [cagrValue, formData]);
+
+    useEffect(async () => {
+        const data = await currencyPriceBtc();
+        setFormData({...formData, btc_current_price: Number(data.price).toFixed(2)});
+
+    }, []);
 
     const handleCalculate = async () => {
         const updatedFormData = cagrValue

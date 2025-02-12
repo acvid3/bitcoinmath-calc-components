@@ -55,6 +55,7 @@ export const sx = {
     descriptionCell: {
         padding: '0 0 0 20px',
         marginRight: '-15px',
+        border: 'none',
         '@media (max-width: 678px)': {
             padding: '8px 0 8px 8px',
         },
