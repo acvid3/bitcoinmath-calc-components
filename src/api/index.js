@@ -38,18 +38,13 @@ export const calculateRetirementData = async (data) => {
     }
 };
 
-const inputData = {
-    monthly_contribution: 500,
-    standard_rate: 13,
-    btc_rate: 29,
-    years_to_retirement: 20,
-};
-
-(async () => {
+export const currencyPriceBtc = async () => {
     try {
-        const result = await calculateRetirementData(inputData);
-        console.log('API Response:', result);
+        const url = "http://13.61.153.104/wp-json/btc-calculator/v1/cryptocurrency-price?symbol=BTCUSDT";
+        const response = await axios.get(url);
+        return response.data;
     } catch (error) {
-        console.error('Error occurred:', error.message);
+        console.error('Error fetching results:', error);
+        return error.response.data;
     }
-})();
+}

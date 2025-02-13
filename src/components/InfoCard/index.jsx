@@ -25,18 +25,18 @@ const InfoCard = () => {
             <p>
                 Based on your inputs, buying a
                 <strong> ${formatNumber(formData?.home_price)} </strong>home with
-                <strong> ${formatNumber(results?.tradefi?.amount_down)} </strong>down at
-                <strong> {formData?.apr}% </strong>APR over a
+                <strong> ${formatNumber(tradefi?.amount_down)} </strong>down at
+                <strong> {formatNumber(formData?.apr)}% </strong>APR over a
                 <strong> {formatNumber(formData?.term)} </strong> month term, appreciating at
                 <strong> {formatNumber(formData?.re_aar)}% </strong> annually, results in a net asset value of
-                <strong> {formatNumber(results?.tradefi?.net_value)} </strong> after
+                <strong> {formatNumber(tradefi?.net_value)} </strong> after
                 <strong> {formatNumber(formData?.checkpoint_year)} </strong>years. Comparatively, putting only
-                <strong> ${formatNumber(results?.btc?.amount_down)} </strong>down and using the remaining
-                <strong> ${formatNumber(results?.btc?.btc_investment)} </strong> to buy Bitcoin appreciating at
-                <strong> {cagrValue}% </strong> annually, produces an ending net value of
-                <strong> ${formatNumber(results?.tradefi?.net_value)}</strong>, a difference of
-                <strong> ${formatNumber(results?.difference?.dollar)}</strong>, or roughly
-                <strong> {results?.difference?.percent}</strong>.
+                <strong> ${formatNumber(btc?.amount_down)} </strong>down and using the remaining
+                <strong> ${formatNumber(btc?.btc_investment)} </strong> to buy Bitcoin appreciating at
+                <strong> {formatNumber(cagrValue)}% </strong> annually, produces an ending net value of
+                <strong> ${formatNumber(tradefi?.net_value)}</strong>, a difference of
+                <strong> ${formatNumber(difference?.dollar)}</strong>, or roughly
+                <strong> {formatNumber(difference?.percent)}</strong>.
             </p>
             <p style={styles.disclaimer}>(This is a hypothetical model built on assumptions and user inputs. It is not financial advice and should not be relied upon for investment decisions.)</p>
         </div>

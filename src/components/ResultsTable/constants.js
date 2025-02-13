@@ -7,16 +7,24 @@ export const resultsDescriptions = [
     { description: "Monthly payment savings by putting more cash down and financing less", label: "Monthly savings" },
     { description: "Total amount of interest paid through the checkpoint year", label: "Interest expense paid" },
     { description: "Total interest payment savings through the checkpoint year, by putting more cash down and financing less", label: "Interest expense savings" },
+
     { description: "Total initial Bitcoin investment", label: "BTC investment" },
     { description: "Total amount of BTC acquired", label: "BTC acquired" },
     { description: "The purchased Bitcoin's value at the checkpoint year", label: "BTC value" },
+
     { description: "Total principal paid through checkpoint year", label: "Principal paid" },
     { description: "Total equity value through checkpoint year", label: "Gross home equity" },
     { description: "Total appreciation through checkpoint year, based on RE AAR input", label: "Appreciation" },
     { description: "Principal Paid + Equity + Appreciation, through checkpoint year", label: "Net home equity value" },
+
     { description: "Net Home Equity + BTC Value", label: "Total asset value" },
     { description: "Total Asset Value + Interest Expense Savings", label: "Plus savings" },
-    { description: "Net value of asset(s) at checkpoint term, plus interest expense savings", label: "Net value" }
+
+    { description: "Net value of asset(s) at checkpoint term, plus interest expense savings", label: "Net value" },
+
+    { description: "Dollar value difference of the two scenarios (Bitcoin - Tradfi)", label: "Difference $" },
+    { description: "Dollar value difference % of the two scenarios ((Bitcoin - Tradfi) / Tradfi)", label: "Difference %" },
+    { description: "The difference multiple between the two scenarios (Bitcoin / Tradfi)", label: "Multiple" },
 ];
 
 export const labelsOrder  = [
@@ -38,5 +46,4 @@ export const labelsOrder  = [
     "Total asset value",
     "Plus savings",
     "Net value",
-    // "Multiple"
 ];

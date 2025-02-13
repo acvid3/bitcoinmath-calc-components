@@ -7,6 +7,7 @@ export const styles = {
             maxWidth: 'unset',
         },
     },
+
     paper: {
         boxShadow: 'none',
         padding: '20px',
@@ -22,4 +23,16 @@ export const styles = {
             width: '100%',
         },
     },
+
+    term: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: '100%',
+        boxSizing: 'border-box',
+        fontWeight: 600,
+        fontFamily: 'Raleway',
+        fontSize: '14px',
+        color: '#2E4E35',
+        padding: '15px 10px',
+    }
 };

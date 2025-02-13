@@ -42,11 +42,11 @@ const ToolbarWithResults = (props) => {
             </Box>
             <Box>
                 <Typography sx={sx.label}>Difference %</Typography>
-                <Typography sx={sx.primaryText}>{results?.difference?.percent || '0%'}</Typography>
+                <Typography sx={sx.primaryText}>{formatNumber(results?.difference?.percent) || '0'}%</Typography>
             </Box>
             <Box>
                 <Typography sx={sx.label}>Multiple</Typography>
-                <Typography sx={sx.primaryText}>{results?.difference?.multiple || '0'}</Typography>
+                <Typography sx={sx.primaryText}>{formatNumber(results?.difference?.multiple) || '0'}</Typography>
             </Box>
             <Box sx={sx.buttonsBox}>
                 <Box sx={{

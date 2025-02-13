@@ -4,18 +4,24 @@ import {useResult} from '../../context/ResultContext';
 import {sx} from "./styles";
 import {labelsOrder, resultsDescriptions} from "./constants";
 import {formatNumber} from "../../utils/numberFormatter";
+import DescriptionIcon from "../DescriptionIcon";
 
 const toCapitalCase = (word) => {
     const firstLetterCap = word.charAt(0).toUpperCase();
     const remainingLetters = word.slice(1);
 
-    return (firstLetterCap + remainingLetters).replace(/(Btc|btc|apr|usd)/gi, match => match.toUpperCase());
+    return (firstLetterCap + remainingLetters)
+        .replace(/(Btc|btc|apr|usd)/gi, match => match.toUpperCase())
+        .replace(/(Bitcoin|bitcoin)/gi, "BTC");
 };
 
 const formatResults = (results) => {
-    if (!results || !results.tradefi) return [];
+    if (!results || !results.tradefi || !results.btc) return [];
 
-    return Object.keys(results.tradefi)
+    return [
+        ...Object.keys(results.tradefi),
+        ...Object.keys(results.btc).filter(key => !Object.keys(results.tradefi).includes(key))
+    ]
         .map((key) => ({
             label: toCapitalCase(key.replace(/_/g, ' ')),
             tradefi: formatNumber(results.tradefi[key]) || '—',
@@ -62,16 +68,7 @@ const ResultsTable = () => {
                         <TableRow key={label} sx={sx.tableRow}>
                             <TableCell sx={sx.descriptionCell}>
                                 {resultsDescriptions.find(e => e.label === label)?.description &&
-                                    <>
-                                        <Button sx={sx.descriptionIcon}>
-                                            i
-                                        </Button>
-                                        <Box className={'description'} sx={sx.description}>
-                                            <Box sx={sx.descriptionBackground}>
-                                                {resultsDescriptions.find(e => e.label === label)?.description}
-                                            </Box>
-                                        </Box>
-                                    </>
+                                    <DescriptionIcon resultsDescriptions={resultsDescriptions} label={label}/>
                                 }
                             </TableCell>
                             <TableCell sx={sx.tableCell}>{label}</TableCell>
@@ -80,6 +77,30 @@ const ResultsTable = () => {
                             <TableCell sx={sx.tableCell} align="center">{getDollarSign(label, btc)}{btc}</TableCell>
                         </TableRow>
                     ))}
+                    <TableRow sx={sx.tableRow}>
+                        <TableCell sx={sx.tableCell}>
+                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Difference $"}/>
+                        </TableCell>
+                        <TableCell sx={sx.tableCell} align="left">Difference $</TableCell>
+                        <TableCell sx={sx.tableCell} align="center"></TableCell>
+                        <TableCell sx={sx.tableCell} align="center">${formatNumber(results?.difference?.dollar) || 0}</TableCell>
+                    </TableRow>
+                    <TableRow sx={sx.tableRow}>
+                        <TableCell sx={sx.tableCell}>
+                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Difference %"}/>
+                        </TableCell>
+                        <TableCell sx={sx.tableCell} align="left">Difference %</TableCell>
+                        <TableCell sx={sx.tableCell} align="center"></TableCell>
+                        <TableCell sx={sx.tableCell} align="center">{formatNumber(results?.difference?.percent) || 0}%</TableCell>
+                    </TableRow>
+                    <TableRow sx={sx.tableRow}>
+                        <TableCell sx={sx.tableCell}>
+                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Multiple"}/>
+                        </TableCell>
+                        <TableCell sx={sx.tableCell} align="left">Multiple</TableCell>
+                        <TableCell sx={sx.tableCell} align="center"></TableCell>
+                        <TableCell sx={sx.tableCell} align="center">{formatNumber(results?.difference?.multiple) || 0}</TableCell>
+                    </TableRow>
                 </TableBody>
             </Table>
         </TableContainer>
