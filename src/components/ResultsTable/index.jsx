@@ -2,8 +2,9 @@ import React from 'react';
 import {Table, TableBody, TableCell, TableContainer, TableRow} from '@mui/material';
 import {useResult} from '../../context/ResultContext';
 import {sx} from "./styles";
-import {labelsOrder} from "./constants";
+import {labelsOrder, resultsDescriptions} from "./constants";
 import {formatNumber} from "../../utils/numbersFormatter";
+import DescriptionIcon from "../DescriptionIcon";
 
 
 const toCapitalCase = (word) => {
@@ -69,11 +70,15 @@ const ResultsTable = (props) => {
                 <TableBody ref={props.resultsTableRef}>
                     <TableRow sx={sx.tableRow}>
                         <TableCell sx={sx.tableCell}></TableCell>
+                        <TableCell sx={sx.tableCell}></TableCell>
                         <TableCell sx={sx.tableCell} align="center">Status Quo</TableCell>
                         <TableCell sx={sx.tableCell} align="center">Bitcoin</TableCell>
                     </TableRow>
                     {formattedData.map(({label, status_quo, btc}) => (
                         <TableRow key={label} sx={sx.tableRow}>
+                            <TableCell sx={sx.tableCell}>
+                                <DescriptionIcon resultsDescriptions={resultsDescriptions} label={label}/>
+                            </TableCell>
                             <TableCell sx={sx.tableCell}>{label}</TableCell>
                             <TableCell sx={sx.tableCell} align="center">
                                 {getDollarSign(label, status_quo)}
@@ -87,6 +92,30 @@ const ResultsTable = (props) => {
                             </TableCell>
                         </TableRow>
                     ))}
+                    <TableRow sx={sx.tableRow}>
+                        <TableCell sx={sx.tableCell}>
+                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Difference $"}/>
+                        </TableCell>
+                        <TableCell sx={sx.tableCell} align="left">Difference $</TableCell>
+                        <TableCell sx={sx.tableCell} align="center"></TableCell>
+                        <TableCell sx={sx.tableCell} align="center">${formatNumber(results?.difference?.dollar) || 0}</TableCell>
+                    </TableRow>
+                    <TableRow sx={sx.tableRow}>
+                        <TableCell sx={sx.tableCell}>
+                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Difference %"}/>
+                        </TableCell>
+                        <TableCell sx={sx.tableCell} align="left">Difference %</TableCell>
+                        <TableCell sx={sx.tableCell} align="center"></TableCell>
+                        <TableCell sx={sx.tableCell} align="center">{formatNumber(results?.difference?.percent) || 0}%</TableCell>
+                    </TableRow>
+                    <TableRow sx={sx.tableRow}>
+                        <TableCell sx={sx.tableCell}>
+                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Multiple"}/>
+                        </TableCell>
+                        <TableCell sx={sx.tableCell} align="left">Multiple</TableCell>
+                        <TableCell sx={sx.tableCell} align="center"></TableCell>
+                        <TableCell sx={sx.tableCell} align="center">{formatNumber(results?.difference?.multiple) || 0}</TableCell>
+                    </TableRow>
                 </TableBody>
             </Table>
         </TableContainer>

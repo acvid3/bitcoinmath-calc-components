@@ -32,5 +32,18 @@ export const sx = {
         marginTop: 2,
         backgroundColor: '#3c6e47',
         borderRadius: '30px'
+    },
+
+
+    term: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: '100%',
+        boxSizing: 'border-box',
+        fontWeight: 600,
+        fontFamily: 'Raleway',
+        fontSize: '14px',
+        color: '#2E4E35',
+        padding: '15px 10px',
     }
 };

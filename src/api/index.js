@@ -31,6 +31,17 @@ export const downloadPDF = async (data) => {
     }
 };
 
+export const currencyPriceBtc = async () => {
+    try {
+        const url = "http://13.61.153.104/wp-json/btc-calculator/v1/cryptocurrency-price?symbol=BTCUSDT";
+        const response = await axios.get(url);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching results:', error);
+        return error.response.data;
+    }
+}
+
 // (async () => {
 //     const blob = await downloadPDF({
 //         svg: "<svg><rect width='100' height='100' style='fill:blue;'/></svg>",
