@@ -102,7 +102,7 @@ const ResultsTable = () => {
                     </TableRow>
                     <TableRow sx={sx.tableRow}>
                         <TableCell sx={sx.descriptionCell}>
-                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Difference"}/>
+                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Difference %"}/>
                         </TableCell>
                         <TableCell sx={sx.tableCell} align="left">Difference %</TableCell>
                         <TableCell sx={sx.tableCell} align="center"></TableCell>
@@ -111,7 +111,7 @@ const ResultsTable = () => {
                     </TableRow>
                     <TableRow sx={sx.tableRow}>
                         <TableCell sx={sx.descriptionCell}>
-                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Difference %"}/>
+                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Multiple"}/>
                         </TableCell>
                         <TableCell sx={sx.tableCell} align="left">Multiple</TableCell>
                         <TableCell sx={sx.tableCell} align="center"></TableCell>
