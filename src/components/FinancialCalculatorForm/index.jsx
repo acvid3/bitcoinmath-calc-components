@@ -13,6 +13,7 @@ const FinancialCalculatorForm = () => {
     const { setResults } = useResult();
 
     const { cagrValue } = useCagr();
+    const [btcPrice, setBtcPrice] = useState();
 
     useEffect(() => {
         const fetchResults = async () => {
@@ -32,8 +33,7 @@ const FinancialCalculatorForm = () => {
 
     useEffect(async () => {
         const data = await currencyPriceBtc();
-        setFormData({...formData, btc_current_price: Number(data.price).toFixed(2)});
-
+        setBtcPrice(Number(data.price).toFixed(2));
     }, []);
 
     const handleCalculate = async () => {
@@ -63,6 +63,10 @@ const FinancialCalculatorForm = () => {
                             message={message}
                         />
                     ))}
+                    <Box sx={styles.term}>
+                        <span>BTC current price</span>
+                        <span>{btcPrice}</span>
+                    </Box>
                     <Button variant="contained" color="primary" fullWidth onClick={handleCalculate} sx={styles.button}>
                         Calculate
                     </Button>
