@@ -18,10 +18,8 @@ const InfoCard = () => {
         return <div style={{ textAlign: 'center', padding: '20px' }}>Bad Request.</div>;
     }
 
-    // const { tradefi, btc, difference } = results;
-
-    const year = results?.data[results.data.length-1].year;
-    const data = results.data[year-1];
+    const year = results?.data.years_data[results.data.years_data.length-1].year;
+    const data = results.data.years_data[year-1];
 
     return (
         <div style={styles.card}>

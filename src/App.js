@@ -11,6 +11,7 @@ import ResultsTable from "./components/ResultsTable";
 import InfoCard from "./components/InfoCard";
 import {FormProvider} from "./context/FormContext";
 import GetStartedBanner from "./components/GetStartedBanner";
+import ToolbarWithResults from "./components/ToolbarWithResults";
 
 const App = () => {
     const containerRef = useRef(null);
@@ -42,6 +43,7 @@ const App = () => {
                             <Box>
                                 <Paper sx={sx.toolbarPaper}>
                                     <CagrInputRange/>
+                                    <ToolbarWithResults/>
                                 </Paper>
                             </Box>
                             <Box sx={results ? sx.resultsBox : {display: 'none'}}>

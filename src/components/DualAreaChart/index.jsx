@@ -9,13 +9,14 @@ const DualAreaChart = (props) => {
     const { results } = useResult();
 
     const chartData = useMemo(() => {
-        if (!results?.data) {
+        if (!results?.data.years_data) {
             return [];
         }
-        return results?.data.map((value, index) => ({
+
+        return results?.data.years_data.map((value, index) => ({
             year: value.year || 0,
-            net_value: results?.data[index]?.net_value || 0,
-            btc_net_value: results?.data[index]?.btc_net_value || 0,
+            net_value: results?.data.years_data[index]?.net_value || 0,
+            btc_net_value: results?.data.years_data[index]?.btc_net_value || 0,
         }));
     }, [results]);
 
@@ -24,8 +25,8 @@ const DualAreaChart = (props) => {
     }
 
     const chartItems = [
-        { label: `529 Net Value: ${chartData[chartData.length - 1].net_value}`, color: '#2E4E35' },
-        { label: `BTC Net Value: ${chartData[chartData.length - 1].btc_net_value}`, color: '#F1B314' },
+        { label: `529 Net Value: ${formatNumber(chartData[chartData.length - 1].net_value)}`, color: '#2E4E35' },
+        { label: `BTC Net Value: ${formatNumber(chartData[chartData.length - 1].btc_net_value)}`, color: '#F1B314' },
     ];
 
     return (

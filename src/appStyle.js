@@ -41,13 +41,13 @@ export const sx = {
     resultsPaper: {
         boxShadow: 'none',
         border: '1px solid #E9EBE4',
-        width: '700px',
+        width: '1015px',
         borderRadius: '30px',
         height: 'fit-content',
         overflow: 'hidden',
         boxSizing: 'border-box',
         '@media (max-width: 1200px)': {
-            width: '100%',
+            width: 'unset',
         },
         '@media (max-width: 678px)': {
             width: '100%',
@@ -62,9 +62,7 @@ export const sx = {
 
     chartPaper: {
         boxShadow: 'none',
-        border: '1px solid #E9EBE4',
         height: '400px',
-        // width: '1000px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -77,6 +75,7 @@ export const sx = {
 
     infoCardBox: {
         display: 'flex',
+        flexDirection: 'column',
         gap: '15px',
         justifyContent: 'space-between',
         alignItems: 'top',
@@ -89,10 +88,13 @@ export const sx = {
     infoCardPaper: {
         boxShadow: 'none',
         border: '1px solid #E9EBE4',
-        width: '300px',
+        width: '1015px',
         borderRadius: '30px',
         boxSizing: 'border-box',
         height: 'min-content',
+        '@media (max-width: 1200px)': {
+            width: 'unset',
+        },
         '@media (max-width: 678px)': {
             width: '100%',
         },

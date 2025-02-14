@@ -72,5 +72,10 @@ export const sx = {
         fontSize: '12px',
         fontWeight: 600,
         margin: '0 0 20px 20px'
+    },
+
+    labelBox: {
+        paddingLeft: '10px',
+        display: 'inline',
     }
 }
