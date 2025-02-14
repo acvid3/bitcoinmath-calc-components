@@ -4,9 +4,11 @@ export const sx = {
         margin: '0px',
         border: 'none',
         textAlign: 'center',
+        verticalAlign: 'top',
         fontSize: '14px',
-        maxWidth: '60px',
-        width: 'min-content',
+        // maxWidth: '60px',
+        // width: 'min-content',
+        width: '60px',
         '@media (max-width: 678px)': {
             padding: '8px',
         },
@@ -18,6 +20,8 @@ export const sx = {
         fontWeight: '700',
         textAlign: 'center',
         border: 'none',
+        // width: '60px',
+
         borderRight: '1px solid #E9EBE4',
         width: 'fit-content',
         '@media (max-width: 678px)': {
@@ -72,5 +76,10 @@ export const sx = {
         fontSize: '12px',
         fontWeight: 600,
         margin: '0 0 20px 20px'
+    },
+
+    labelBox: {
+        paddingTop: '10px',
+        // display: 'inline',
     }
 }

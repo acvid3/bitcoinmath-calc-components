@@ -41,7 +41,7 @@ export const sx = {
     resultsPaper: {
         boxShadow: 'none',
         border: '1px solid #E9EBE4',
-        width: '1015px',
+        width: '1365px',
         borderRadius: '30px',
         height: 'fit-content',
         overflow: 'hidden',

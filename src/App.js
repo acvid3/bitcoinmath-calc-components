@@ -51,13 +51,19 @@ const App = () => {
                                     </Paper>
                                 </Box>
                                 <Box sx={sx.infoCardBox}>
-                                    <Paper sx={sx.resultsPaper}><ResultsTable/></Paper>
                                     <Paper sx={sx.infoCardPaper}><InfoCard/></Paper>
                                 </Box>
                             </Box>
                             {!results && <GetStartedBanner/>}
                         </Box>
                     </Box>
+                </Box>
+                <Box sx={{
+                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                }}>
+                    <Paper sx={results ? sx.resultsPaper : {display: 'none'}}><ResultsTable/></Paper>
                 </Box>
             </FormProvider>
         </CagrProvider>

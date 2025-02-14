@@ -35,7 +35,7 @@ const InfoCard = () => {
                 <strong> {formatNumber(data?.btc_acquired)}%</strong>. If, however, you were to convert those dollars into Bitcoin at
                 <strong> {cagrValue}% </strong>CAGR annually, and borrow the needed salary each year at
                 <strong> {formatNumber(formData?.apr)}%</strong>, after 20 years of generating the same income along with the same inflation rate, your total holdings would be
-                <strong> ${formatNumber(data?.interest_paid)} </strong>BTC, worth roughly
+                <strong> ${formatNumber(data?.interest_owed)} </strong>BTC, worth roughly
                 <strong> ${formatNumber(data?.yearly_loan)}</strong>. Less the total borrowing costs of
                 <strong> ${formatNumber(data?.income_plus_bitcoin)}</strong>, this would produce a net benefit of
                 <strong> ${formatNumber(data?.net_increase)}</strong>, or roughly

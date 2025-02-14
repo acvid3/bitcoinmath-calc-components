@@ -24,8 +24,8 @@ const DualAreaChart = (props) => {
     }
 
     const chartItems = [
-        { label: `Annual Income: ${chartData[chartData.length - 1].annual_income}`, color: '#2E4E35' },
-        { label: `Income Plus Bitcoin: ${chartData[chartData.length - 1].income_plus_bitcoin}`, color: '#F1B314' },
+        { label: `Annual Income: ${formatNumber(chartData[chartData.length - 1].annual_income)}`, color: '#2E4E35' },
+        { label: `Income Plus Bitcoin: ${formatNumber(chartData[chartData.length - 1].income_plus_bitcoin)}`, color: '#F1B314' },
     ];
 
     return (
