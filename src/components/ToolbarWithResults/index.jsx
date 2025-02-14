@@ -40,7 +40,7 @@ const ToolbarWithResults = ({toggleResultsChart, setToggleResultsChart}) => {
                 <Box>
                     <Typography sx={styles.label}>
                         {/*<Box sx={styles.marker('#F1B314')}></Box>*/}
-                        Multiple %
+                        Multiple
                     </Typography>
                     <Typography sx={styles.primaryText}>{formatNumber(multiple)}</Typography>
                 </Box>
