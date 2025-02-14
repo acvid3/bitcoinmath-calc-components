@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Paper, Button } from '@mui/material';
 import { useResult } from '../../context/ResultContext';
-import {calculateAutoPurchaseData, calculateRetirementData} from '../../api';
+import {calculateRetirementData, currencyPriceBtc} from '../../api';
 import { inputFields } from './constants';
 import { styles } from './styles';
 import Input from '../Input';
@@ -12,6 +12,7 @@ const FinancialCalculatorForm = () => {
     const { setResults } = useResult();
 
     const { cagrValue } = useCagr();
+    const [btcPrice, setBtcPrice] = useState();
 
     useEffect(() => {
         const fetchResults = async () => {
@@ -28,6 +29,11 @@ const FinancialCalculatorForm = () => {
 
         fetchResults();
     }, [cagrValue, formData]);
+
+    useEffect(async () => {
+        const data = await currencyPriceBtc();
+        setBtcPrice(Number(data.price).toFixed(2));
+    }, []);
 
     const handleCalculate = async () => {
         try {
@@ -57,6 +63,10 @@ const FinancialCalculatorForm = () => {
                             onChange={(value) => handleInputChange(id, value)}
                         />
                     ))}
+                    <Box sx={styles.term}>
+                        <span>BTC current price</span>
+                        <span>{btcPrice}</span>
+                    </Box>
                     <Button
                         variant="contained"
                         color="primary"

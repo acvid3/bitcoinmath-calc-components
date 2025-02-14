@@ -1,17 +1,5 @@
 import axios from 'axios';
 
-export const calculatePurchaseData = async (data) => {
-    const apiUrl = 'http://13.61.153.104/wp-json/btc-calculator/v1/calculate-home-purchase';
-    const response = await axios.post(apiUrl, data);
-    return response.data;
-};
-
-export const calculateAutoPurchaseData = async (data) => {
-    const apiUrl = 'http://13.61.153.104/wp-json/btc-calculator/v1/calculate-auto-purchase';
-    const response = await axios.post(apiUrl, data);
-    return response.data;
-};
-
 export const calculateRetirementData = async (data) => {
     try {
         const apiUrl = 'http://13.61.153.104/wp-json/btc-calculator/v1/calculate-retirement';
@@ -32,3 +20,14 @@ export const calculateRetirementData = async (data) => {
         }
     }
 };
+
+export const currencyPriceBtc = async () => {
+    try {
+        const url = "http://13.61.153.104/wp-json/btc-calculator/v1/cryptocurrency-price?symbol=BTCUSDT";
+        const response = await axios.get(url);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching results:', error);
+        return error.response.data;
+    }
+}

@@ -4,6 +4,7 @@ import { useResult } from '../../context/ResultContext';
 import { sx } from "./styles";
 import { resultsDescriptions } from "./constants";
 import {formatNumber} from "../../utils/numberFormatter";
+import DescriptionIcon from "../DescriptionIcon";
 
 
 const toCapitalCase = (word) => {
@@ -39,20 +40,37 @@ const ResultsTable = () => {
                 <TableBody>
                     {formattedData.map(({ label, tradefi, btc }) => (
                         <TableRow key={label} sx={sx.tableRow}>
-                            <TableCell>{label}</TableCell>
+                            <TableCell sx={sx.tableCell}>
+                                <DescriptionIcon resultsDescriptions={resultsDescriptions} label={label}/>
+                                {label}
+                            </TableCell>
                             <TableCell align="right">${tradefi}</TableCell>
                             <TableCell align="right">${btc}</TableCell>
                         </TableRow>
                     ))}
-                    <TableRow sx={{fontWeight: 700}}>
-                        <TableCell>Difference $</TableCell>
+                    <TableRow>
+                        <TableCell>
+                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Difference $"}/>
+                            Difference $
+                        </TableCell>
                         <TableCell align="right">{" "}</TableCell>
-                        <TableCell align="right">${results?.comparison?.difference?.value}</TableCell>
+                        <TableCell align="right">${formatNumber(results?.comparison?.difference?.value) || 0}</TableCell>
                     </TableRow>
-                    <TableRow sx={{fontWeight: 700}}>
-                        <TableCell>Difference %</TableCell>
+                    <TableRow>
+                        <TableCell>
+                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Difference %"}/>
+                            Difference %
+                        </TableCell>
                         <TableCell align="right">{" "}</TableCell>
-                        <TableCell align="right">{results?.comparison?.difference?.percentage}%</TableCell>
+                        <TableCell align="right">{formatNumber(results?.comparison?.difference?.percentage) || 0}%</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <DescriptionIcon resultsDescriptions={resultsDescriptions} label={"Multiple"}/>
+                            Multiple
+                        </TableCell>
+                        <TableCell align="right">{" "}</TableCell>
+                        <TableCell align="right">{formatNumber(results?.comparison?.difference?.multiple) || 0}</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
