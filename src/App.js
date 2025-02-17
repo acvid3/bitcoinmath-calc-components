@@ -1,6 +1,6 @@
 import React, {useRef, useState, useEffect} from 'react';
 import {Box, Paper} from '@mui/material';
-import {ResultProvider} from './context/ResultContext';
+import {ResultProvider, useResult} from './context/ResultContext';
 import FinancialCalculatorForm from './components/FinancialCalculatorForm';
 import ResultsTable from './components/ResultsTable';
 import {adjustChartSize} from './utils/resizeObserver';
@@ -9,6 +9,9 @@ import {CagrProvider} from './context/CagrContext';
 import DualAreaChart from './components/DualAreaChart';
 import CagrInputRange from './components/CagrInputRange';
 import {sx} from "./appStyle";
+import InfoCard from "./components/InfoCard";
+import GetStartedBanner from "./components/GetStartedBanner";
+import {FormProvider} from "./context/FormContext";
 
 
 const App = () => {
@@ -26,9 +29,11 @@ const App = () => {
         }
     }, [containerRef]);
 
+    const {results} = useResult();
+
     return (
-        <ResultProvider>
-            <CagrProvider>
+        <CagrProvider>
+            <FormProvider>
                 <Box sx={{
                     width: '100%',
                     display: 'flex',
@@ -45,7 +50,7 @@ const App = () => {
                                                         setToggleResultsChart={setToggleResultsChart}/>
                                 </Paper>
                             </Box>
-                            <Box sx={sx.resultsBox}>
+                            <Box sx={results ? sx.resultsBox : {display: 'none'}}>
                                 {toggleResultsChart ? (
                                     <Box sx={{display: 'flex', flexDirection: 'column', gap: '20px'}}>
                                         <Paper ref={containerRef} sx={sx.chartPaper}>
@@ -53,16 +58,23 @@ const App = () => {
                                         </Paper>
                                     </Box>
                                 ) : (
-                                    <Paper sx={{borderRadius: '30px', width: '100%'}}>
+                                    <Paper sx={{
+                                        borderRadius: '30px',
+                                        width: '100%',
+                                        boxShadow: 'none',
+                                        border: '1px solid #E9EBE4',
+                                    }}>
                                         <ResultsTable/>
                                     </Paper>
                                 )}
+                                {/*<InfoCard/>*/}
                             </Box>
+                            {!results && <GetStartedBanner/>}
                         </Box>
                     </Box>
                 </Box>
-            </CagrProvider>
-        </ResultProvider>
+            </FormProvider>
+        </CagrProvider>
     );
 };
 

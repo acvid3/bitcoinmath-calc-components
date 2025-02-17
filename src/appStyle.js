@@ -35,6 +35,7 @@ export const sx = {
         display: 'flex',
         gap: '20px',
         width: '1015px',
+        flexDirection: 'column',
         '@media (max-width: 1200px)': {
             width: 'unset',
         },
@@ -45,6 +46,8 @@ export const sx = {
     },
 
     resultsPaper: {
+        // border: '1px solid #E9EBE4',
+        boxShadow: 'none',
         width: '700px',
         borderRadius: '30px',
         height: 'fit-content',
@@ -64,6 +67,8 @@ export const sx = {
     },
 
     chartPaper: {
+        // border: '1px solid #E9EBE4',
+        boxShadow: 'none',
         width: '1015px',
         display: 'flex',
         flexDirection: 'column',

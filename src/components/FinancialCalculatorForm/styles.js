@@ -10,10 +10,11 @@ export const sx = {
     },
 
     paper: {
+        border: '1px solid #E9EBE4',
+        boxShadow: 'none',
         padding: '20px',
         backgroundColor: '#E9EBE4',
         borderRadius: '30px',
-        border: '1px solid #E9EBE4',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -24,8 +25,21 @@ export const sx = {
     },
 
     button: {
+        boxShadow: 'none',
         marginTop: 2,
         backgroundColor: '#3c6e47',
         borderRadius: '30px'
+    },
+
+    term: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: '100%',
+        boxSizing: 'border-box',
+        fontWeight: 600,
+        fontFamily: 'Raleway',
+        fontSize: '14px',
+        color: '#2E4E35',
+        padding: '15px 10px',
     }
 };

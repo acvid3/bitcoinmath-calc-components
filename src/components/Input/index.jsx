@@ -3,7 +3,7 @@ import { TextField, Box, Typography } from '@mui/material';
 import { sx } from "./styles";
 
 
-const Input = ({ id, label, value, onChange, placeholder, handleBlur }) => {
+const Input = ({ id, label, value, onChange, placeholder, message }) => {
 
     return (
         <Box sx={sx.container}>
@@ -12,13 +12,13 @@ const Input = ({ id, label, value, onChange, placeholder, handleBlur }) => {
                 id={id}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
-                // onBlur={(e) => handleBlur(e.target.value)}
                 placeholder={placeholder}
                 variant="outlined"
                 fullWidth
                 sx={sx.input}
                 type={"number"}
             />
+            {message && <Typography sx={sx.message}>{message}</Typography>}
         </Box>
     );
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Link, Typography } from '@mui/material';
 import { styles } from './styles';
 import { useResult } from '../../context/ResultContext';
+import {formatNumber} from "../../utils/numberFormatter";
 
 const ToolbarWithResults = ({ toggleResultsChart, setToggleResultsChart }) => {
     const { results } = useResult();
@@ -14,7 +15,11 @@ const ToolbarWithResults = ({ toggleResultsChart, setToggleResultsChart }) => {
         setToggleResultsChart(false);
     };
 
-    const difference = { dollar: results?.difference?.dollar || '0', percentage: results?.difference?.percentage || '0' };
+    const difference = {
+        dollar: formatNumber(results?.difference?.dollar) || '0',
+        percentage: formatNumber(results?.difference?.percentage) || '0',
+        multiple: formatNumber(results?.difference?.multiple) || '0',
+    };
 
     return (
         <Box sx={styles.container}>
@@ -22,17 +27,21 @@ const ToolbarWithResults = ({ toggleResultsChart, setToggleResultsChart }) => {
             <Box sx={styles.childContainer}>
                 <Box>
                     <Typography sx={styles.label}>
-                        <Box sx={styles.marker('#2E4E35')}></Box>
+                        {/*<Box sx={styles.marker('#2E4E35')}></Box>*/}
                         Difference $
                     </Typography>
                     <Typography sx={styles.primaryText}>${difference.dollar}</Typography>
                 </Box>
                 <Box>
                     <Typography sx={styles.label}>
-                        <Box sx={styles.marker('#F1B314')}></Box>
+                        {/*<Box sx={styles.marker('#F1B314')}></Box>*/}
                         Difference %
                     </Typography>
                     <Typography sx={styles.primaryText}>{difference.percentage}%</Typography>
+                </Box>
+                <Box>
+                    <Typography sx={styles.label}>Multiple</Typography>
+                    <Typography sx={styles.primaryText}>{difference.multiple}</Typography>
                 </Box>
                 <Box sx={styles.tabsContainer}>
                     <Box sx={styles.tabs}>
